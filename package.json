@@ -1,0 +1,40 @@
+{
+  "name": "avl-type-tree",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=6.9.1"
+  },
+  "description": "AVL Tree written in TypeScript",
+  "main": "built/index.js",
+  "scripts": {
+    "test": "mocha -r ts-node/register spec/**/*.spec.ts",
+    "prepublish": "gulp prepublish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcusjwhelan/avl-type-tree.git"
+  },
+  "keywords": [
+    "AVL",
+    "TypeScript"
+  ],
+  "author": "Marcus J Whelan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marcusjwhelan/avl-type-tree/issues"
+  },
+  "homepage": "https://github.com/marcusjwhelan/avl-type-tree#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chai": "^3.5.0",
+    "@types/mocha": "^2.2.40",
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "mocha": "^3.2.0",
+    "run-sequence": "^1.2.2",
+    "ts-node": "^3.0.2",
+    "typescript": "^2.2.2"
+  },
+  "typings": "built/index.d.ts"
+}
