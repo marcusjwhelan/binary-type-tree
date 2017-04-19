@@ -14,7 +14,6 @@ export class AVLTree extends AVLNode implements IAVLTree {
     /**
      * Constructor of the AVLTree class
      * @param options
-     * @param
      */
     constructor(public options: INodeConstructor<AVLNode>) {
         super(options);

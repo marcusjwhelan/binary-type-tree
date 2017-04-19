@@ -11,7 +11,7 @@
         "noEmitOnError": true,
         "experimentalDecorators": true,
         "rootDir": ".",
-        "outFile": "built/index.js",
+        "outFile": "built/binaryTT.js",
         "typeRoots": [
             "node_modules/@types",
             "node_modules"
