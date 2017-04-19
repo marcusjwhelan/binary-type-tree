@@ -1,5 +1,7 @@
 /**
  * Return an array with the numbers from 0 to n-1, in a random order.
+ * @param n
+ * @returns {any}
  */
 export const getRandomArray = ( n: number ): number[] => {
     let res;
@@ -19,8 +21,11 @@ export const getRandomArray = ( n: number ): number[] => {
     return res;
 };
 
-/*
+/**
  * Default compareKeys function
+ * @param a
+ * @param b
+ * @returns {number}
  */
 export const defaultCompareKeysFunction = ( a: number | string | Date, b: number | string | Date ): number => {
     if (a < b) {
@@ -36,6 +41,9 @@ export const defaultCompareKeysFunction = ( a: number | string | Date, b: number
 
 /**
  * Check whether two values are equal
+ * @param a
+ * @param b
+ * @returns {boolean}
  */
 export const defaultCheckValueEquality = ( a: number | string | Date, b: number | string | Date ): boolean => {
     return a === b;

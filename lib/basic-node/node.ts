@@ -1,36 +1,51 @@
+/**
+ * Basic utilites used for comparison and validity
+ */
 import * as bTreeUtils from "../bTreeUtils";
-// Alias types
+
+/** Type used for Node value */
 export type SNDBA = Array<(string|number|Date|boolean)>;
+/** Type used for Node key */
 export type SNDB = string|number|Date|boolean;
 
-// Function types
+/** Function Type used for generic key and boolean return */
 export type getBoolFromKey = (key?: SNDB) => boolean;
+/** Function type to return function type getBoolFromKey  */
 export type getLowerBoundsFn = (query: IGreatQuery) => getBoolFromKey;
+/** Function type to return function type getBoolFromKey  */
 export type getUpperBoundsFn = (query: ILessQueary) => getBoolFromKey;
+/** Function type taking in(recommended keys) */
 export type compareKeys = (a: any, b: any ) => number;
+/** Function type taking in(recommended keys) */
 export type checkValueEquality = (a: SNDB, b: SNDB ) => boolean;
 
-// Interfaces
+/** Interface for $gt object */
 export interface IGreaterThan {
     $gt: any;
 }
+/** Interface for $lt object */
 export interface ILessThan {
     $lt: any;
 }
+/** Interface for $gte object */
 export interface IGreaterThanEqual {
     $gte: any;
 }
+/** Interface for $lte object */
 export interface ILessThanEqual {
     $lte: any;
 }
+/** Interface for $gt/$gte range */
 export interface IGreatQuery {
     $gt?: IGreaterThan;
     $gte?: IGreaterThanEqual;
 }
+/** Interface for $lt/$lte range */
 export interface ILessQueary {
     $lt?: ILessThan;
     $lte?: ILessThanEqual;
 }
+/** Interface for $gt/$lt/$gte/$lte range */
 export interface IAllQueary {
     $gt?: IGreaterThan;
     $gte?: IGreaterThanEqual;
@@ -38,6 +53,7 @@ export interface IAllQueary {
     $lte?: ILessThanEqual;
 }
 
+/** Interface for Node constructor options */
 export interface INodeConstructor<T> {
     parent?: T|null;
     key: SNDB;
@@ -47,6 +63,7 @@ export interface INodeConstructor<T> {
     checkValueEquality?: any;
 }
 
+/** Interface for abstract class Node */
 export interface INode<T> {
     left: Node<T>|null;
     right: Node<T>|null;
@@ -76,6 +93,9 @@ export interface INode<T> {
     executeOnEveryNode(fn: any): any;
 }
 
+/**
+ * Abstract class used as template for high level classes.
+ */
 export abstract class Node<T> implements INode<T> {
     public left: Node<T>|null = null;
     public right: Node<T>|null = null;
@@ -87,10 +107,8 @@ export abstract class Node<T> implements INode<T> {
     public checkValueEquality: checkValueEquality;
 
     /**
-     * Constructor of Node, an abstract class
-     * @param options Init object: required.
-     * @param options.key Key of Node: required
-     * @param options.value Value of Node: required
+     *
+     * @param options
      */
     protected constructor( public options: INodeConstructor<Node<T>> ) {
         this.key = options.key;
