@@ -43,3 +43,4 @@ jspm_packages
 
 # Built
 built/
+*.DS_Store
