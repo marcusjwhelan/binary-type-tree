@@ -1,5 +1,5 @@
 /**
- * Return an array with the numbers from 0 to n-1, in a random order
+ * Return an array with the numbers from 0 to n-1, in a random order.
  */
 export const getRandomArray = ( n: number ): number[] => {
     let res;

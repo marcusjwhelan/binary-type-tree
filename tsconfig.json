@@ -3,6 +3,7 @@
         "module": "system",
         "target": "es6",
         "moduleResolution": "node",
+        "compileOnSave": true,
         "declaration": true,
         "noImplicitAny": true,
         "sourceMap": true,

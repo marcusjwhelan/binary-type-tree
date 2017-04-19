@@ -1,5 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
 .gitignore
 lib
+__test__
+tsconfig.json
+node_modules
+tslint.json
 .npmignore
 .editorconfig
