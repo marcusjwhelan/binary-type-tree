@@ -10,13 +10,14 @@
         "emitDecoratorMetadata": true,
         "noEmitOnError": true,
         "experimentalDecorators": true,
+        "rootDir": ".",
         "outFile": "built/index.js",
         "typeRoots": [
             "node_modules/@types",
             "node_modules"
         ],
         "types": [
-            "node"
+            "node", "jest"
         ],
         "lib": ["es6"]
     },
