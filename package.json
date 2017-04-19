@@ -5,10 +5,9 @@
     "node": ">=6.9.x"
   },
   "description": "Binary Trees written in TypeScript",
-  "main": "built/index.js",
+  "main": "built/binaryTT.js",
   "scripts": {
-    "test": "jest",
-    "prepublish": "gulp prepublish"
+    "test": "jest"
   },
   "jest": {
     "transform": {
@@ -51,5 +50,5 @@
     "ts-node": "^3.0.2",
     "typescript": "^2.2.2"
   },
-  "typings": "built/index.d.ts"
+  "typings": "built/binaryTT.d.ts"
 }
