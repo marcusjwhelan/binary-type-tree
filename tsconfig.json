@@ -10,7 +10,7 @@
         "emitDecoratorMetadata": true,
         "noEmitOnError": true,
         "experimentalDecorators": true,
-        "outDir": "built/",
+        "outFile": "built/index.js",
         "typeRoots": [
             "node_modules/@types",
             "node_modules"
