@@ -86,6 +86,13 @@ export abstract class Node<T> implements INode<T> {
     public compareKeys: compareKeys;
     public checkValueEquality: checkValueEquality;
 
+    /**
+     * Constructor of Node, an abstract class
+     * @param options Init object: required
+     * @param options.key Key of Node: required
+     * @param options.value Value of Node: required
+     * @param options.parent
+     */
     protected constructor( public options: INodeConstructor<Node<T>> ) {
         this.key = options.key;
         this.parent = options.parent !== undefined ? options.parent : null;

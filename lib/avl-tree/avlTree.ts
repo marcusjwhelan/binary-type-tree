@@ -11,11 +11,21 @@ export interface IAVLTree {
 export class AVLTree extends AVLNode implements IAVLTree {
     public tree: AVLNode;
 
+    /**
+     * Constructor of the AVLTree class
+     * @param options
+     * @param
+     */
     constructor(public options: INodeConstructor<AVLNode>) {
         super(options);
         this.tree = new AVLNode(options);
     }
 
+    /**
+     *
+     * @param key
+     * @param value
+     */
     public insert(key: SNDB, value: SNDB): void {
         const newTree = this.tree._insert(key, value);
 
@@ -24,6 +34,12 @@ export class AVLTree extends AVLNode implements IAVLTree {
             this.tree = newTree;
         }
     }
+
+    /**
+     *
+     * @param key
+     * @param value
+     */
     public delete(key: SNDB, value: SNDB): void {
         const newTree = this.tree._delete(key, value);
 

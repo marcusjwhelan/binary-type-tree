@@ -5,5 +5,3 @@ export { SNDB, SNDBA, getBoolFromKey, getLowerBoundsFn, getUpperBoundsFn,
     IGreaterThanEqual, ILessThanEqual, IGreatQuery, ILessQueary,
     IAllQueary, INodeConstructor, INode, Node } from "./basic-node";
 export { getRandomArray, defaultCompareKeysFunction, defaultCheckValueEquality } from "./bTreeUtils";
-
-export const sum = (...a: number[]) => a.reduce((acc, val) => acc + val, 0);
