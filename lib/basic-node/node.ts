@@ -69,8 +69,7 @@ export interface INode<T> {
     checkInternalPointers(): void;
     getLowerBoundMatcher(query: IGreatQuery): getBoolFromKey;
     getUpperBoundMatcher(query: ILessQueary): getBoolFromKey;
-    append(array: any[], toAppend: any[]): void;
-    betweenBounds(query: IAllQueary, lbm: getLowerBoundsFn, ubm: getUpperBoundsFn): Array<Node<T>>;
+    betweenBounds(query: IAllQueary, lbm: getLowerBoundsFn, ubm: getUpperBoundsFn): SNDBA;
     deleteIfLeaf(): boolean;
     deleteIfOnlyOneChild<T>(): boolean;
     search(key: SNDB): SNDBA;
@@ -243,15 +242,8 @@ export abstract class Node<T> implements INode<T> {
             return (key: SNDB): boolean => this.compareKeys(key, query.$lte) <= 0;
         }
     }
-    public append(array: any[], toAppend: any[]): void {
-        for ( const i in toAppend) {
-            if (toAppend.hasOwnProperty(i)) {
-                array.push(toAppend[i]);
-            }
-        }
-    }
-    public betweenBounds<T>(query: IAllQueary, lbm: getLowerBoundsFn, ubm: getUpperBoundsFn): Array<Node<T>> {
-        const res: Array<Node<T>> = [];
+    public betweenBounds<T>(query: IAllQueary, lbm: getLowerBoundsFn, ubm: getUpperBoundsFn): SNDBA {
+        let res: SNDBA = [];
 
         if (!this.hasOwnProperty("key")) {
             return [];
@@ -261,13 +253,13 @@ export abstract class Node<T> implements INode<T> {
         ubm = ubm || this.getUpperBoundMatcher(query);
 
         if (lbm(this.key) && this.left) {
-            this.append(res, this.left.betweenBounds<T>(query, lbm, ubm));
+            res = res.concat(this.left.betweenBounds<T>(query, lbm, ubm));
         }
         if (lbm(this.key) && ubm(this.key)) {
-            this.append(res, this.value);
+            res = res.concat(this.value);
         }
         if (ubm(this.key) && this.right) {
-            this.append(res, this.right.betweenBounds<T>(query, lbm, ubm));
+            res = res.concat(this.right.betweenBounds<T>(query, lbm, ubm));
         }
 
         return res;

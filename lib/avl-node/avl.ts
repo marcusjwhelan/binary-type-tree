@@ -5,9 +5,6 @@ export interface IAVLNode {
     right: AVLNode|null;
     left: AVLNode|null;
     parent: AVLNode|null;
-    key: SNDB;
-    value: SNDBA;
-    unique: boolean;
 
     returnThisAVL(): this;
     createSimilar(options: INodeConstructor<AVLNode>): AVLNode;
@@ -31,9 +28,6 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
     public right: AVLNode|null;
     public left: AVLNode|null;
     public parent: AVLNode|null;
-    public key: SNDB;
-    public value: SNDBA;
-    public unique: boolean;
 
     constructor(public options: INodeConstructor<AVLNode>) {
         super(options);
@@ -344,7 +338,9 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         // Delete only a value (no tree modification)
         if (currentNode.value.length > 1 && value !== undefined) {
             currentNode.value.forEach((d: SNDB) => {
-                if (!currentNode.checkValueEquality(d, value)) { newData.push(d); }
+                if (!currentNode.checkValueEquality(d, value)) {
+                    newData.push(d);
+                }
             });
             currentNode.value = newData;
             return this;
@@ -354,7 +350,8 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
 
         // Leaf
         if (!currentNode.left && !currentNode.right) {
-            if (currentNode === this) {   // This leaf is also the root
+            // This leaf is also the root
+            if (currentNode === this) {
                 delete currentNode.key;
                 currentNode.value = [];
                 delete currentNode.height;
