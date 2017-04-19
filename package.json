@@ -2,7 +2,7 @@
   "name": "binary-type-tree",
   "version": "0.0.1",
   "engines": {
-    "node": ">=6.9.1"
+    "node": ">=6.9.x"
   },
   "description": "Binary Trees written in TypeScript",
   "main": "built/index.js",
@@ -25,7 +25,9 @@
     "url": "https://github.com/marcusjwhelan/binary-type-tree/issues"
   },
   "homepage": "https://github.com/marcusjwhelan/binary-type-tree#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@types/node": "^6.0.69"
+  },
   "devDependencies": {
     "@types/chai": "^3.5.0",
     "@types/mocha": "^2.2.40",

@@ -1,1 +1,1 @@
-# avl-type-tree
+# binary-type-tree
