@@ -8,7 +8,7 @@ export interface IAVLTree {
     delete(key: SNDB, value: SNDB): void;
 }
 
-export class AVLTree extends AVLNode implements IAVLTree{
+export class AVLTree extends AVLNode implements IAVLTree {
     public tree: AVLNode;
 
     constructor(public options: INodeConstructor<AVLNode>) {
