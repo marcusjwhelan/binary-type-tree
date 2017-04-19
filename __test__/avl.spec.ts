@@ -1,4 +1,4 @@
-import { AVLNode } from "../lib";
+import { AVLNode } from "../src";
 
 test("basic node test", () => {
     const node: AVLNode  = new AVLNode({key: "123", value: 3, unique: true});

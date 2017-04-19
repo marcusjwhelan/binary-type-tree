@@ -1,13 +1,14 @@
 {
   "name": "binary-type-tree",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "node": ">=6.9.x"
   },
   "description": "Binary Trees written in TypeScript",
-  "main": "built/binaryTT.js",
+  "main": "lib/index",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "rm -r ./lib/* && tsc"
   },
   "jest": {
     "transform": {
@@ -50,5 +51,5 @@
     "ts-node": "^3.0.2",
     "typescript": "^2.2.2"
   },
-  "typings": "built/binaryTT.d.ts"
+  "types": "lib/index"
 }

@@ -8,3 +8,4 @@ tslint.json
 .git
 *.DS_Store
 .idea
+src

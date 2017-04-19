@@ -1,18 +1,18 @@
 {
     "compilerOptions": {
-        "module": "system",
+        "module": "es6",
         "target": "es6",
         "moduleResolution": "node",
         "compileOnSave": true,
         "declaration": true,
+        "importHelpers": true,
         "noImplicitAny": true,
         "sourceMap": true,
         "strictNullChecks": true,
         "emitDecoratorMetadata": true,
         "noEmitOnError": true,
         "experimentalDecorators": true,
-        "rootDir": ".",
-        "outFile": "built/binaryTT.js",
+        "outDir": "lib/",
         "typeRoots": [
             "node_modules/@types",
             "node_modules"
@@ -20,10 +20,15 @@
         "types": [
             "node", "jest"
         ],
-        "lib": ["es6"]
+        "src": [
+            "es6"
+        ]
     },
+    "include": [
+        "src"
+    ],
     "exclude": [
-        "built",
+        "lib",
         "node_modules"
     ]
 }
