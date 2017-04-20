@@ -1,4 +1,4 @@
-import { SNDB, SNDBA, INodeConstructor, Node  } from "../basic-node";
+import { ASNDBS, SNDBSA, INodeConstructor, Node  } from "../basic-node";
 
 export interface IAVLNode {
     height: number;
@@ -19,8 +19,8 @@ export interface IAVLNode {
     rightTooSmall(): AVLNode;
     leftTooSmall(): AVLNode;
     rebalanceAlongPath(path: AVLNode[]): AVLNode;
-    _insert(key: SNDB, value: SNDB): void;
-    _delete(key: SNDB, value: SNDB): AVLNode;
+    _insert(key: ASNDBS, value: ASNDBS): void;
+    _delete(key: ASNDBS, value: ASNDBS): AVLNode;
 }
 
 export class AVLNode extends Node<AVLNode> implements IAVLNode {
@@ -64,20 +64,20 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         }
 
         if (this.left && this.left.height === undefined) {
-            throw new Error("Undefined height for basic-node " + this.left.key);
+            throw new Error(`Undefined height for basic-node ${this.left.key}`);
         }
         if (this.right && this.right.height === undefined) {
-            throw new Error("Undefined height for basic-node " + this.right.key);
+            throw new Error(`Undefined height for basic-node ${this.right.key}`);
         }
         if (this.height === undefined) {
-            throw new Error("Undefined height for basic-node " + this.key);
+            throw new Error(`Undefined height for basic-node ${this.key}`);
         }
 
         leftH = this.left ? this.left.height : 0;
         rightH = this.right ? this.right.height : 0;
 
         if (this.height !== 1 + Math.max(leftH, rightH)) {
-            throw new Error("Height constraint failed for basic-node " + this.key);
+            throw new Error(`Height constraint failed for basic-node ${this.key}`);
         }
         if (this.left) {
             this.left.checkHeightCorrect();
@@ -252,7 +252,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
 
         return newRoot;
     }
-    public _insert(key: SNDB, value: SNDB): AVLNode {
+    public _insert(key: ASNDBS, value: ASNDBS): AVLNode {
         const insertPath: AVLNode[] = [];
         let currentNode: AVLNode = this;
 
@@ -297,9 +297,9 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
 
         return this.rebalanceAlongPath(insertPath);
     }
-    public _delete(key: SNDB, value: SNDB): AVLNode {
+    public _delete(key: ASNDBS, value: ASNDBS): AVLNode {
         const deletePath: AVLNode[] = [];
-        const newData: SNDBA = [];
+        const newData: SNDBSA = [];
         let replaceWith: AVLNode|null;
         let currentNode: AVLNode = this;
 
@@ -337,7 +337,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
 
         // Delete only a value (no tree modification)
         if (currentNode.value.length > 1 && value !== undefined) {
-            currentNode.value.forEach((d: SNDB) => {
+            currentNode.value.forEach((d: ASNDBS) => {
                 if (!currentNode.checkValueEquality(d, value)) {
                     newData.push(d);
                 }

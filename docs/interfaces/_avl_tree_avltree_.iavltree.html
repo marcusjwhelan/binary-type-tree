@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ILessThan | binary-type-tree</title>
+	<title>IAVLTree | binary-type-tree</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,32 +56,31 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_lib_basic_node_node_.html">&quot;lib/basic-node/node&quot;</a>
+					<a href="../modules/_avl_tree_avltree_.html">&quot;avl-tree/avlTree&quot;</a>
 				</li>
 				<li>
-					<a href="_lib_basic_node_node_.ilessthan.html">ILessThan</a>
+					<a href="_avl_tree_avltree_.iavltree.html">IAVLTree</a>
 				</li>
 			</ul>
-			<h1>Interface ILessThan</h1>
+			<h1>Interface IAVLTree</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Interface for $lt object</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ILessThan</span>
+						<span class="target">IAVLTree</span>
 					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implemented by</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../classes/_avl_tree_avltree_.avltree.html" class="tsd-signature-type">AVLTree</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -91,7 +90,14 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_lib_basic_node_node_.ilessthan.html#_lt" class="tsd-kind-icon">$lt</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_avl_tree_avltree_.iavltree.html#tree" class="tsd-kind-icon">tree</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_avl_tree_avltree_.iavltree.html#delete" class="tsd-kind-icon">delete</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_avl_tree_avltree_.iavltree.html#insert" class="tsd-kind-icon">insert</a></li>
 							</ul>
 						</section>
 					</div>
@@ -100,14 +106,69 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="_lt" class="tsd-anchor"></a>
-					<h3>$lt</h3>
-					<div class="tsd-signature tsd-kind-icon">$lt<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<a name="tree" class="tsd-anchor"></a>
+					<h3>tree</h3>
+					<div class="tsd-signature tsd-kind-icon">tree<span class="tsd-signature-symbol">:</span> <a href="../classes/_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/60bc255/lib/basic-node/node.ts#L28">lib/basic-node/node.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-tree/avlTree.ts#L5">avl-tree/avlTree.ts:5</a></li>
 						</ul>
 					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="delete" class="tsd-anchor"></a>
+					<h3>delete</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">delete<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a>, value<span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-tree/avlTree.ts#L8">avl-tree/avlTree.ts:8</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></h5>
+								</li>
+								<li>
+									<h5>value: <a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="insert" class="tsd-anchor"></a>
+					<h3>insert</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">insert<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a>, value<span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-tree/avlTree.ts#L7">avl-tree/avlTree.ts:7</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></h5>
+								</li>
+								<li>
+									<h5>value: <a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -118,96 +179,54 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/___test___avl_spec_.html">"__test__/avl.spec"</a>
+						<a href="../modules/_avl_node_avl_.html">"avl-<wbr>node/avl"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_lib_avl_node_avl_.html">"lib/avl-<wbr>node/avl"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_lib_avl_node_index_.html">"lib/avl-<wbr>node/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_lib_avl_tree_avltree_.html">"lib/avl-<wbr>tree/avl<wbr>Tree"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_lib_avl_tree_index_.html">"lib/avl-<wbr>tree/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_lib_btreeutils_.html">"lib/b<wbr>Tree<wbr>Utils"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_lib_basic_node_index_.html">"lib/basic-<wbr>node/index"</a>
+						<a href="../modules/_avl_node_index_.html">"avl-<wbr>node/index"</a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_lib_basic_node_node_.html">"lib/basic-<wbr>node/node"</a>
+						<a href="../modules/_avl_tree_avltree_.html">"avl-<wbr>tree/avl<wbr>Tree"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_lib_index_.html">"lib/index"</a>
+						<a href="../modules/_avl_tree_index_.html">"avl-<wbr>tree/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_btreeutils_.html">"b<wbr>Tree<wbr>Utils"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_basic_node_index_.html">"basic-<wbr>node/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_basic_node_node_.html">"basic-<wbr>node/node"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_index_.html">"index"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../classes/_lib_basic_node_node_.node.html" class="tsd-kind-icon">Node</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_lib_basic_node_node_.iallqueary.html" class="tsd-kind-icon">IAll<wbr>Queary</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_lib_basic_node_node_.igreatquery.html" class="tsd-kind-icon">IGreat<wbr>Query</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_lib_basic_node_node_.igreaterthan.html" class="tsd-kind-icon">IGreater<wbr>Than</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_lib_basic_node_node_.igreaterthanequal.html" class="tsd-kind-icon">IGreater<wbr>Than<wbr>Equal</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_lib_basic_node_node_.ilessqueary.html" class="tsd-kind-icon">ILess<wbr>Queary</a>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/_avl_tree_avltree_.avltree.html" class="tsd-kind-icon">AVLTree</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_lib_basic_node_node_.ilessthan.html" class="tsd-kind-icon">ILess<wbr>Than</a>
+						<a href="_avl_tree_avltree_.iavltree.html" class="tsd-kind-icon">IAVLTree</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_lib_basic_node_node_.ilessthan.html#_lt" class="tsd-kind-icon">$lt</a>
+								<a href="_avl_tree_avltree_.iavltree.html#tree" class="tsd-kind-icon">tree</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_avl_tree_avltree_.iavltree.html#delete" class="tsd-kind-icon">delete</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_avl_tree_avltree_.iavltree.html#insert" class="tsd-kind-icon">insert</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_lib_basic_node_node_.ilessthanequal.html" class="tsd-kind-icon">ILess<wbr>Than<wbr>Equal</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_lib_basic_node_node_.inode.html" class="tsd-kind-icon">INode</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_lib_basic_node_node_.inodeconstructor.html" class="tsd-kind-icon">INode<wbr>Constructor</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_lib_basic_node_node_.html#sndb" class="tsd-kind-icon">SNDB</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_lib_basic_node_node_.html#sndba" class="tsd-kind-icon">SNDBA</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_lib_basic_node_node_.html#checkvalueequality" class="tsd-kind-icon">check<wbr>Value<wbr>Equality</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_lib_basic_node_node_.html#comparekeys" class="tsd-kind-icon">compare<wbr>Keys</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_lib_basic_node_node_.html#getboolfromkey" class="tsd-kind-icon">get<wbr>Bool<wbr>From<wbr>Key</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_lib_basic_node_node_.html#getlowerboundsfn" class="tsd-kind-icon">get<wbr>Lower<wbr>Bounds<wbr>Fn</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_lib_basic_node_node_.html#getupperboundsfn" class="tsd-kind-icon">get<wbr>Upper<wbr>Bounds<wbr>Fn</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

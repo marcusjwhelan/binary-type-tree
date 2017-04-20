@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;lib/bTreeUtils&quot; | binary-type-tree</title>
+	<title>&quot;bTreeUtils&quot; | binary-type-tree</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_lib_btreeutils_.html">&quot;lib/bTreeUtils&quot;</a>
+					<a href="_btreeutils_.html">&quot;bTreeUtils&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;lib/bTreeUtils&quot;</h1>
+			<h1>External module &quot;bTreeUtils&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -73,9 +73,9 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_lib_btreeutils_.html#defaultcheckvalueequality" class="tsd-kind-icon">default<wbr>Check<wbr>Value<wbr>Equality</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_lib_btreeutils_.html#defaultcomparekeysfunction" class="tsd-kind-icon">default<wbr>Compare<wbr>Keys<wbr>Function</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_lib_btreeutils_.html#getrandomarray" class="tsd-kind-icon">get<wbr>Random<wbr>Array</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_btreeutils_.html#defaultcheckvalueequality" class="tsd-kind-icon">default<wbr>Check<wbr>Value<wbr>Equality</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_btreeutils_.html#defaultcomparekeysfunction" class="tsd-kind-icon">default<wbr>Compare<wbr>Keys<wbr>Function</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_btreeutils_.html#getrandomarray" class="tsd-kind-icon">get<wbr>Random<wbr>Array</a></li>
 							</ul>
 						</section>
 					</div>
@@ -93,12 +93,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/60bc255/lib/bTreeUtils.ts#L48">lib/bTreeUtils.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/bTreeUtils.ts#L53">bTreeUtils.ts:53</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Check whether two values are equal</p>
+									<p>Check whether two values are equal with &#39;===&#39;</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -124,7 +124,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/60bc255/lib/bTreeUtils.ts#L30">lib/bTreeUtils.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/bTreeUtils.ts#L35">bTreeUtils.ts:35</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -142,6 +142,10 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<p>if a &lt; b then return -1
+								if a &gt; b then return 1
+								if a === b then return 0
+							else throw could not compare error.</p>
 						</li>
 					</ul>
 				</section>
@@ -155,7 +159,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/60bc255/lib/bTreeUtils.ts#L6">lib/bTreeUtils.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/bTreeUtils.ts#L7">bTreeUtils.ts:7</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -170,6 +174,7 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>Actually returns a number array.</p>
 						</li>
 					</ul>
 				</section>
@@ -182,44 +187,41 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="___test___avl_spec_.html">"__test__/avl.spec"</a>
+						<a href="_avl_node_avl_.html">"avl-<wbr>node/avl"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_lib_avl_node_avl_.html">"lib/avl-<wbr>node/avl"</a>
+						<a href="_avl_node_index_.html">"avl-<wbr>node/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_lib_avl_node_index_.html">"lib/avl-<wbr>node/index"</a>
+						<a href="_avl_tree_avltree_.html">"avl-<wbr>tree/avl<wbr>Tree"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_lib_avl_tree_avltree_.html">"lib/avl-<wbr>tree/avl<wbr>Tree"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_lib_avl_tree_index_.html">"lib/avl-<wbr>tree/index"</a>
+						<a href="_avl_tree_index_.html">"avl-<wbr>tree/index"</a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_lib_btreeutils_.html">"lib/b<wbr>Tree<wbr>Utils"</a>
+						<a href="_btreeutils_.html">"b<wbr>Tree<wbr>Utils"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_lib_basic_node_index_.html">"lib/basic-<wbr>node/index"</a>
+						<a href="_basic_node_index_.html">"basic-<wbr>node/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_lib_basic_node_node_.html">"lib/basic-<wbr>node/node"</a>
+						<a href="_basic_node_node_.html">"basic-<wbr>node/node"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_lib_index_.html">"lib/index"</a>
+						<a href="_index_.html">"index"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_lib_btreeutils_.html#defaultcheckvalueequality" class="tsd-kind-icon">default<wbr>Check<wbr>Value<wbr>Equality</a>
+						<a href="_btreeutils_.html#defaultcheckvalueequality" class="tsd-kind-icon">default<wbr>Check<wbr>Value<wbr>Equality</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_lib_btreeutils_.html#defaultcomparekeysfunction" class="tsd-kind-icon">default<wbr>Compare<wbr>Keys<wbr>Function</a>
+						<a href="_btreeutils_.html#defaultcomparekeysfunction" class="tsd-kind-icon">default<wbr>Compare<wbr>Keys<wbr>Function</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_lib_btreeutils_.html#getrandomarray" class="tsd-kind-icon">get<wbr>Random<wbr>Array</a>
+						<a href="_btreeutils_.html#getrandomarray" class="tsd-kind-icon">get<wbr>Random<wbr>Array</a>
 					</li>
 				</ul>
 			</nav>

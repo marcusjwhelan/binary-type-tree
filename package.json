@@ -8,7 +8,7 @@
   "main": "lib/index",
   "scripts": {
     "test": "jest",
-    "build": "rm -r ./lib/* && tsc"
+    "build": "rm -rf ./lib/* && tsc"
   },
   "jest": {
     "transform": {

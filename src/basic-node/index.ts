@@ -1,4 +1,3 @@
-export { SNDB, SNDBA, getBoolFromKey, getLowerBoundsFn, getUpperBoundsFn,
-    compareKeys, checkValueEquality, IGreaterThan, ILessThan,
-    IGreaterThanEqual, ILessThanEqual, IGreatQuery, ILessQueary,
+export { ASNDBS, SNDBSA, getBoolFromKey, getLowerBoundsFn, getUpperBoundsFn,
+    compareKeys, checkValueEquality, IGreatQuery, ILessQueary,
     IAllQueary, INodeConstructor, INode, Node } from "./node";

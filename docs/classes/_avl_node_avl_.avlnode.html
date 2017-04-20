@@ -1,0 +1,1337 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>AVLNode | binary-type-tree</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">binary-type-tree</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_avl_node_avl_.html">&quot;avl-node/avl&quot;</a>
+				</li>
+				<li>
+					<a href="_avl_node_avl_.avlnode.html">AVLNode</a>
+				</li>
+			</ul>
+			<h1>Class AVLNode</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<a href="_basic_node_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">&lt;</span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a><span class="tsd-signature-symbol">&gt;</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">AVLNode</span>
+								<ul class="tsd-hierarchy">
+									<li>
+										<a href="_avl_tree_avltree_.avltree.html" class="tsd-signature-type">AVLTree</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/_basic_node_node_.inode.html" class="tsd-signature-type">INode</a><span class="tsd-signature-symbol">&lt;</span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li><a href="../interfaces/_avl_node_avl_.iavlnode.html" class="tsd-signature-type">IAVLNode</a></li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_avl_node_avl_.avlnode.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#checkvalueequality" class="tsd-kind-icon">check<wbr>Value<wbr>Equality</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#comparekeys" class="tsd-kind-icon">compare<wbr>Keys</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_avl_node_avl_.avlnode.html#height" class="tsd-kind-icon">height</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#key" class="tsd-kind-icon">key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="_avl_node_avl_.avlnode.html#left" class="tsd-kind-icon">left</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="_avl_node_avl_.avlnode.html#options" class="tsd-kind-icon">options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="_avl_node_avl_.avlnode.html#parent" class="tsd-kind-icon">parent</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="_avl_node_avl_.avlnode.html#right" class="tsd-kind-icon">right</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#unique" class="tsd-kind-icon">unique</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#value" class="tsd-kind-icon">value</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_avl_node_avl_.avlnode.html#_delete" class="tsd-kind-icon">_delete</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_avl_node_avl_.avlnode.html#_insert" class="tsd-kind-icon">_insert</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_avl_node_avl_.avlnode.html#balancefactor" class="tsd-kind-icon">balance<wbr>Factor</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#betweenbounds" class="tsd-kind-icon">between<wbr>Bounds</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#checkallnodesfullfillcondition" class="tsd-kind-icon">check<wbr>All<wbr>Nodes<wbr>Fullfill<wbr>Condition</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_avl_node_avl_.avlnode.html#checkbalancefactors" class="tsd-kind-icon">check<wbr>Balance<wbr>Factors</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_avl_node_avl_.avlnode.html#checkheightcorrect" class="tsd-kind-icon">check<wbr>Height<wbr>Correct</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#checkinternalpointers" class="tsd-kind-icon">check<wbr>Internal<wbr>Pointers</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#checkisnode" class="tsd-kind-icon">check<wbr>IsNode</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#checknodeordering" class="tsd-kind-icon">check<wbr>Node<wbr>Ordering</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_avl_node_avl_.avlnode.html#checkisavlt" class="tsd-kind-icon">checkisAVLT</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_avl_node_avl_.avlnode.html#createleftchild" class="tsd-kind-icon">create<wbr>Left<wbr>Child</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_avl_node_avl_.avlnode.html#createrightchild" class="tsd-kind-icon">create<wbr>Right<wbr>Child</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_avl_node_avl_.avlnode.html#createsimilar" class="tsd-kind-icon">create<wbr>Similar</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#executeoneverynode" class="tsd-kind-icon">execute<wbr>OnEvery<wbr>Node</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#getlowerboundmatcher" class="tsd-kind-icon">get<wbr>Lower<wbr>Bound<wbr>Matcher</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#getmaxkey" class="tsd-kind-icon">get<wbr>Max<wbr>Key</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#getmaxkeydescendant" class="tsd-kind-icon">get<wbr>Max<wbr>Key<wbr>Descendant</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#getminkey" class="tsd-kind-icon">get<wbr>Min<wbr>Key</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#getminkeydescendant" class="tsd-kind-icon">get<wbr>Min<wbr>Key<wbr>Descendant</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#getnumberofkeys" class="tsd-kind-icon">get<wbr>Number<wbr>OfKeys</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#getupperboundmatcher" class="tsd-kind-icon">get<wbr>Upper<wbr>Bound<wbr>Matcher</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_avl_node_avl_.avlnode.html#leftrotation" class="tsd-kind-icon">left<wbr>Rotation</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_avl_node_avl_.avlnode.html#lefttoosmall" class="tsd-kind-icon">left<wbr>Too<wbr>Small</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_avl_node_avl_.avlnode.html#rebalancealongpath" class="tsd-kind-icon">rebalance<wbr>Along<wbr>Path</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_avl_node_avl_.avlnode.html#returnthisavl" class="tsd-kind-icon">return<wbr>ThisAVL</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#returnthisnode" class="tsd-kind-icon">return<wbr>This<wbr>Node</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_avl_node_avl_.avlnode.html#rightrotation" class="tsd-kind-icon">right<wbr>Rotation</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_avl_node_avl_.avlnode.html#righttoosmall" class="tsd-kind-icon">right<wbr>Too<wbr>Small</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_avl_node_avl_.avlnode.html#search" class="tsd-kind-icon">search</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">new AVLNode<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_basic_node_node_.inodeconstructor.html" class="tsd-signature-type">INodeConstructor</a><span class="tsd-signature-symbol">&lt;</span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#constructor">constructor</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L30">avl-node/avl.ts:30</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/_basic_node_node_.inodeconstructor.html" class="tsd-signature-type">INodeConstructor</a><span class="tsd-signature-symbol">&lt;</span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="checkvalueequality" class="tsd-anchor"></a>
+					<h3>check<wbr>Value<wbr>Equality</h3>
+					<div class="tsd-signature tsd-kind-icon">check<wbr>Value<wbr>Equality<span class="tsd-signature-symbol">:</span> <a href="_avl_node_avl_.avlnode.html#checkvalueequality" class="tsd-signature-type">checkValueEquality</a></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#checkvalueequality">checkValueEquality</a></p>
+						<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#checkvalueequality">checkValueEquality</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L108">basic-node/node.ts:108</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Default function only checks validity of number, string, and Date.
+								This function also only uses &#39;===&#39; for the comparison. Supply a
+								custom function in the constructor to use properly with your data
+							types.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="comparekeys" class="tsd-anchor"></a>
+					<h3>compare<wbr>Keys</h3>
+					<div class="tsd-signature tsd-kind-icon">compare<wbr>Keys<span class="tsd-signature-symbol">:</span> <a href="_avl_node_avl_.avlnode.html#comparekeys" class="tsd-signature-type">compareKeys</a></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#comparekeys">compareKeys</a></p>
+						<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#comparekeys">compareKeys</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L101">basic-node/node.ts:101</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Default function compares only number, string and Date other wise
+								the user will need to supply a custom key comparison function to
+							use this Node Tree model properly.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="height" class="tsd-anchor"></a>
+					<h3>height</h3>
+					<div class="tsd-signature tsd-kind-icon">height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#height">height</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L27">avl-node/avl.ts:27</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="key" class="tsd-anchor"></a>
+					<h3>key</h3>
+					<div class="tsd-signature tsd-kind-icon">key<span class="tsd-signature-symbol">:</span> <a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#key">key</a></p>
+						<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#key">key</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L91">basic-node/node.ts:91</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The key used to find this Node</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+					<a name="left" class="tsd-anchor"></a>
+					<h3>left</h3>
+					<div class="tsd-signature tsd-kind-icon">left<span class="tsd-signature-symbol">:</span> <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#left">left</a></p>
+						<p>Overrides <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#left">left</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L29">avl-node/avl.ts:29</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+					<a name="options" class="tsd-anchor"></a>
+					<h3>options</h3>
+					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_basic_node_node_.inodeconstructor.html" class="tsd-signature-type">INodeConstructor</a><span class="tsd-signature-symbol">&lt;</span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<p>Overrides <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#options">options</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L32">avl-node/avl.ts:32</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+					<a name="parent" class="tsd-anchor"></a>
+					<h3>parent</h3>
+					<div class="tsd-signature tsd-kind-icon">parent<span class="tsd-signature-symbol">:</span> <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#parent">parent</a></p>
+						<p>Overrides <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#parent">parent</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L30">avl-node/avl.ts:30</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+					<a name="right" class="tsd-anchor"></a>
+					<h3>right</h3>
+					<div class="tsd-signature tsd-kind-icon">right<span class="tsd-signature-symbol">:</span> <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#right">right</a></p>
+						<p>Overrides <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#right">right</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L28">avl-node/avl.ts:28</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="unique" class="tsd-anchor"></a>
+					<h3>unique</h3>
+					<div class="tsd-signature tsd-kind-icon">unique<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#unique">unique</a></p>
+						<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#unique">unique</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L95">basic-node/node.ts:95</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>set in the constructor to have only unique keys</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="value" class="tsd-anchor"></a>
+					<h3>value</h3>
+					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <a href="../modules/_basic_node_node_.html#sndbsa" class="tsd-signature-type">SNDBSA</a></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#value">value</a></p>
+						<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#value">value</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L93">basic-node/node.ts:93</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The value this Node holds</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="_delete" class="tsd-anchor"></a>
+					<h3>_delete</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">_delete<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a>, value<span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#_delete">_delete</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L300">avl-node/avl.ts:300</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></h5>
+								</li>
+								<li>
+									<h5>value: <a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="_insert" class="tsd-anchor"></a>
+					<h3>_insert</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">_insert<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a>, value<span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#_insert">_insert</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L255">avl-node/avl.ts:255</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></h5>
+								</li>
+								<li>
+									<h5>value: <a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="balancefactor" class="tsd-anchor"></a>
+					<h3>balance<wbr>Factor</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">balance<wbr>Factor<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#balancefactor">balanceFactor</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L89">avl-node/avl.ts:89</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+					<a name="betweenbounds" class="tsd-anchor"></a>
+					<h3>between<wbr>Bounds</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">between<wbr>Bounds&lt;T&gt;<span class="tsd-signature-symbol">(</span>query<span class="tsd-signature-symbol">: </span><a href="../interfaces/_basic_node_node_.iallqueary.html" class="tsd-signature-type">IAllQueary</a>, lbm<span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#getlowerboundsfn" class="tsd-signature-type">getLowerBoundsFn</a>, ubm<span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#getupperboundsfn" class="tsd-signature-type">getUpperBoundsFn</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#sndbsa" class="tsd-signature-type">SNDBSA</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#betweenbounds">betweenBounds</a></p>
+								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#betweenbounds">betweenBounds</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L341">basic-node/node.ts:341</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Method for retrieving values based on key comparison of gt &amp; lt</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>query: <a href="../interfaces/_basic_node_node_.iallqueary.html" class="tsd-signature-type">IAllQueary</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Example: { $gt: 1 , $lte: 3 }</p>
+									</div>
+								</li>
+								<li>
+									<h5>lbm: <a href="../modules/_basic_node_node_.html#getlowerboundsfn" class="tsd-signature-type">getLowerBoundsFn</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Defaults to getLowerBounds but can be used with custom</p>
+									</div>
+								</li>
+								<li>
+									<h5>ubm: <a href="../modules/_basic_node_node_.html#getupperboundsfn" class="tsd-signature-type">getUpperBoundsFn</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Defaults to getUpperBounds but can be used with custom</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_basic_node_node_.html#sndbsa" class="tsd-signature-type">SNDBSA</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="checkallnodesfullfillcondition" class="tsd-anchor"></a>
+					<h3>check<wbr>All<wbr>Nodes<wbr>Fullfill<wbr>Condition</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">check<wbr>All<wbr>Nodes<wbr>Fullfill<wbr>Condition<span class="tsd-signature-symbol">(</span>test<span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#getcomparekeys" class="tsd-signature-type">getCompareKeys</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#checkallnodesfullfillcondition">checkAllNodesFullfillCondition</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L211">basic-node/node.ts:211</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Compare all keys, if there is no key then node fails then tree
+									fails validation check. keys have to be of the same type.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>test: <a href="../modules/_basic_node_node_.html#getcomparekeys" class="tsd-signature-type">getCompareKeys</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="checkbalancefactors" class="tsd-anchor"></a>
+					<h3>check<wbr>Balance<wbr>Factors</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">check<wbr>Balance<wbr>Factors<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#checkbalancefactors">checkBalanceFactors</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L95">avl-node/avl.ts:95</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="checkheightcorrect" class="tsd-anchor"></a>
+					<h3>check<wbr>Height<wbr>Correct</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">check<wbr>Height<wbr>Correct<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#checkheightcorrect">checkHeightCorrect</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L58">avl-node/avl.ts:58</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="checkinternalpointers" class="tsd-anchor"></a>
+					<h3>check<wbr>Internal<wbr>Pointers</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">check<wbr>Internal<wbr>Pointers<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#checkinternalpointers">checkInternalPointers</a></p>
+								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#checkinternalpointers">checkInternalPointers</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L258">basic-node/node.ts:258</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Make sure this Node is referenced in children correctly and check
+									all sub Nodes.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="checkisnode" class="tsd-anchor"></a>
+					<h3>check<wbr>IsNode</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">check<wbr>IsNode<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#checkisnode">checkIsNode</a></p>
+								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#checkisnode">checkIsNode</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L176">basic-node/node.ts:176</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Used to check entire tree structure and individual branches
+									to validate pointers.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="checknodeordering" class="tsd-anchor"></a>
+					<h3>check<wbr>Node<wbr>Ordering</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">check<wbr>Node<wbr>Ordering<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#checknodeordering">checkNodeOrdering</a></p>
+								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#checknodeordering">checkNodeOrdering</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L230">basic-node/node.ts:230</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check all nodes and use compare keys function to validate Node
+									and children of this Node.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="checkisavlt" class="tsd-anchor"></a>
+					<h3>checkisAVLT</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">checkisAVLT<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#checkisavlt">checkisAVLT</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L107">avl-node/avl.ts:107</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="createleftchild" class="tsd-anchor"></a>
+					<h3>create<wbr>Left<wbr>Child</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Left<wbr>Child<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_basic_node_node_.inodeconstructor.html" class="tsd-signature-type">INodeConstructor</a><span class="tsd-signature-symbol">&lt;</span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#createleftchild">createLeftChild</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L44">avl-node/avl.ts:44</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/_basic_node_node_.inodeconstructor.html" class="tsd-signature-type">INodeConstructor</a><span class="tsd-signature-symbol">&lt;</span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="createrightchild" class="tsd-anchor"></a>
+					<h3>create<wbr>Right<wbr>Child</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Right<wbr>Child<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_basic_node_node_.inodeconstructor.html" class="tsd-signature-type">INodeConstructor</a><span class="tsd-signature-symbol">&lt;</span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#createrightchild">createRightChild</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L51">avl-node/avl.ts:51</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/_basic_node_node_.inodeconstructor.html" class="tsd-signature-type">INodeConstructor</a><span class="tsd-signature-symbol">&lt;</span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="createsimilar" class="tsd-anchor"></a>
+					<h3>create<wbr>Similar</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Similar<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_basic_node_node_.inodeconstructor.html" class="tsd-signature-type">INodeConstructor</a><span class="tsd-signature-symbol">&lt;</span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#createsimilar">createSimilar</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L39">avl-node/avl.ts:39</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/_basic_node_node_.inodeconstructor.html" class="tsd-signature-type">INodeConstructor</a><span class="tsd-signature-symbol">&lt;</span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="executeoneverynode" class="tsd-anchor"></a>
+					<h3>execute<wbr>OnEvery<wbr>Node</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">execute<wbr>OnEvery<wbr>Node<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#executeoneverynode">executeOnEveryNode</a></p>
+								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#executeoneverynode">executeOnEveryNode</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L397">basic-node/node.ts:397</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Execute a function on every node of the tree, in key order</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>fn: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="getlowerboundmatcher" class="tsd-anchor"></a>
+					<h3>get<wbr>Lower<wbr>Bound<wbr>Matcher</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Lower<wbr>Bound<wbr>Matcher<span class="tsd-signature-symbol">(</span>query<span class="tsd-signature-symbol">: </span><a href="../interfaces/_basic_node_node_.igreatquery.html" class="tsd-signature-type">IGreatQuery</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#getboolfromkey" class="tsd-signature-type">getBoolFromKey</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#getlowerboundmatcher">getLowerBoundMatcher</a></p>
+								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#getlowerboundmatcher">getLowerBoundMatcher</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L279">basic-node/node.ts:279</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Base method used in high method to compare keys of two Nodes.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>query: <a href="../interfaces/_basic_node_node_.igreatquery.html" class="tsd-signature-type">IGreatQuery</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Example query: { $gt: 3 } or { $gte: 5 }</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_basic_node_node_.html#getboolfromkey" class="tsd-signature-type">getBoolFromKey</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="getmaxkey" class="tsd-anchor"></a>
+					<h3>get<wbr>Max<wbr>Key</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Max<wbr>Key<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#getmaxkey">getMaxKey</a></p>
+								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#getmaxkey">getMaxKey</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L160">basic-node/node.ts:160</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the key of the max descendant</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+					<a name="getmaxkeydescendant" class="tsd-anchor"></a>
+					<h3>get<wbr>Max<wbr>Key<wbr>Descendant</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Max<wbr>Key<wbr>Descendant&lt;T&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_basic_node_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#getmaxkeydescendant">getMaxKeyDescendant</a></p>
+								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#getmaxkeydescendant">getMaxKeyDescendant</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L136">basic-node/node.ts:136</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Recursively call for right child till there is none then return
+									this.</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_basic_node_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="getminkey" class="tsd-anchor"></a>
+					<h3>get<wbr>Min<wbr>Key</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Min<wbr>Key<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#getminkey">getMinKey</a></p>
+								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#getminkey">getMinKey</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L168">basic-node/node.ts:168</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the key of the min descendant</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+					<a name="getminkeydescendant" class="tsd-anchor"></a>
+					<h3>get<wbr>Min<wbr>Key<wbr>Descendant</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Min<wbr>Key<wbr>Descendant&lt;T&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_basic_node_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#getminkeydescendant">getMinKeyDescendant</a></p>
+								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#getminkeydescendant">getMinKeyDescendant</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L148">basic-node/node.ts:148</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Recursively call for left child till there is none then return this.</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_basic_node_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="getnumberofkeys" class="tsd-anchor"></a>
+					<h3>get<wbr>Number<wbr>OfKeys</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Number<wbr>OfKeys<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#getnumberofkeys">getNumberOfKeys</a></p>
+								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#getnumberofkeys">getNumberOfKeys</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L188">basic-node/node.ts:188</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Count every key in branch or entire tree.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="getupperboundmatcher" class="tsd-anchor"></a>
+					<h3>get<wbr>Upper<wbr>Bound<wbr>Matcher</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Upper<wbr>Bound<wbr>Matcher<span class="tsd-signature-symbol">(</span>query<span class="tsd-signature-symbol">: </span><a href="../interfaces/_basic_node_node_.ilessqueary.html" class="tsd-signature-type">ILessQueary</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#getboolfromkey" class="tsd-signature-type">getBoolFromKey</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#getupperboundmatcher">getUpperBoundMatcher</a></p>
+								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#getupperboundmatcher">getUpperBoundMatcher</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L309">basic-node/node.ts:309</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Base method used in high method to compare keys of two Nodes.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>query: <a href="../interfaces/_basic_node_node_.ilessqueary.html" class="tsd-signature-type">ILessQueary</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Example usage: { $lt: 3 } or { $lte: 4 }</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_basic_node_node_.html#getboolfromkey" class="tsd-signature-type">getBoolFromKey</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="leftrotation" class="tsd-anchor"></a>
+					<h3>left<wbr>Rotation</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">left<wbr>Rotation<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#leftrotation">leftRotation</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L153">avl-node/avl.ts:153</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="lefttoosmall" class="tsd-anchor"></a>
+					<h3>left<wbr>Too<wbr>Small</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">left<wbr>Too<wbr>Small<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#lefttoosmall">leftTooSmall</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L207">avl-node/avl.ts:207</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="rebalancealongpath" class="tsd-anchor"></a>
+					<h3>rebalance<wbr>Along<wbr>Path</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">rebalance<wbr>Along<wbr>Path<span class="tsd-signature-symbol">(</span>path<span class="tsd-signature-symbol">: </span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#rebalancealongpath">rebalanceAlongPath</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L221">avl-node/avl.ts:221</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>path: <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="returnthisavl" class="tsd-anchor"></a>
+					<h3>return<wbr>ThisAVL</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">return<wbr>ThisAVL<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#returnthisavl">returnThisAVL</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L36">avl-node/avl.ts:36</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="returnthisnode" class="tsd-anchor"></a>
+					<h3>return<wbr>This<wbr>Node</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">return<wbr>This<wbr>Node<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#returnthisnode">returnThisNode</a></p>
+								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#returnthisnode">returnThisNode</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L127">basic-node/node.ts:127</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>To return this class and not the extended version use this method.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="rightrotation" class="tsd-anchor"></a>
+					<h3>right<wbr>Rotation</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">right<wbr>Rotation<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#rightrotation">rightRotation</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L112">avl-node/avl.ts:112</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="righttoosmall" class="tsd-anchor"></a>
+					<h3>right<wbr>Too<wbr>Small</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">right<wbr>Too<wbr>Small<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#righttoosmall">rightTooSmall</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L194">avl-node/avl.ts:194</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="search" class="tsd-anchor"></a>
+					<h3>search</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">search<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#sndbsa" class="tsd-signature-type">SNDBSA</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#search">search</a></p>
+								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#search">search</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L369">basic-node/node.ts:369</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Search for the key and return the value;</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_basic_node_node_.html#sndbsa" class="tsd-signature-type">SNDBSA</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/_avl_node_avl_.html">"avl-<wbr>node/avl"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_avl_node_index_.html">"avl-<wbr>node/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_avl_tree_avltree_.html">"avl-<wbr>tree/avl<wbr>Tree"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_avl_tree_index_.html">"avl-<wbr>tree/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_btreeutils_.html">"b<wbr>Tree<wbr>Utils"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_basic_node_index_.html">"basic-<wbr>node/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_basic_node_node_.html">"basic-<wbr>node/node"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_index_.html">"index"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_avl_node_avl_.avlnode.html" class="tsd-kind-icon">AVLNode</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_avl_node_avl_.avlnode.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#checkvalueequality" class="tsd-kind-icon">check<wbr>Value<wbr>Equality</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#comparekeys" class="tsd-kind-icon">compare<wbr>Keys</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_avl_node_avl_.avlnode.html#height" class="tsd-kind-icon">height</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#key" class="tsd-kind-icon">key</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_avl_node_avl_.avlnode.html#left" class="tsd-kind-icon">left</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_avl_node_avl_.avlnode.html#options" class="tsd-kind-icon">options</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_avl_node_avl_.avlnode.html#parent" class="tsd-kind-icon">parent</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_avl_node_avl_.avlnode.html#right" class="tsd-kind-icon">right</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#unique" class="tsd-kind-icon">unique</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#value" class="tsd-kind-icon">value</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_avl_node_avl_.avlnode.html#_delete" class="tsd-kind-icon">_delete</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_avl_node_avl_.avlnode.html#_insert" class="tsd-kind-icon">_insert</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_avl_node_avl_.avlnode.html#balancefactor" class="tsd-kind-icon">balance<wbr>Factor</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#betweenbounds" class="tsd-kind-icon">between<wbr>Bounds</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#checkallnodesfullfillcondition" class="tsd-kind-icon">check<wbr>All<wbr>Nodes<wbr>Fullfill<wbr>Condition</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_avl_node_avl_.avlnode.html#checkbalancefactors" class="tsd-kind-icon">check<wbr>Balance<wbr>Factors</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_avl_node_avl_.avlnode.html#checkheightcorrect" class="tsd-kind-icon">check<wbr>Height<wbr>Correct</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#checkinternalpointers" class="tsd-kind-icon">check<wbr>Internal<wbr>Pointers</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#checkisnode" class="tsd-kind-icon">check<wbr>IsNode</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#checknodeordering" class="tsd-kind-icon">check<wbr>Node<wbr>Ordering</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_avl_node_avl_.avlnode.html#checkisavlt" class="tsd-kind-icon">checkisAVLT</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_avl_node_avl_.avlnode.html#createleftchild" class="tsd-kind-icon">create<wbr>Left<wbr>Child</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_avl_node_avl_.avlnode.html#createrightchild" class="tsd-kind-icon">create<wbr>Right<wbr>Child</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_avl_node_avl_.avlnode.html#createsimilar" class="tsd-kind-icon">create<wbr>Similar</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#executeoneverynode" class="tsd-kind-icon">execute<wbr>OnEvery<wbr>Node</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#getlowerboundmatcher" class="tsd-kind-icon">get<wbr>Lower<wbr>Bound<wbr>Matcher</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#getmaxkey" class="tsd-kind-icon">get<wbr>Max<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#getmaxkeydescendant" class="tsd-kind-icon">get<wbr>Max<wbr>Key<wbr>Descendant</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#getminkey" class="tsd-kind-icon">get<wbr>Min<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#getminkeydescendant" class="tsd-kind-icon">get<wbr>Min<wbr>Key<wbr>Descendant</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#getnumberofkeys" class="tsd-kind-icon">get<wbr>Number<wbr>OfKeys</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#getupperboundmatcher" class="tsd-kind-icon">get<wbr>Upper<wbr>Bound<wbr>Matcher</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_avl_node_avl_.avlnode.html#leftrotation" class="tsd-kind-icon">left<wbr>Rotation</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_avl_node_avl_.avlnode.html#lefttoosmall" class="tsd-kind-icon">left<wbr>Too<wbr>Small</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_avl_node_avl_.avlnode.html#rebalancealongpath" class="tsd-kind-icon">rebalance<wbr>Along<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_avl_node_avl_.avlnode.html#returnthisavl" class="tsd-kind-icon">return<wbr>ThisAVL</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#returnthisnode" class="tsd-kind-icon">return<wbr>This<wbr>Node</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_avl_node_avl_.avlnode.html#rightrotation" class="tsd-kind-icon">right<wbr>Rotation</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_avl_node_avl_.avlnode.html#righttoosmall" class="tsd-kind-icon">right<wbr>Too<wbr>Small</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_avl_node_avl_.avlnode.html#search" class="tsd-kind-icon">search</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_avl_node_avl_.iavlnode.html" class="tsd-kind-icon">IAVLNode</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
