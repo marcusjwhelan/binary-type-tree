@@ -11,6 +11,9 @@
     "build": "rm -rf ./lib/* && tsc"
   },
   "jest": {
+    "globals": {
+        "__TS_CONFIG__": "tsconfig.json"
+    },
     "transform": {
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },

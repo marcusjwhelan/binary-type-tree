@@ -1,0 +1,2 @@
+import { AVLTree } from "../src";
+

@@ -4,9 +4,9 @@
 import * as bTreeUtils from "../bTreeUtils";
 
 /** Type used for Node value. */
-export type SNDBSA = Array<{}|any[]|string|number|Date|boolean|symbol>;
+export type SNDBSA = Array<{}|any[]|string|number|Date|boolean|symbol|null>;
 /** Type used for Node key. You cannot use objects as keys */
-export type ASNDBS = Array<any[]|string|number|Date|boolean|symbol>|string|number|Date|boolean|symbol;
+export type ASNDBS = Array<any[]|string|number|Date|boolean|symbol|null>|string|number|Date|boolean|symbol|null;
 
 /** Function type used for generic key and boolean return */
 export type getBoolFromKey = (key?: ASNDBS) => boolean;
@@ -42,8 +42,8 @@ export interface IAllQueary {
 /** Interface for Node constructor options */
 export interface INodeConstructor<T> {
     parent?: T|null;
-    key: ASNDBS;
-    value: ASNDBS;
+    key?: ASNDBS;
+    value?: ASNDBS;
     unique?: boolean;
     compareKeys?: any;
     checkValueEquality?: any;
@@ -125,9 +125,9 @@ export abstract class Node<T> implements INode<T> {
      * @param options
      */
     protected constructor( public options: INodeConstructor<Node<T>> ) {
-        this.key = options.key;
-        this.parent = options.parent !== undefined ? options.parent : null;
-        this.value = [options.value];
+        this.key = options.key || null;
+        this.parent = options.parent || null;
+        this.value = options.value ? [options.value] : [null];
         this.unique = options.unique || false;
         this.compareKeys = options.compareKeys || bTreeUtils.defaultCompareKeysFunction;
         this.checkValueEquality = options.checkValueEquality || bTreeUtils.defaultCheckValueEquality;
@@ -361,14 +361,16 @@ export abstract class Node<T> implements INode<T> {
         lbm = lbm || this.getLowerBoundMatcher(query);
         ubm = ubm || this.getUpperBoundMatcher(query);
 
-        if (lbm(this.key) && this.left) {
-            res = res.concat(this.left.betweenBounds<T>(query, lbm, ubm));
-        }
-        if (lbm(this.key) && ubm(this.key)) {
-            res = res.concat(this.value);
-        }
-        if (ubm(this.key) && this.right) {
-            res = res.concat(this.right.betweenBounds<T>(query, lbm, ubm));
+        if (this.key) {
+            if (lbm(this.key) && this.left) {
+                res = res.concat(this.left.betweenBounds<T>(query, lbm, ubm));
+            }
+            if (lbm(this.key) && ubm(this.key)) {
+                res = res.concat(this.value);
+            }
+            if (ubm(this.key) && this.right) {
+                res = res.concat(this.right.betweenBounds<T>(query, lbm, ubm));
+            }
         }
 
         return res;
