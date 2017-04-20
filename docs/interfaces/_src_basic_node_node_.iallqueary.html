@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IGreatQuery | binary-type-tree</title>
+	<title>IAllQueary | binary-type-tree</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_basic_node_node_.html">&quot;basic-node/node&quot;</a>
+					<a href="../modules/_src_basic_node_node_.html">&quot;src/basic-node/node&quot;</a>
 				</li>
 				<li>
-					<a href="_basic_node_node_.igreatquery.html">IGreatQuery</a>
+					<a href="_src_basic_node_node_.iallqueary.html">IAllQueary</a>
 				</li>
 			</ul>
-			<h1>Interface IGreatQuery</h1>
+			<h1>Interface IAllQueary</h1>
 		</div>
 	</div>
 </header>
@@ -72,7 +72,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Interface for $gt/$gte range</p>
+						<p>Interface for $gt/$lt/$gte/$lte range</p>
 					</div>
 				</div>
 			</section>
@@ -80,7 +80,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IGreatQuery</span>
+						<span class="target">IAllQueary</span>
 					</li>
 				</ul>
 			</section>
@@ -91,8 +91,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_basic_node_node_.igreatquery.html#_gt" class="tsd-kind-icon">$gt</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_basic_node_node_.igreatquery.html#_gte" class="tsd-kind-icon">$gte</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_basic_node_node_.iallqueary.html#_gt" class="tsd-kind-icon">$gt</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_basic_node_node_.iallqueary.html#_gte" class="tsd-kind-icon">$gte</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_basic_node_node_.iallqueary.html#_lt" class="tsd-kind-icon">$lt</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_basic_node_node_.iallqueary.html#_lte" class="tsd-kind-icon">$lte</a></li>
 							</ul>
 						</section>
 					</div>
@@ -103,20 +105,40 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="_gt" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> $gt</h3>
-					<div class="tsd-signature tsd-kind-icon">$gt<span class="tsd-signature-symbol">:</span> <a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></div>
+					<div class="tsd-signature tsd-kind-icon">$gt<span class="tsd-signature-symbol">:</span> <a href="../modules/_src_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L26">basic-node/node.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/b15f323/src/basic-node/node.ts#L36">src/basic-node/node.ts:36</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="_gte" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> $gte</h3>
-					<div class="tsd-signature tsd-kind-icon">$gte<span class="tsd-signature-symbol">:</span> <a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></div>
+					<div class="tsd-signature tsd-kind-icon">$gte<span class="tsd-signature-symbol">:</span> <a href="../modules/_src_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L27">basic-node/node.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/b15f323/src/basic-node/node.ts#L37">src/basic-node/node.ts:37</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="_lt" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> $lt</h3>
+					<div class="tsd-signature tsd-kind-icon">$lt<span class="tsd-signature-symbol">:</span> <a href="../modules/_src_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/b15f323/src/basic-node/node.ts#L38">src/basic-node/node.ts:38</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="_lte" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> $lte</h3>
+					<div class="tsd-signature tsd-kind-icon">$lte<span class="tsd-signature-symbol">:</span> <a href="../modules/_src_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/b15f323/src/basic-node/node.ts#L39">src/basic-node/node.ts:39</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -129,86 +151,98 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_avl_node_avl_.html">"avl-<wbr>node/avl"</a>
+						<a href="../modules/___test___avl_spec_.html">"__test__/avl.spec"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_avl_node_index_.html">"avl-<wbr>node/index"</a>
+						<a href="../modules/___test___avltree_spec_.html">"__test__/avl<wbr>Tree.spec"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_avl_tree_avltree_.html">"avl-<wbr>tree/avl<wbr>Tree"</a>
+						<a href="../modules/_src_avl_node_avl_.html">"src/avl-<wbr>node/avl"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_avl_tree_index_.html">"avl-<wbr>tree/index"</a>
+						<a href="../modules/_src_avl_node_index_.html">"src/avl-<wbr>node/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_btreeutils_.html">"b<wbr>Tree<wbr>Utils"</a>
+						<a href="../modules/_src_avl_tree_avltree_.html">"src/avl-<wbr>tree/avl<wbr>Tree"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_basic_node_index_.html">"basic-<wbr>node/index"</a>
+						<a href="../modules/_src_avl_tree_index_.html">"src/avl-<wbr>tree/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_src_btreeutils_.html">"src/b<wbr>Tree<wbr>Utils"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_src_basic_node_index_.html">"src/basic-<wbr>node/index"</a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_basic_node_node_.html">"basic-<wbr>node/node"</a>
+						<a href="../modules/_src_basic_node_node_.html">"src/basic-<wbr>node/node"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_index_.html">"index"</a>
+						<a href="../modules/_src_index_.html">"src/index"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../classes/_basic_node_node_.node.html" class="tsd-kind-icon">Node</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_basic_node_node_.iallqueary.html" class="tsd-kind-icon">IAll<wbr>Queary</a>
+						<a href="../classes/_src_basic_node_node_.node.html" class="tsd-kind-icon">Node</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_basic_node_node_.igreatquery.html" class="tsd-kind-icon">IGreat<wbr>Query</a>
+						<a href="_src_basic_node_node_.iallqueary.html" class="tsd-kind-icon">IAll<wbr>Queary</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_basic_node_node_.igreatquery.html#_gt" class="tsd-kind-icon">$gt</a>
+								<a href="_src_basic_node_node_.iallqueary.html#_gt" class="tsd-kind-icon">$gt</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_basic_node_node_.igreatquery.html#_gte" class="tsd-kind-icon">$gte</a>
+								<a href="_src_basic_node_node_.iallqueary.html#_gte" class="tsd-kind-icon">$gte</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_src_basic_node_node_.iallqueary.html#_lt" class="tsd-kind-icon">$lt</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_src_basic_node_node_.iallqueary.html#_lte" class="tsd-kind-icon">$lte</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_basic_node_node_.ilessqueary.html" class="tsd-kind-icon">ILess<wbr>Queary</a>
+						<a href="_src_basic_node_node_.igreatquery.html" class="tsd-kind-icon">IGreat<wbr>Query</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_src_basic_node_node_.ilessqueary.html" class="tsd-kind-icon">ILess<wbr>Queary</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_basic_node_node_.inode.html" class="tsd-kind-icon">INode</a>
+						<a href="_src_basic_node_node_.inode.html" class="tsd-kind-icon">INode</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_basic_node_node_.inodeconstructor.html" class="tsd-kind-icon">INode<wbr>Constructor</a>
+						<a href="_src_basic_node_node_.inodeconstructor.html" class="tsd-kind-icon">INode<wbr>Constructor</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_basic_node_node_.html#asndbs" class="tsd-kind-icon">ASNDBS</a>
+						<a href="../modules/_src_basic_node_node_.html#asndbs" class="tsd-kind-icon">ASNDBS</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_basic_node_node_.html#sndbsa" class="tsd-kind-icon">SNDBSA</a>
+						<a href="../modules/_src_basic_node_node_.html#sndbsa" class="tsd-kind-icon">SNDBSA</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_basic_node_node_.html#checkvalueequality" class="tsd-kind-icon">check<wbr>Value<wbr>Equality</a>
+						<a href="../modules/_src_basic_node_node_.html#checkvalueequality" class="tsd-kind-icon">check<wbr>Value<wbr>Equality</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_basic_node_node_.html#comparekeys" class="tsd-kind-icon">compare<wbr>Keys</a>
+						<a href="../modules/_src_basic_node_node_.html#comparekeys" class="tsd-kind-icon">compare<wbr>Keys</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_basic_node_node_.html#getboolfromkey" class="tsd-kind-icon">get<wbr>Bool<wbr>From<wbr>Key</a>
+						<a href="../modules/_src_basic_node_node_.html#getboolfromkey" class="tsd-kind-icon">get<wbr>Bool<wbr>From<wbr>Key</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_basic_node_node_.html#getcomparekeys" class="tsd-kind-icon">get<wbr>Compare<wbr>Keys</a>
+						<a href="../modules/_src_basic_node_node_.html#getcomparekeys" class="tsd-kind-icon">get<wbr>Compare<wbr>Keys</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_basic_node_node_.html#getlowerboundsfn" class="tsd-kind-icon">get<wbr>Lower<wbr>Bounds<wbr>Fn</a>
+						<a href="../modules/_src_basic_node_node_.html#getlowerboundsfn" class="tsd-kind-icon">get<wbr>Lower<wbr>Bounds<wbr>Fn</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_basic_node_node_.html#getupperboundsfn" class="tsd-kind-icon">get<wbr>Upper<wbr>Bounds<wbr>Fn</a>
+						<a href="../modules/_src_basic_node_node_.html#getupperboundsfn" class="tsd-kind-icon">get<wbr>Upper<wbr>Bounds<wbr>Fn</a>
 					</li>
 				</ul>
 			</nav>

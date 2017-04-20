@@ -361,11 +361,11 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         let currentNode: AVLNode = this;
 
         // Empty tree, insert as root
-        if (!this.hasOwnProperty("key")) {
-         this.key = key;
-         this.value.push(value);
-         this.height = 1;
-         return this;
+        if (!this.key) {
+             this.key = key;
+             this.value = [value];
+             this.height = 1;
+             return this;
          }
 
         // Insert new leaf at the right place
