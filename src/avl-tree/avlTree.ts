@@ -8,7 +8,13 @@ export interface IAVLTree {
     delete(key: ASNDBS, value: ASNDBS): void;
 }
 
+/**
+ * Tree class for the AVL Nodes
+ */
 export class AVLTree extends AVLNode implements IAVLTree {
+    /**
+     * The AVL Tree, accumulation of AVL Nodes.
+     */
     public tree: AVLNode;
 
     /**
@@ -21,7 +27,7 @@ export class AVLTree extends AVLNode implements IAVLTree {
     }
 
     /**
-     *
+     * Insert a new AVL Node into the tree an maintain AVL balance.
      * @param key
      * @param value
      */
@@ -35,7 +41,7 @@ export class AVLTree extends AVLNode implements IAVLTree {
     }
 
     /**
-     *
+     * Delete a key or value and maintain AVL balance.
      * @param key
      * @param value
      */

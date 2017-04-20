@@ -69,6 +69,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Tree class for the AVL Nodes</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -119,8 +126,8 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_avl_tree_avltree_.avltree.html#_delete" class="tsd-kind-icon">_delete</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_avl_tree_avltree_.avltree.html#_insert" class="tsd-kind-icon">_insert</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_avl_tree_avltree_.avltree.html#_delete" class="tsd-kind-icon">_delete</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_avl_tree_avltree_.avltree.html#_insert" class="tsd-kind-icon">_insert</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_avl_tree_avltree_.avltree.html#balancefactor" class="tsd-kind-icon">balance<wbr>Factor</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="_avl_tree_avltree_.avltree.html#betweenbounds" class="tsd-kind-icon">between<wbr>Bounds</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_avl_tree_avltree_.avltree.html#checkallnodesfullfillcondition" class="tsd-kind-icon">check<wbr>All<wbr>Nodes<wbr>Fullfill<wbr>Condition</a></li>
@@ -169,7 +176,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-tree/avlTree.ts#L12">avl-tree/avlTree.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-tree/avlTree.ts#L18">avl-tree/avlTree.ts:18</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -202,7 +209,7 @@
 						<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#checkvalueequality">checkValueEquality</a></p>
 						<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#checkvalueequality">checkValueEquality</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L108">basic-node/node.ts:108</a></li>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L121">basic-node/node.ts:121</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -222,7 +229,7 @@
 						<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#comparekeys">compareKeys</a></p>
 						<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#comparekeys">compareKeys</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L101">basic-node/node.ts:101</a></li>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L114">basic-node/node.ts:114</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -241,9 +248,19 @@
 						<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#height">height</a></p>
 						<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#height">height</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L27">avl-node/avl.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L34">avl-node/avl.ts:34</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Used to hold the depth of the tree at this point.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>type</dt>
+							<dd><p>{number}</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="key" class="tsd-anchor"></a>
@@ -253,7 +270,7 @@
 						<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#key">key</a></p>
 						<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#key">key</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L91">basic-node/node.ts:91</a></li>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L100">basic-node/node.ts:100</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -271,9 +288,14 @@
 						<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#left">left</a></p>
 						<p>Overrides <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#left">left</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L29">avl-node/avl.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L42">avl-node/avl.ts:42</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Holds a child of this type Node as a Node in this type tree.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
 					<a name="options" class="tsd-anchor"></a>
@@ -282,7 +304,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#options">options</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-tree/avlTree.ts#L18">avl-tree/avlTree.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-tree/avlTree.ts#L24">avl-tree/avlTree.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -299,9 +321,14 @@
 						<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#parent">parent</a></p>
 						<p>Overrides <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#parent">parent</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L30">avl-node/avl.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L46">avl-node/avl.ts:46</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Holds the parent of this type Node as a Node in this type tree.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
 					<a name="right" class="tsd-anchor"></a>
@@ -312,9 +339,14 @@
 						<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#right">right</a></p>
 						<p>Overrides <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#right">right</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L28">avl-node/avl.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L38">avl-node/avl.ts:38</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Holds a child of this type Node as a Node in this type tree.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="tree" class="tsd-anchor"></a>
@@ -323,9 +355,14 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_avl_tree_avltree_.iavltree.html">IAVLTree</a>.<a href="../interfaces/_avl_tree_avltree_.iavltree.html#tree">tree</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-tree/avlTree.ts#L12">avl-tree/avlTree.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-tree/avlTree.ts#L18">avl-tree/avlTree.ts:18</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The AVL Tree, accumulation of AVL Nodes.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="unique" class="tsd-anchor"></a>
@@ -335,7 +372,7 @@
 						<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#unique">unique</a></p>
 						<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#unique">unique</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L95">basic-node/node.ts:95</a></li>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L108">basic-node/node.ts:108</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -352,7 +389,7 @@
 						<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#value">value</a></p>
 						<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#value">value</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L93">basic-node/node.ts:93</a></li>
+							<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L104">basic-node/node.ts:104</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -364,10 +401,10 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 					<a name="_delete" class="tsd-anchor"></a>
-					<h3>_delete</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _delete</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 						<li class="tsd-signature tsd-kind-icon">_delete<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a>, value<span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
@@ -376,9 +413,14 @@
 								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#_delete">_delete</a></p>
 								<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#_delete">_delete</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L300">avl-node/avl.ts:300</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L412">avl-node/avl.ts:412</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Delete a key or just a value and return the new root of the tree</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -392,10 +434,10 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 					<a name="_insert" class="tsd-anchor"></a>
-					<h3>_insert</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _insert</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 						<li class="tsd-signature tsd-kind-icon">_insert<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a>, value<span class="tsd-signature-symbol">: </span><a href="../modules/_basic_node_node_.html#asndbs" class="tsd-signature-type">ASNDBS</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
@@ -404,9 +446,15 @@
 								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#_insert">_insert</a></p>
 								<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#_insert">_insert</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L255">avl-node/avl.ts:255</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L359">avl-node/avl.ts:359</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Insert a key, value pair in the tree while maintaining the AVL tree height constraint
+									Return a pointer to the root node, which may have changed</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -432,9 +480,14 @@
 								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#balancefactor">balanceFactor</a></p>
 								<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#balancefactor">balanceFactor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L89">avl-node/avl.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L140">avl-node/avl.ts:140</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the balance factor.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 						</li>
 					</ul>
@@ -451,7 +504,7 @@
 								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#betweenbounds">betweenBounds</a></p>
 								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#betweenbounds">betweenBounds</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L341">basic-node/node.ts:341</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L354">basic-node/node.ts:354</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -501,7 +554,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#checkallnodesfullfillcondition">checkAllNodesFullfillCondition</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L211">basic-node/node.ts:211</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L224">basic-node/node.ts:224</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -534,9 +587,14 @@
 								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#checkbalancefactors">checkBalanceFactors</a></p>
 								<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#checkbalancefactors">checkBalanceFactors</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L95">avl-node/avl.ts:95</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L150">avl-node/avl.ts:150</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check that the balance factors are between -1 and 1. Otherwise throw an error.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -553,9 +611,15 @@
 								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#checkheightcorrect">checkHeightCorrect</a></p>
 								<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#checkheightcorrect">checkHeightCorrect</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L58">avl-node/avl.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L104">avl-node/avl.ts:104</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check the recorded height for this AVL Node and all children.
+									Throws an error if one height does not match.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -572,7 +636,7 @@
 								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#checkinternalpointers">checkInternalPointers</a></p>
 								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#checkinternalpointers">checkInternalPointers</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L258">basic-node/node.ts:258</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L271">basic-node/node.ts:271</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -597,7 +661,7 @@
 								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#checkisnode">checkIsNode</a></p>
 								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#checkisnode">checkIsNode</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L176">basic-node/node.ts:176</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L189">basic-node/node.ts:189</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -622,7 +686,7 @@
 								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#checknodeordering">checkNodeOrdering</a></p>
 								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#checknodeordering">checkNodeOrdering</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L230">basic-node/node.ts:230</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L243">basic-node/node.ts:243</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -647,9 +711,15 @@
 								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#checkisavlt">checkisAVLT</a></p>
 								<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#checkisavlt">checkisAVLT</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L107">avl-node/avl.ts:107</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L167">avl-node/avl.ts:167</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Calls upon super to check that all basic Node validation is met, along
+									with also checking the balance and height correctness of the AVL Node.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -666,9 +736,14 @@
 								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#createleftchild">createLeftChild</a></p>
 								<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#createleftchild">createLeftChild</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L44">avl-node/avl.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L79">avl-node/avl.ts:79</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create a left child AVL Node with a reference to this parent AVL Node</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -691,9 +766,14 @@
 								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#createrightchild">createRightChild</a></p>
 								<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#createrightchild">createRightChild</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L51">avl-node/avl.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L92">avl-node/avl.ts:92</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create a right child AVL Node with a reference to this parent AVL Node</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -716,9 +796,14 @@
 								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#createsimilar">createSimilar</a></p>
 								<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#createsimilar">createSimilar</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L39">avl-node/avl.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L68">avl-node/avl.ts:68</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create a new AVL Node inside of the parent Node.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -740,10 +825,13 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_avl_tree_avltree_.iavltree.html">IAVLTree</a>.<a href="../interfaces/_avl_tree_avltree_.iavltree.html#delete">delete</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-tree/avlTree.ts#L42">avl-tree/avlTree.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-tree/avlTree.ts#L48">avl-tree/avlTree.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Delete a key or value and maintain AVL balance.</p>
+								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -772,7 +860,7 @@
 								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#executeoneverynode">executeOnEveryNode</a></p>
 								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#executeoneverynode">executeOnEveryNode</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L397">basic-node/node.ts:397</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L410">basic-node/node.ts:410</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -804,7 +892,7 @@
 								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#getlowerboundmatcher">getLowerBoundMatcher</a></p>
 								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#getlowerboundmatcher">getLowerBoundMatcher</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L279">basic-node/node.ts:279</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L292">basic-node/node.ts:292</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -837,7 +925,7 @@
 								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#getmaxkey">getMaxKey</a></p>
 								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#getmaxkey">getMaxKey</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L160">basic-node/node.ts:160</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L173">basic-node/node.ts:173</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -861,7 +949,7 @@
 								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#getmaxkeydescendant">getMaxKeyDescendant</a></p>
 								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#getmaxkeydescendant">getMaxKeyDescendant</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L136">basic-node/node.ts:136</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L149">basic-node/node.ts:149</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -892,7 +980,7 @@
 								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#getminkey">getMinKey</a></p>
 								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#getminkey">getMinKey</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L168">basic-node/node.ts:168</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L181">basic-node/node.ts:181</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -916,7 +1004,7 @@
 								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#getminkeydescendant">getMinKeyDescendant</a></p>
 								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#getminkeydescendant">getMinKeyDescendant</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L148">basic-node/node.ts:148</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L161">basic-node/node.ts:161</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -946,7 +1034,7 @@
 								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#getnumberofkeys">getNumberOfKeys</a></p>
 								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#getnumberofkeys">getNumberOfKeys</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L188">basic-node/node.ts:188</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L201">basic-node/node.ts:201</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -970,7 +1058,7 @@
 								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#getupperboundmatcher">getUpperBoundMatcher</a></p>
 								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#getupperboundmatcher">getUpperBoundMatcher</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L309">basic-node/node.ts:309</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L322">basic-node/node.ts:322</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1002,10 +1090,13 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_avl_tree_avltree_.iavltree.html">IAVLTree</a>.<a href="../interfaces/_avl_tree_avltree_.iavltree.html#insert">insert</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-tree/avlTree.ts#L28">avl-tree/avlTree.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-tree/avlTree.ts#L34">avl-tree/avlTree.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Insert a new AVL Node into the tree an maintain AVL balance.</p>
+								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -1034,9 +1125,16 @@
 								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#leftrotation">leftRotation</a></p>
 								<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#leftrotation">leftRotation</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L153">avl-node/avl.ts:153</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L227">avl-node/avl.ts:227</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Perform a left rotation of the tree if possible
+										and return the root of the resulting tree
+									The resulting tree&#39;s nodes&#39; heights are also updated</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></h4>
 						</li>
 					</ul>
@@ -1053,9 +1151,15 @@
 								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#lefttoosmall">leftTooSmall</a></p>
 								<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#lefttoosmall">leftTooSmall</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L207">avl-node/avl.ts:207</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L293">avl-node/avl.ts:293</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Modify the tree if its left subtree is too small compared to the right.
+									Return the new root if any.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></h4>
 						</li>
 					</ul>
@@ -1072,9 +1176,17 @@
 								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#rebalancealongpath">rebalanceAlongPath</a></p>
 								<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#rebalancealongpath">rebalanceAlongPath</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L221">avl-node/avl.ts:221</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L316">avl-node/avl.ts:316</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Rebalance the tree along the given path. The path is given reversed (as he was calculated
+										in the insert and delete functions).
+										Returns the new root of the tree
+									Of course, the first element of the path must be the root of the tree</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -1097,9 +1209,14 @@
 								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#returnthisavl">returnThisAVL</a></p>
 								<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#returnthisavl">returnThisAVL</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L36">avl-node/avl.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L59">avl-node/avl.ts:59</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>To return this class if this class were to be extended.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
 						</li>
 					</ul>
@@ -1116,7 +1233,7 @@
 								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#returnthisnode">returnThisNode</a></p>
 								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#returnthisnode">returnThisNode</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L127">basic-node/node.ts:127</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L140">basic-node/node.ts:140</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1140,9 +1257,16 @@
 								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#rightrotation">rightRotation</a></p>
 								<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#rightrotation">rightRotation</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L112">avl-node/avl.ts:112</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L179">avl-node/avl.ts:179</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Perform a right rotation of the tree if possible
+										and return the root of the resulting tree
+									The resulting tree&#39;s nodes&#39; heights are also updated</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></h4>
 						</li>
 					</ul>
@@ -1159,9 +1283,15 @@
 								<p>Implementation of <a href="../interfaces/_avl_node_avl_.iavlnode.html">IAVLNode</a>.<a href="../interfaces/_avl_node_avl_.iavlnode.html#righttoosmall">rightTooSmall</a></p>
 								<p>Inherited from <a href="_avl_node_avl_.avlnode.html">AVLNode</a>.<a href="_avl_node_avl_.avlnode.html#righttoosmall">rightTooSmall</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/avl-node/avl.ts#L194">avl-node/avl.ts:194</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/avl-node/avl.ts#L274">avl-node/avl.ts:274</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Modify the tree if its right subtree is too small compared to the left.
+									Return the new root if any.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <a href="_avl_node_avl_.avlnode.html" class="tsd-signature-type">AVLNode</a></h4>
 						</li>
 					</ul>
@@ -1178,7 +1308,7 @@
 								<p>Implementation of <a href="../interfaces/_basic_node_node_.inode.html">INode</a>.<a href="../interfaces/_basic_node_node_.inode.html#search">search</a></p>
 								<p>Inherited from <a href="_basic_node_node_.node.html">Node</a>.<a href="_basic_node_node_.node.html#search">search</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/7c94393/src/basic-node/node.ts#L369">basic-node/node.ts:369</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/ea40179/src/basic-node/node.ts#L382">basic-node/node.ts:382</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1273,10 +1403,10 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="_avl_tree_avltree_.avltree.html#value" class="tsd-kind-icon">value</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 								<a href="_avl_tree_avltree_.avltree.html#_delete" class="tsd-kind-icon">_delete</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 								<a href="_avl_tree_avltree_.avltree.html#_insert" class="tsd-kind-icon">_insert</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">

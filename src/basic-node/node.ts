@@ -49,7 +49,6 @@ export interface INodeConstructor<T> {
     checkValueEquality?: any;
 }
 
-/** Interface for abstract class Node */
 export interface INode<T> {
     left: Node<T>|null;
     right: Node<T>|null;
@@ -81,17 +80,31 @@ export interface INode<T> {
  * Abstract class used as template for high level tree classes.
  */
 export abstract class Node<T> implements INode<T> {
-    /** Holds a child of this Node type if given */
+    /**
+     * Holds a child of this Node type if given
+     * @type {any}
+     */
     public left: Node<T>|null = null;
-    /** Holds a child of this Node type if given */
+    /**
+     * Holds a child of this Node type if given
+     * @type {any}
+     */
     public right: Node<T>|null = null;
-    /** Holds the parent of this Node type if it exists */
+    /**
+     * Holds the parent of this Node type if it exists
+     */
     public parent: Node<T>|null;
-    /** The key used to find this Node */
+    /**
+     * The key used to find this Node
+     */
     public key: ASNDBS;
-    /** The value this Node holds */
+    /**
+     * The value this Node holds
+     */
     public value: SNDBSA;
-    /** set in the constructor to have only unique keys */
+    /**
+     * set in the constructor to have only unique keys
+     */
     public unique: boolean;
     /**
      * Default function compares only number, string and Date other wise

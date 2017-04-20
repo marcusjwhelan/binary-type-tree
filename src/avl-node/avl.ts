@@ -23,24 +23,59 @@ export interface IAVLNode {
     _delete(key: ASNDBS, value: ASNDBS): AVLNode;
 }
 
+/**
+ * Used to create an AVL tree with a binary search tree as the root of each Node
+ */
 export class AVLNode extends Node<AVLNode> implements IAVLNode {
+    /**
+     * Used to hold the depth of the tree at this point.
+     * @type {number}
+     */
     public height: number = 0;
+    /**
+     * Holds a child of this type Node as a Node in this type tree.
+     */
     public right: AVLNode|null;
+    /**
+     * Holds a child of this type Node as a Node in this type tree.
+     */
     public left: AVLNode|null;
+    /**
+     * Holds the parent of this type Node as a Node in this type tree.
+     */
     public parent: AVLNode|null;
-
+    /**
+     * Uses abstract class as base to build off of for this class.
+     * @param options
+     */
     constructor(public options: INodeConstructor<AVLNode>) {
         super(options);
     }
 
+    /**
+     * To return this class if this class were to be extended.
+     * @returns {AVLNode}
+     */
     public returnThisAVL(): this {
         return this;
     }
+
+    /**
+     * Create a new AVL Node inside of the parent Node.
+     * @param options
+     * @returns {AVLNode}
+     */
     public createSimilar(options: INodeConstructor<AVLNode>): AVLNode {
         options.unique = this.unique;
 
         return new AVLNode(options);
     }
+
+    /**
+     * Create a left child AVL Node with a reference to this parent AVL Node
+     * @param options
+     * @returns {AVLNode}
+     */
     public createLeftChild(options: INodeConstructor<AVLNode>): AVLNode {
         const leftChild = this.createSimilar(options);
         leftChild.parent = this;
@@ -48,6 +83,12 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
 
         return leftChild;
     }
+
+    /**
+     * Create a right child AVL Node with a reference to this parent AVL Node
+     * @param options
+     * @returns {AVLNode}
+     */
     public createRightChild(options: INodeConstructor<AVLNode>): AVLNode {
         const rightChild = this.createSimilar(options);
         rightChild.parent = this;
@@ -55,6 +96,11 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
 
         return rightChild;
     }
+
+    /**
+     * Check the recorded height for this AVL Node and all children.
+     * Throws an error if one height does not match.
+     */
     public checkHeightCorrect(): void {
         let leftH: number;
         let rightH: number;
@@ -86,12 +132,21 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
             this.right.checkHeightCorrect();
         }
     }
+
+    /**
+     * Returns the balance factor.
+     * @returns {number}
+     */
     public balanceFactor(): number {
         const leftH: number = this.left ? this.left.height : 0;
         const rightH: number = this.right ? this.right.height : 0;
 
         return leftH - rightH;
     }
+
+    /**
+     * Check that the balance factors are between -1 and 1. Otherwise throw an error.
+     */
     public checkBalanceFactors(): void {
         if (Math.abs(this.balanceFactor()) > 1) {
             throw new Error(`Tree is unbalanced at basic-node ${this.key}`);
@@ -104,11 +159,23 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
             this.right.checkBalanceFactors();
         }
     }
+
+    /**
+     * Calls upon super to check that all basic Node validation is met, along
+     * with also checking the balance and height correctness of the AVL Node.
+     */
     public checkisAVLT(): void {
         super.checkIsNode();
         this.checkHeightCorrect();
         this.checkBalanceFactors();
     }
+
+    /**
+     * Perform a right rotation of the tree if possible
+     * and return the root of the resulting tree
+     * The resulting tree's nodes' heights are also updated
+     * @returns {AVLNode}
+     */
     public rightRotation(): AVLNode {
         const p = this.left;
         let b;
@@ -150,6 +217,13 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
 
         return p;
     }
+
+    /**
+     * Perform a left rotation of the tree if possible
+     * and return the root of the resulting tree
+     * The resulting tree's nodes' heights are also updated
+     * @returns {AVLNode}
+     */
     public leftRotation(): AVLNode {
         const q = this.right;
         let b;
@@ -191,6 +265,12 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
 
         return q;
     }
+
+    /**
+     * Modify the tree if its right subtree is too small compared to the left.
+     * Return the new root if any.
+     * @returns {AVLNode}
+     */
     public rightTooSmall(): AVLNode {
         // Right is not too small, don't change
         if (this.balanceFactor() <= 1) {
@@ -204,6 +284,12 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
 
         return this.rightRotation();
     }
+
+    /**
+     * Modify the tree if its left subtree is too small compared to the right.
+     * Return the new root if any.
+     * @returns {AVLNode}
+     */
     public leftTooSmall(): AVLNode {
         // Left is not too small, don't change
         if (this.balanceFactor() >= -1) {
@@ -218,6 +304,15 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
 
         return this.leftRotation();
     }
+
+    /**
+     * Rebalance the tree along the given path. The path is given reversed (as he was calculated
+     * in the insert and delete functions).
+     * Returns the new root of the tree
+     * Of course, the first element of the path must be the root of the tree
+     * @param path
+     * @returns {AVLNode}
+     */
     public rebalanceAlongPath(path: AVLNode[]): AVLNode {
         let newRoot: AVLNode = this;
         let rotated;
@@ -252,6 +347,15 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
 
         return newRoot;
     }
+
+    /**
+     * Insert a key, value pair in the tree while maintaining the AVL tree height constraint
+     * Return a pointer to the root node, which may have changed
+     * @param key
+     * @param value
+     * @returns {AVLNode}
+     * @private
+     */
     public _insert(key: ASNDBS, value: ASNDBS): AVLNode {
         const insertPath: AVLNode[] = [];
         let currentNode: AVLNode = this;
@@ -297,6 +401,14 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
 
         return this.rebalanceAlongPath(insertPath);
     }
+
+    /**
+     * Delete a key or just a value and return the new root of the tree
+     * @param key
+     * @param value
+     * @returns {any}
+     * @private
+     */
     public _delete(key: ASNDBS, value: ASNDBS): AVLNode {
         const deletePath: AVLNode[] = [];
         const newData: SNDBSA = [];
