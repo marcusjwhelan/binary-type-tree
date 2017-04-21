@@ -105,7 +105,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         let leftH: number;
         let rightH: number;
 
-        if (!this.hasOwnProperty("key")) {
+        if (this.key === null) {
             return;
         }
 
@@ -306,7 +306,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
     }
 
     /**
-     * Rebalance the tree along the given path. The path is given reversed (as he was calculated
+     * Re-balance the tree along the given path. The path is given reversed (as he was calculated
      * in the insert and delete functions).
      * Returns the new root of the tree
      * Of course, the first element of the path must be the root of the tree
@@ -317,7 +317,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         let newRoot: AVLNode = this;
         let rotated;
 
-        if (!this.hasOwnProperty("key")) {
+        if (this.key === null) {
             delete this.height;
             return this;
         }
@@ -361,7 +361,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         let currentNode: AVLNode = this;
 
         // Empty tree, insert as root
-        if (!this.key) {
+        if (this.key === null) {
              this.key = key;
              this.value = [value];
              this.height = 1;
@@ -416,7 +416,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         let currentNode: AVLNode = this;
 
         // Empty tree
-        if (!this.hasOwnProperty("key")) {
+        if (this.key === null) {
             return this;
         }
 

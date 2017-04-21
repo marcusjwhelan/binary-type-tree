@@ -32,7 +32,7 @@ export class AVLTree extends AVLNode implements IAVLTree {
      * @param value
      */
     public insert(key: ASNDBS, value: ASNDBS): void {
-        const newTree = this.tree._insert(key, value);
+        const newTree: AVLNode = this.tree._insert(key, value);
 
         // If newTree is undefined, that means its structure was not modified
         if (newTree) {
@@ -46,7 +46,7 @@ export class AVLTree extends AVLNode implements IAVLTree {
      * @param value
      */
     public delete(key: ASNDBS, value: ASNDBS): void {
-        const newTree = this.tree._delete(key, value);
+        const newTree: AVLNode = this.tree._delete(key, value);
 
         // if newTree is undefined, that means its structure was not modified
         if (newTree) {

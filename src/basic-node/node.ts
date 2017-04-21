@@ -201,7 +201,7 @@ export abstract class Node<T> implements INode<T> {
     public getNumberOfKeys(): number {
         let res: number;
 
-        if (!this.hasOwnProperty("key")) {
+        if (this.key === null) {
             return 0;
         }
 
@@ -224,7 +224,7 @@ export abstract class Node<T> implements INode<T> {
     public checkAllNodesFullfillCondition(test: getCompareKeys): void {
         test(this.key);
 
-        if (!this.hasOwnProperty("key")) {
+        if (this.key === null) {
             return;
         }
 
@@ -241,7 +241,7 @@ export abstract class Node<T> implements INode<T> {
      * and children of this Node.
      */
     public checkNodeOrdering(): void {
-        if (!this.hasOwnProperty("key")) {
+        if (this.key === null) {
             return;
         }
 
@@ -354,7 +354,7 @@ export abstract class Node<T> implements INode<T> {
     public betweenBounds<T>(query: IAllQueary, lbm: getLowerBoundsFn, ubm: getUpperBoundsFn): SNDBSA {
         let res: SNDBSA = [];
 
-        if (!this.hasOwnProperty("key")) {
+        if (this.key === null) {
             return [];
         }
 
@@ -382,7 +382,7 @@ export abstract class Node<T> implements INode<T> {
      * @returns {any}
      */
     public search(key: ASNDBS): SNDBSA {
-        if (!this.hasOwnProperty("key")) {
+        if (this.key === null) {
             return [];
         }
 

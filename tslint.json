@@ -6,7 +6,8 @@
     "jsRules": {},
     "rules": {
         "ordered-imports": false,
-        "max-line-length": [false]
+        "max-line-length": [false],
+        "no-bitwise": false
     },
     "rulesDirectory": []
 }

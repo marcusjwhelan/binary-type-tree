@@ -1,25 +1,34 @@
 /**
+ * Shuffle numbers in array
+ * @param nums
+ * @returns {number[]}
+ */
+export const shuffleNumbersArray = ( nums: number[]): number[] => {
+    let tmp: number;
+    let current: number;
+    let top: number = nums.length;
+    if (top) {
+        while (--top) {
+            current = Math.floor(Math.random() * (top + 1));
+            tmp = nums[current];
+            nums[current] = nums[top];
+            nums[top] = tmp;
+        }
+    }
+    return nums;
+};
+
+/**
  * Return an array with the numbers from 0 to n-1, in a random order.
  * @param n
- * @returns {any}
- * Actually returns a number array.
+ * @returns {number[]}
  */
-export const getRandomArray = ( n: number ): number[] => {
-    let res;
-    let next;
-
-    if (n === 0) {
-        return [];
+export const getRandomArray = ( n: number): number[] => {
+    const b: number[] = [];
+    for (let i = 0; i < n ; ++i) {
+        b.push(i);
     }
-    if (n === 1) {
-        return [0];
-    }
-
-    res = getRandomArray(n - 1);
-    next = Math.floor(Math.random() * n);
-    res.splice(next, 0, n - 1);   // Add n-1 at a random position in the array
-
-    return res;
+    return shuffleNumbersArray(b);
 };
 
 /**
@@ -52,4 +61,27 @@ export const defaultCompareKeysFunction = ( a: number | string | Date, b: number
  */
 export const defaultCheckValueEquality = ( a: number | string | Date, b: number | string | Date ): boolean => {
     return a === b;
+};
+
+/**
+ * Create an array with every combination of string letters.
+ * max character string of 16. After 16 character string the
+ * increase in size begins to degrees and then degrades.
+ * @param str
+ * @returns {Array}
+ */
+export const randomCharArray = (str: string): string[] => {
+    const set = [];
+    const strSize = str.length;
+    const combinationsCount = (1 << strSize);
+    for ( let i = 1; i < combinationsCount; i++) {
+        const combination = [];
+        for ( let j = 0; j < strSize; j++) {
+            if ((i & (1 << j))) {
+                combination.push(str[j]);
+            }
+        }
+        set.push(combination.join(""));
+    }
+    return set;
 };
