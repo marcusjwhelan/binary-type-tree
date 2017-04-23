@@ -23,6 +23,11 @@ self balancing trees. AVL is simply the first choice.
 
 ## Table of Contents
 
+* <a href="#creating-an-avl-tree">Creating an AVL Tree</a>
+* <a href="#inserting-and-deleting-into-the-avl-tree">Inserting and deleting into the AVL Tree</a>
+* <a href="#querying-the-avl-tree">Querying the AVL Tree</a>
+* <a href="#avl-tree-extra-functionality">AVL tree extra functionality </a>
+
 ## Creating an AVL Tree
  
 Before you create a tree you will want to consider how your keys and values will be structured. All values
@@ -89,12 +94,15 @@ let numEight: BTT.SNDBSA = avlTree.tree.search(8);
 //
 let avlTree: BTT.AVLTree = new BTT.AVLTree({unique: true}); 
 // Lets avlTree tree has keys 0-100 with values 100-0
-// I want all the values greater than or equal 90
+//
+// I want all the keys greater than or equal 90
 let nintyUp: BTT.SNDBSA = avlTree.tree.query({$gte: 90});
-// nintyUp will have an array of values [10..0] 
-// If I want to get values greather then 50 but less than 60 but not 55
+// nintyUp will have an array of values from [10..0] 
+//
+// If I want to get values greater then 50 but less than 60 but not 55
 let fullQuery: BTT.SNDBSA = avlTree.tree.query({$gte: 50, $lte: 60, $ne: 55});
 // fullQuery = [50,51,52,53,54,56,57,58,59,60]; 
+//
 // You could supply a new checkKeyEquality to check for arrays
 // so you could possibly have 
 let exampleQ: BTT.SNDBSA = avlTree.tree.query({$ne: [...90]});
