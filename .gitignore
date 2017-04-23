@@ -38,8 +38,6 @@ jspm_packages
 
 # Ignore IDE file
 .idea
-**/.idea/tasks.xml
-**/.idea/jsLibraryMappings.xml
 
 # Built
 lib/

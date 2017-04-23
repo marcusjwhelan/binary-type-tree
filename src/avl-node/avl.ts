@@ -1,4 +1,5 @@
 import { ASNDBS, SNDBSA, INodeConstructor, Node  } from "../basic-node";
+import * as bTreeUtils from "../bTreeUtils";
 
 export interface IAVLNode {
     height: number;
@@ -61,12 +62,15 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
     }
 
     /**
-     * Create a new AVL Node inside of the parent Node.
+     * Create a new AVL Node similar to this one except without the key and value
      * @param options
      * @returns {AVLNode}
      */
     public createSimilar(options: INodeConstructor<AVLNode>): AVLNode {
         options.unique = this.unique;
+        this.compareKeys = options.compareKeys || bTreeUtils.defaultCompareKeysFunction;
+        this.checkKeyEquality = options.checkKeyEquality || bTreeUtils.defaultCheckKeyEquality;
+        this.checkValueEquality = options.checkValueEquality || bTreeUtils.defaultCheckValueEquality;
 
         return new AVLNode(options);
     }

@@ -41,7 +41,7 @@ export const getRandomArray = ( n: number): number[] => {
  * if a === b then return 0
  * else throw could not compare error.
  */
-export const defaultCompareKeysFunction = ( a: number | string | Date, b: number | string | Date ): number => {
+export const defaultCompareKeysFunction = ( a: number | string , b: number | string ): number => {
     if (a < b) {
         return -1;
     } else if (a > b) {
@@ -54,11 +54,15 @@ export const defaultCompareKeysFunction = ( a: number | string | Date, b: number
 };
 
 /**
- * Check whether two values are equal with '==='
+ * Check whether two keys are equal with '==='
  * @param a
  * @param b
  * @returns {boolean}
  */
+export const defaultCheckKeyEquality = ( a: number | string | Date, b: number | string | Date ): boolean => {
+    return a === b;
+};
+
 export const defaultCheckValueEquality = ( a: number | string | Date, b: number | string | Date ): boolean => {
     return a === b;
 };

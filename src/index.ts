@@ -1,6 +1,7 @@
 export { IAVLNode , AVLNode } from "./avl-node";
 export { AVLTree, IAVLTree } from "./avl-tree";
 export { ASNDBS, SNDBSA, getBoolFromKey, getLowerBoundsFn, getUpperBoundsFn,
-    compareKeys, checkValueEquality, IGreatQuery, ILessQueary,
+    getEqualityBoundsFn, compareKeys, checkKeyEquality, IGreatQuery, ILessQueary,
     IAllQueary, INodeConstructor, INode, Node } from "./basic-node";
-export { getRandomArray, defaultCompareKeysFunction, defaultCheckValueEquality, randomCharArray } from "./bTreeUtils";
+export { getRandomArray, defaultCompareKeysFunction, defaultCheckKeyEquality, randomCharArray,
+    defaultCheckValueEquality } from "./bTreeUtils";

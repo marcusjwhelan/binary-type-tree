@@ -1,19 +1,20 @@
 {
   "name": "binary-type-tree",
-  "version": "0.0.2",
-  "engines": {
-    "node": ">=6.9.x"
-  },
+  "version": "1.0.0",
   "description": "Binary Trees written in TypeScript",
   "main": "lib/index",
   "scripts": {
     "test": "jest",
-    "build": "rm -rf ./lib/* && tsc"
+    "build": "rm -rf ./lib/* && tsc",
+    "docs": "typedoc --excludeExternals true --exclude '**/*+(spec|index).ts' --out docs"
   },
   "jest": {
     "globals": {
-        "__TS_CONFIG__": "tsconfig.json"
+      "__TS_CONFIG__": "tsconfig.json"
     },
+    "collectCoverageFrom": [
+      "src/**/*.ts"
+    ],
     "transform": {
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
@@ -22,7 +23,7 @@
       "node_modules/@types"
     ],
     "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -44,14 +45,11 @@
     "url": "https://github.com/marcusjwhelan/binary-type-tree/issues"
   },
   "homepage": "https://github.com/marcusjwhelan/binary-type-tree#readme",
-  "dependencies": {
-    "@types/node": "^6.0.69"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^19.2.2",
     "jest": "^19.0.2",
     "ts-jest": "^19.0.10",
-    "ts-node": "^3.0.2",
     "typescript": "^2.2.2"
   },
   "types": "lib/index"

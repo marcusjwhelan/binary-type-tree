@@ -18,15 +18,15 @@
             "node_modules"
         ],
         "types": [
-            "node", "jest"
+            "jest"
         ],
         "lib": [
             "es6"
         ]
     },
     "include": [
-        "src",
-        "__test__"
+        "__test__",
+        "src"
     ],
     "exclude": [
         "lib",

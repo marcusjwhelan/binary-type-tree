@@ -1,4 +1,4 @@
-import { AVLTree, AVLNode, getRandomArray, randomCharArray } from "../src";
+import { AVLTree, AVLNode, getRandomArray, randomCharArray, SNDBSA, ASNDBS} from "../src";
 
 describe("Test all of AVL Tree", () => {
     describe("basic tree create + insert + delete", () => {
@@ -74,16 +74,85 @@ describe("Test all of AVL Tree", () => {
         for (const num in randomArray) {
             if (randomArray.hasOwnProperty(num)) {
                 const v: string = randomCArray.pop() || " ";
-                avlTree.insert(num, v);
+                avlTree.insert(+num, v);
             }
         }
 
-        test("is AVL Tree with AVL Nodes", () => {
+        test("number of keys", () => {
+            const numKeys: number = avlTree.tree.getNumberOfKeys();
+
+            expect(numKeys).toBe(65536); // count 0
+        });
+
+        test("if this AVL Tree and made of AVL Nodes", () => {
             expect(avlTree).toBeInstanceOf(AVLTree);
             expect(avlTree.tree).toBeInstanceOf(AVLNode);
-            expect(avlTree.tree.height).toBe(19);
+            expect(avlTree.tree.height).toBe(17);
             avlTree.tree.checkisAVLT();
         });
-    });
 
+        describe("Searching, Delete re-balance sanity check ", () => {
+            avlTree.insert(992929189981, "recon");
+            const searchedValue: SNDBSA = avlTree.tree.search(992929189981);
+            const between: SNDBSA = avlTree.tree.query({$gte: 0, $lte: 100});
+
+            const oddLTSearch: SNDBSA = avlTree.tree.query({$lte: 100, $lt: 20});
+            const oddGTSearch: SNDBSA = avlTree.tree.query({$gte: 65400, $gt: 65401});
+
+            test("for odd $gt search", () => {
+                expect(oddGTSearch[0]).toBe("ach");
+                expect(oddGTSearch.length).toBe(134);
+            });
+
+            test("for odd $lt search", () => {
+                expect(oddLTSearch[0]).toBe("bcdefghijklmnop");
+                expect(oddLTSearch.length).toBe(19);
+            });
+
+            test("if searchedValue was found", () => {
+                expect(searchedValue).toEqual(expect.arrayContaining(["recon"]));
+            });
+
+            test("if 100 values were found", () => {
+                expect(between.length).toBe(100);
+                expect(between[0]).toBe("bcdefghijklmnop");
+            });
+
+            test("if deleting single node causes errors, should re-balance", () => {
+                avlTree.delete(992929189981, "recon");
+                expect(avlTree.tree.height).toBe(16);
+                avlTree.tree.checkisAVLT();
+            });
+
+            test("searching max value and getting key", () => {
+               const key: ASNDBS = avlTree.tree.getMaxKey();
+               expect(key).toBe(65534);
+            });
+
+            test("searching min value and getting key", () => {
+                const key: ASNDBS = avlTree.tree.getMinKey();
+                expect(key).toBe(0);
+            });
+
+            test("deleting all but 100 values, searching 5 but 1 $ne to get 4 values", () => {
+                const keys = getRandomArray(65530);
+                for (let i = 0; i < keys.length; i++) {
+                    const value: SNDBSA = avlTree.tree.search(i);
+                    avlTree.delete(i, [value]);
+                }
+                const searchedValues = avlTree.tree.query({$lte: 65535, $gte: 65530, $ne: 65532});
+
+                expect(avlTree.tree.query({}).length).toBe(5);
+                expect(searchedValues).toEqual(expect.arrayContaining(["ac", "c", "b", "a"]));
+                expect(searchedValues.length).toBe(4);
+            });
+
+            test("only using $ne", () => {
+                const searchedNE = avlTree.tree.query({$ne: 65533});
+
+                expect(searchedNE.length).toBe(4);
+                expect(searchedNE).toEqual(expect.arrayContaining(["ac", "c", "ab", "a"]));
+            });
+        });
+    });
 });

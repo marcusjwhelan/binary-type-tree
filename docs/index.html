@@ -38,8 +38,6 @@
 							</div>
 							<input type="checkbox" id="tsd-filter-inherited" checked />
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
 							<input type="checkbox" id="tsd-filter-only-exported" />
 							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
@@ -65,6 +63,111 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="binary-type-tree">binary-type-tree</h1>
+				<p>A binary search tree with AVL balancing.</p>
+				<p>I will be working to add different balancing techniques such as red black trees, scapegoat, and splay. Uses ES6 module system and can be used on the front end and for Node. It&#39;s 2017 why not write the module system in ES6. Every utility function, type, interface, and class are able to be imported from the module or as one object.</p>
+				<h2 id="install">Install</h2>
+				<pre><code class="lang-bash">npm install --save binary-type-tree
+</code></pre>
+				<h2 id="usage">Usage</h2>
+				<p>The library for now uses only an AVL balanced binary tree. The basic structure is </p>
+				<pre><code>AVLTree - AVLNode - <span class="hljs-keyword">Node</span><span class="hljs-title">&lt;T</span>&gt;
+</code></pre><p>The node is a generic abstract class which can be extended. AVLNode class extends this generic Node.
+					Finally the AVLTree extends the AVLNode, which simply is a parent class that holds the entire tree
+					of AVLNodes. AVLNode is simply an extension of the base Node class which I hope to build on for more
+				self balancing trees. AVL is simply the first choice. </p>
+				<h2 id="table-of-contents">Table of Contents</h2>
+				<h2 id="creating-an-avl-tree">Creating an AVL Tree</h2>
+				<p>Before you create a tree you will want to consider how your keys and values will be structured. All values
+					are stored as an array even only one element. The key can be many different types but cannot be an <code>object</code>.
+					There are three functions provided by default in <code>lib/bTreeUtils.ts</code>, that compare equality and validity
+					that can be replaced by custom functions. These are very important when it comes to <code>$gt, $lt, $ne</code> comparisons
+				made for the <code>query</code> method. The implementation of the <code>query</code> is on the root Node<T> at <code>lib/basic-node/node.ts</code>. During the constructor you can choose to initialize your AVL tree with several starters or none.</p>
+				<ul>
+					<li>key - If you would like a key on the initial Node. Inserting a new key/value pair will balance.</li>
+					<li>value - If you would like a value on the initial Node.</li>
+					<li>unique - Set your keys to be unique or not</li>
+					<li>compareKeys - A function to compare keys, mostly used in the comparison during <code>$gt, $lt, $gte, $lte</code>. Takes two arguments <code>{ a: this.key, b: $queryValue }</code>,
+						the query value is of $gt/$lt/$gte/$lte. The Default takes only a <code>number|string</code>. If you supply an fn you must adhere to these rules.<ul>
+							<li>a &lt; b - returns -1</li>
+							<li>a &gt; b - returns 1</li>
+							<li>a === b - returns 0</li>
+							<li>else throws new Error();</li>
+						</ul>
+					</li>
+					<li>checkKeyEquality - Checks the equality of the key and the query from $ne. Default only uses <code>===</code> as a comparison and returns that boolean. The two arguments are <code>{a: this.key, b: $queryValue }</code>, the query value is the value of $ne.
+					The default takes only <code>number|string|Date</code>. If you supply a fn you only need to return boolean of the comparison of the two with your own logic. </li>
+					<li>checkValueEquality - Checks the equality of the value just like the key equality, however it is only used in one spot currently in the avl.ts file. It does loop over the array. </li>
+				</ul>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { AVLTree } <span class="hljs-keyword">from</span> <span class="hljs-string">"binary-type-tree"</span>;
+
+<span class="hljs-comment">// This will create a tree with unique false, key/value null and default fns</span>
+<span class="hljs-keyword">let</span> TestTree = <span class="hljs-keyword">new</span> AVLTree({}); 
+
+<span class="hljs-comment">// I think this would be the best use of the tree.</span>
+<span class="hljs-keyword">let</span> TestUTree = <span class="hljs-keyword">new</span> AVLTree({unique: <span class="hljs-literal">true</span>});
+</code></pre>
+				<h2 id="inserting-and-deleting-into-the-avl-tree">Inserting and deleting into the AVL Tree</h2>
+				<p>Inserting and deleting is very easy and re-balances after during both and returns the re-balanced tree. </p>
+				<pre><code class="lang-typescript">TestUTree.insert(<span class="hljs-number">123</span>,<span class="hljs-string">"abc"</span>); <span class="hljs-comment">// this is a unique tree</span>
+TestUTree.insert(<span class="hljs-number">123</span>,<span class="hljs-string">"abc"</span>); <span class="hljs-comment">// Throws error</span>
+TestUTree.insert(<span class="hljs-number">456</span>,<span class="hljs-string">"efg"</span>); <span class="hljs-comment">// no error</span>
+
+TestUTree.delete(<span class="hljs-number">456</span>,<span class="hljs-string">"efg"</span>); <span class="hljs-comment">// true.</span>
+<span class="hljs-comment">// if there is not key that matches it will simply return the unchanged tree.</span>
+</code></pre>
+				<h2 id="querying-the-avl-tree">Querying the AVL Tree</h2>
+				<p>Query is very simple and easy to use and returns an array of the values found. There are also some other methods to query information from the tree.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> BTT <span class="hljs-keyword">from</span> <span class="hljs-string">"binary-type-tree"</span>;
+<span class="hljs-comment">// BTT.ASNDBS is a type which is almost any. Used for Keys </span>
+<span class="hljs-comment">// Array,string,number,Date,boolean,symbol,null</span>
+<span class="hljs-comment">// the full type declaration is</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// Array&lt;any[]|string|number|Date|boolean|symbol|null&gt;|string|number|Date|boolean|symbol|null </span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// BTT.SNDBSA is a type which is almost any in array for Values</span>
+<span class="hljs-comment">// full type</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// Array&lt;{}|any[]|string|number|Date|boolean|symbol|null&gt;</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-keyword">let</span> numEight: BTT.SNDBSA = avlTree.tree.search(<span class="hljs-number">8</span>);
+<span class="hljs-comment">//</span>
+<span class="hljs-keyword">let</span> avlTree: BTT.AVLTree = <span class="hljs-keyword">new</span> BTT.AVLTree({unique: <span class="hljs-literal">true</span>}); 
+<span class="hljs-comment">// Lets avlTree tree has keys 0-100 with values 100-0</span>
+<span class="hljs-comment">// I want all the values greater than or equal 90</span>
+<span class="hljs-keyword">let</span> nintyUp: BTT.SNDBSA = avlTree.tree.query({$gte: <span class="hljs-number">90</span>});
+<span class="hljs-comment">// nintyUp will have an array of values [10..0] </span>
+<span class="hljs-comment">// If I want to get values greather then 50 but less than 60 but not 55</span>
+<span class="hljs-keyword">let</span> fullQuery: BTT.SNDBSA = avlTree.tree.query({$gte: <span class="hljs-number">50</span>, $lte: <span class="hljs-number">60</span>, $ne: <span class="hljs-number">55</span>});
+<span class="hljs-comment">// fullQuery = [50,51,52,53,54,56,57,58,59,60]; </span>
+<span class="hljs-comment">// You could supply a new checkKeyEquality to check for arrays</span>
+<span class="hljs-comment">// so you could possibly have </span>
+<span class="hljs-keyword">let</span> exampleQ: BTT.SNDBSA = avlTree.tree.query({$ne: [..<span class="hljs-number">.90</span>]});
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// You could also find yourself needing more information</span>
+<span class="hljs-keyword">let</span> max: BTT.ASNDBS = avlTree.tree.getMaxKey();
+<span class="hljs-keyword">let</span> min: BTT.ASNDBS = avlTree.tree.getMinKey();
+<span class="hljs-keyword">let</span> totalKeys: <span class="hljs-built_in">number</span> = avlTree.tree.getNumberOfKeys();
+<span class="hljs-keyword">let</span> maxAVLNode: BTT.AVLNode = avlTree.tree.getMaxKeyDescendant();
+<span class="hljs-keyword">let</span> minAVLNode: BTT.AVLNode = avlTree.tree.getMinKeyDescendant();
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// If you would like to check the AVLTree for validity</span>
+avlTree.tree.checkisAVLT(); <span class="hljs-comment">// throw error if pointers fail, wrong ordering. and AVL height restrictions. or if not root node.</span>
+</code></pre>
+				<h1 id="avl-tree-extra-functionality">AVL tree extra functionality</h1>
+				<p>If you would like to write a custom function to execute on every AVLNode then you can use the <code>executeOnEveryNode</code> method, it takes a type of <code>any</code> but and returns. Best used by supplying a reference to a function.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> keys = [];
+<span class="hljs-keyword">let</span> executed = <span class="hljs-number">0</span>;
+avlTree.tree.executeOnEveryNode(<span class="hljs-function">(<span class="hljs-params">node</span>) =&gt;</span> {
+    keys.push(node.key);
+    executed += <span class="hljs-number">1</span>;
+});
+</code></pre>
+				<p>If you would like to create a new tree with similar options to another tree without key or value there is a method to do so.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> similarTree = avlTree.tree.createSimilar({});
+</code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -74,34 +177,16 @@
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/___test___avl_spec_.html">"__test__/avl.spec"</a>
+						<a href="modules/_avl_node_avl_.html">"avl-<wbr>node/avl"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/___test___avltree_spec_.html">"__test__/avl<wbr>Tree.spec"</a>
+						<a href="modules/_avl_tree_avltree_.html">"avl-<wbr>tree/avl<wbr>Tree"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_src_avl_node_avl_.html">"src/avl-<wbr>node/avl"</a>
+						<a href="modules/_btreeutils_.html">"b<wbr>Tree<wbr>Utils"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_src_avl_node_index_.html">"src/avl-<wbr>node/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_src_avl_tree_avltree_.html">"src/avl-<wbr>tree/avl<wbr>Tree"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_src_avl_tree_index_.html">"src/avl-<wbr>tree/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_src_btreeutils_.html">"src/b<wbr>Tree<wbr>Utils"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_src_basic_node_index_.html">"src/basic-<wbr>node/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_src_basic_node_node_.html">"src/basic-<wbr>node/node"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_src_index_.html">"src/index"</a>
+						<a href="modules/_basic_node_node_.html">"basic-<wbr>node/node"</a>
 					</li>
 				</ul>
 			</nav>

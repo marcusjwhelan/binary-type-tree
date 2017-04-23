@@ -12,13 +12,17 @@ export type ASNDBS = Array<any[]|string|number|Date|boolean|symbol|null>|string|
 export type getBoolFromKey = (key?: ASNDBS) => boolean;
 /** Function type used to compare keys with error throw */
 export type getCompareKeys = (key: ASNDBS) => void;
-/** Function type to return function type getBoolFromKey  */
-export type getLowerBoundsFn = (query: IGreatQuery) => getBoolFromKey;
-/** Function type to return function type getBoolFromKey  */
-export type getUpperBoundsFn = (query: ILessQueary) => getBoolFromKey;
+/** Function type to return boolean  */
+export type getLowerBoundsFn = (query: IGreatQuery) => boolean;
+/** Function type to return boolean  */
+export type getUpperBoundsFn = (query: ILessQueary) => boolean;
+/** Function type to return boolean */
+export type getEqualityBoundsFn = (geuery: INEQuery) => boolean;
 /** Function type taking in(recommended keys) */
 export type compareKeys = (a: any, b: any ) => number;
 /** Function type taking in(recommended keys) */
+export type checkKeyEquality = (a: ASNDBS, b: ASNDBS ) => boolean;
+/** Function type taking in(recommended values) */
 export type checkValueEquality = (a: ASNDBS, b: ASNDBS ) => boolean;
 
 /** Interface for $gt/$gte range */
@@ -31,12 +35,17 @@ export interface ILessQueary {
     $lt?: ASNDBS;
     $lte?: ASNDBS;
 }
+/** Interface for $ne query */
+export interface INEQuery {
+    $ne?: any;
+}
 /** Interface for $gt/$lt/$gte/$lte range */
 export interface IAllQueary {
     $gt?: ASNDBS;
     $gte?: ASNDBS;
     $lt?: ASNDBS;
     $lte?: ASNDBS;
+    $ne?: any;
 }
 
 /** Interface for Node constructor options */
@@ -46,6 +55,7 @@ export interface INodeConstructor<T> {
     value?: ASNDBS;
     unique?: boolean;
     compareKeys?: any;
+    checkKeyEquality?: any;
     checkValueEquality?: any;
 }
 
@@ -57,6 +67,7 @@ export interface INode<T> {
     value: SNDBSA;
     unique: boolean;
     compareKeys: compareKeys;
+    checkKeyEquality: checkKeyEquality;
     checkValueEquality: checkValueEquality;
 
     returnThisNode(): this;
@@ -69,9 +80,10 @@ export interface INode<T> {
     checkAllNodesFullfillCondition<T>(test: any): void;
     checkNodeOrdering(): void;
     checkInternalPointers(): void;
-    getLowerBoundMatcher(query: IGreatQuery): getBoolFromKey;
-    getUpperBoundMatcher(query: ILessQueary): getBoolFromKey;
-    betweenBounds(query: IAllQueary, lbm: getLowerBoundsFn, ubm: getUpperBoundsFn): SNDBSA;
+    getLowerBoundMatcher(query: IGreatQuery): boolean;
+    getUpperBoundMatcher(query: ILessQueary): boolean;
+    getEqualityBounds(query: INEQuery): boolean;
+    query(query: IAllQueary): SNDBSA;
     search(key: ASNDBS): SNDBSA;
     executeOnEveryNode(fn: any): any;
 }
@@ -113,8 +125,15 @@ export abstract class Node<T> implements INode<T> {
      */
     public compareKeys: compareKeys;
     /**
-     * Default function only checks validity of number, string, and Date.
+     * Default function only checks key validity of number, string, and Date.
      * This function also only uses '===' for the comparison. Supply a
+     * custom function in the constructor to use properly with your data
+     * types.
+     */
+    public checkKeyEquality: checkKeyEquality;
+    /**
+     * Default function only checks value equality of number, string, and Date.
+     * THis function also only uses '===' for the comparison. Supply a
      * custom function in the constructor to use properly with your data
      * types.
      */
@@ -130,6 +149,7 @@ export abstract class Node<T> implements INode<T> {
         this.value = options.value ? [options.value] : [null];
         this.unique = options.unique || false;
         this.compareKeys = options.compareKeys || bTreeUtils.defaultCompareKeysFunction;
+        this.checkKeyEquality = options.checkKeyEquality || bTreeUtils.defaultCheckKeyEquality;
         this.checkValueEquality = options.checkValueEquality || bTreeUtils.defaultCheckValueEquality;
     }
 
@@ -289,28 +309,35 @@ export abstract class Node<T> implements INode<T> {
      * @param query Example query: { $gt: 3 } or { $gte: 5 }
      * @returns {any}
      */
-    public getLowerBoundMatcher(query: IGreatQuery): getBoolFromKey {
-        // No lower bound
+    public getLowerBoundMatcher(query: IGreatQuery): boolean {
+        // No lower bound, which means it matches the query
         if (!query.hasOwnProperty("$gt") && !query.hasOwnProperty("$gte")) {
-            return () => true;
+            return true;
         }
 
+        // don't crash just because user sent both options.
+        // Choose the highest number for the largest constraint.
         if (query.hasOwnProperty("$gt") && query.hasOwnProperty("$gte")) {
+            // $gte === $gt
             if (this.compareKeys(query.$gte, query.$gt) === 0) {
-                return (key: ASNDBS): boolean => this.compareKeys(key, query.$gt) > 0;
+                // true: key > $gt, false: key < $gt
+                return this.compareKeys(this.key, query.$gt) > 0;
             }
-
+            // if $gte > $gt else $gte < $gt, Return the greater $gt
             if (this.compareKeys(query.$gte, query.$gt) > 0) {
-                return (key: ASNDBS): boolean => this.compareKeys(key, query.$gte) >= 0;
+                // true: key > $gte, false: key < $gte
+                return this.compareKeys(this.key, query.$gte) >= 0;
             } else {
-                return (key: ASNDBS): boolean => this.compareKeys(key, query.$gt) > 0;
+                // true: key > $gt, false: key < $gt
+                return this.compareKeys(this.key, query.$gt) > 0;
             }
         }
 
+        // if the query made it this far it either has $gt or $gte
         if (query.hasOwnProperty("$gt")) {
-            return (key: ASNDBS): boolean => this.compareKeys(key, query.$gt) > 0;
-        } else {
-            return (key: ASNDBS): boolean => this.compareKeys(key, query.$gte) >= 0;
+            return this.compareKeys(this.key, query.$gt) > 0;
+        } else  {
+            return this.compareKeys(this.key, query.$gte) >= 0;
         }
     }
 
@@ -319,57 +346,93 @@ export abstract class Node<T> implements INode<T> {
      * @param query Example usage: { $lt: 3 } or { $lte: 4 }
      * @returns {any}
      */
-    public getUpperBoundMatcher(query: ILessQueary): getBoolFromKey {
-        // No lower bound
+    public getUpperBoundMatcher(query: ILessQueary): boolean {
+        // No lower bound, which means it matches the query
         if (!query.hasOwnProperty("$lt") && !query.hasOwnProperty("$lte")) {
-            return (): boolean => true;
+            return true;
         }
 
+        // don't crash just because user sent both options.
+        // Choose the highest number for the largest constraint
         if (query.hasOwnProperty("$lt") && query.hasOwnProperty("$lte")) {
+            // $lte === $lt
             if (this.compareKeys(query.$lte, query.$lt) === 0) {
-                return (key: ASNDBS): boolean => this.compareKeys(key, query.$lt) < 0;
+                // true: key < $lt, false: key > $lt
+                return this.compareKeys(this.key, query.$lt) < 0;
             }
-
+            // if $lte < $lt else $lte > $lt, Return the greater $lt
             if (this.compareKeys(query.$lte, query.$lt) < 0) {
-                return (key: ASNDBS): boolean => this.compareKeys(key, query.$lte) <= 0;
+                // true: key <= $lte, false: key > $lte
+                return this.compareKeys(this.key, query.$lte) <= 0;
             } else {
-                return (key: ASNDBS): boolean => this.compareKeys(key, query.$lt) < 0;
+                // true: key < $lt, false: key > $lt
+                return this.compareKeys(this.key, query.$lt) < 0;
             }
         }
 
+        // if the query made it this far it either has $lt or $lte
         if (query.hasOwnProperty("$lt")) {
-            return (key: ASNDBS): boolean => this.compareKeys(key, query.$lt) < 0;
-        } else {
-            return (key: ASNDBS): boolean => this.compareKeys(key, query.$lte) <= 0;
+            return this.compareKeys(this.key, query.$lt) < 0;
+        } else  {
+            return this.compareKeys(this.key, query.$lte) <= 0;
         }
     }
 
     /**
-     * Method for retrieving values based on key comparison of gt & lt
-     * @param query Example: { $gt: 1 , $lte: 3 }
-     * @param lbm Defaults to getLowerBounds but can be used with custom
-     * @param ubm Defaults to getUpperBounds but can be used with custom
+     * Check if this.key passes the equality check. A positive match will return false
+     * and a negative match will return true.
+     * @param query
+     * @returns {boolean}
+     */
+    public getEqualityBounds(query: INEQuery): boolean {
+        // No equality bounds, means it matches
+        if (!query.hasOwnProperty("$ne")) {
+            return true;
+        } else {
+            // true: key != $ne, false: key = $ne
+            return this.checkKeyEquality(this.key, query.$ne) === false;
+        }
+    }
+
+    /**
+     * Method for retrieving values based on key comparison of gt & lt & ne
+     * @param query Example: { $gt: 1 , $lte: 3, $ne: 2 }
      * @returns {any}
      */
-    public betweenBounds<T>(query: IAllQueary, lbm: getLowerBoundsFn, ubm: getUpperBoundsFn): SNDBSA {
+    public query(query: IAllQueary): SNDBSA {
         let res: SNDBSA = [];
 
         if (this.key === null) {
             return [];
         }
 
-        lbm = lbm || this.getLowerBoundMatcher(query);
-        ubm = ubm || this.getUpperBoundMatcher(query);
-
         if (this.key) {
-            if (lbm(this.key) && this.left) {
-                res = res.concat(this.left.betweenBounds<T>(query, lbm, ubm));
-            }
-            if (lbm(this.key) && ubm(this.key)) {
-                res = res.concat(this.value);
-            }
-            if (ubm(this.key) && this.right) {
-                res = res.concat(this.right.betweenBounds<T>(query, lbm, ubm));
+            if (!query.hasOwnProperty("$ne")) {
+                // If this Node has a left and the lbm was met check left child as well
+                if (this.getLowerBoundMatcher(query) && this.left) {
+                    res = res.concat(this.left.query(query));
+                }
+                // if this key matches the lbm and ubm then add the value
+                if (this.getLowerBoundMatcher(query) && this.getUpperBoundMatcher(query)) {
+                    res = res.concat(this.value);
+                }
+                // if this Node has a right and the lbm was meet check the right child as well
+                if (this.getUpperBoundMatcher(query) && this.right) {
+                    res = res.concat(this.right.query(query));
+                }
+            } else {
+                // If this Node has a left and the lower and equal bounds are met
+                if ( this.getLowerBoundMatcher(query) && this.left) {
+                    res = res.concat(this.left.query(query));
+                }
+                // If this key matches the lower bounds, the upper bounds, and the not equal bounds
+                if ( this.getLowerBoundMatcher(query) && this.getUpperBoundMatcher(query) && this.getEqualityBounds(query)) {
+                    res = res.concat(this.value);
+                }
+                // If this Node has a right and the  upper, and equal bounds are met.
+                if ( this.getUpperBoundMatcher(query) && this.right) {
+                    res = res.concat(this.right.query(query));
+                }
             }
         }
 
@@ -379,7 +442,7 @@ export abstract class Node<T> implements INode<T> {
     /**
      * Search for the key and return the value;
      * @param key
-     * @returns {any}
+     * @returns {any} - they value
      */
     public search(key: ASNDBS): SNDBSA {
         if (this.key === null) {
