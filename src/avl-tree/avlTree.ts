@@ -6,6 +6,7 @@ export interface IAVLTree {
 
     insert(key: ASNDBS, value: ASNDBS): void;
     delete(key: ASNDBS, value: ASNDBS): void;
+    updateKey(key: ASNDBS, value: ASNDBS): void;
 }
 
 /**
@@ -49,6 +50,14 @@ export class AVLTree extends AVLNode implements IAVLTree {
         const newTree: AVLNode = this.tree._delete(key, value);
 
         // if newTree is undefined, that means its structure was not modified
+        if (newTree) {
+            this.tree = newTree;
+        }
+    }
+
+    public updateKey(key: ASNDBS, value: ASNDBS): void {
+        const newTree: AVLNode = this.tree._updateKey(key, value);
+
         if (newTree) {
             this.tree = newTree;
         }

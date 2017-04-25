@@ -11,17 +11,10 @@ export interface IAVLNode {
     createSimilar(options: INodeConstructor<AVLNode>): AVLNode;
     createLeftChild(options: INodeConstructor<AVLNode>): AVLNode;
     createRightChild(options: INodeConstructor<AVLNode>): AVLNode;
-    checkHeightCorrect(): void;
-    balanceFactor(): number;
-    checkBalanceFactors(): void;
     checkisAVLT(): void;
-    rightRotation(): AVLNode;
-    leftRotation(): AVLNode;
-    rightTooSmall(): AVLNode;
-    leftTooSmall(): AVLNode;
-    rebalanceAlongPath(path: AVLNode[]): AVLNode;
     _insert(key: ASNDBS, value: ASNDBS): void;
     _delete(key: ASNDBS, value: ASNDBS): AVLNode;
+    _updateKey(key: ASNDBS, value: ASNDBS): AVLNode;
 }
 
 /**
@@ -102,69 +95,6 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
     }
 
     /**
-     * Check the recorded height for this AVL Node and all children.
-     * Throws an error if one height does not match.
-     */
-    public checkHeightCorrect(): void {
-        let leftH: number;
-        let rightH: number;
-
-        if (this.key === null) {
-            return;
-        }
-
-        if (this.left && this.left.height === undefined) {
-            throw new Error(`Undefined height for basic-node ${this.left.key}`);
-        }
-        if (this.right && this.right.height === undefined) {
-            throw new Error(`Undefined height for basic-node ${this.right.key}`);
-        }
-        if (this.height === undefined) {
-            throw new Error(`Undefined height for basic-node ${this.key}`);
-        }
-
-        leftH = this.left ? this.left.height : 0;
-        rightH = this.right ? this.right.height : 0;
-
-        if (this.height !== 1 + Math.max(leftH, rightH)) {
-            throw new Error(`Height constraint failed for basic-node ${this.key}`);
-        }
-        if (this.left) {
-            this.left.checkHeightCorrect();
-        }
-        if (this.right) {
-            this.right.checkHeightCorrect();
-        }
-    }
-
-    /**
-     * Returns the balance factor.
-     * @returns {number}
-     */
-    public balanceFactor(): number {
-        const leftH: number = this.left ? this.left.height : 0;
-        const rightH: number = this.right ? this.right.height : 0;
-
-        return leftH - rightH;
-    }
-
-    /**
-     * Check that the balance factors are between -1 and 1. Otherwise throw an error.
-     */
-    public checkBalanceFactors(): void {
-        if (Math.abs(this.balanceFactor()) > 1) {
-            throw new Error(`Tree is unbalanced at basic-node ${this.key}`);
-        }
-
-        if (this.left) {
-            this.left.checkBalanceFactors();
-        }
-        if (this.right) {
-            this.right.checkBalanceFactors();
-        }
-    }
-
-    /**
      * Calls upon super to check that all basic Node validation is met, along
      * with also checking the balance and height correctness of the AVL Node.
      */
@@ -172,184 +102,6 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         super.checkIsNode();
         this.checkHeightCorrect();
         this.checkBalanceFactors();
-    }
-
-    /**
-     * Perform a right rotation of the tree if possible
-     * and return the root of the resulting tree
-     * The resulting tree's nodes' heights are also updated
-     * @returns {AVLNode}
-     */
-    public rightRotation(): AVLNode {
-        const p = this.left;
-        let b;
-        let ah;
-        let bh;
-        let ch;
-
-        // No change
-        if (!p) {
-            return this;
-        }
-
-        b = p.right;
-
-        // Alter tree structure
-        if (this.parent) {
-            p.parent = this.parent;
-            if (this.parent.left === this) {
-                this.parent.left = p;
-            } else {
-                this.parent.right = p;
-            }
-        } else {
-            p.parent = null;
-        }
-        p.right = this;
-        this.parent = p;
-        this.left = b;
-        if (b) {
-            b.parent = this;
-        }
-
-        // Update heights
-        ah = p.left ? p.left.height : 0;
-        bh = b ? b.height : 0;
-        ch = this.right ? this.right.height : 0;
-        this.height = Math.max(bh, ch) + 1;
-        p.height = Math.max(ah, this.height) + 1;
-
-        return p;
-    }
-
-    /**
-     * Perform a left rotation of the tree if possible
-     * and return the root of the resulting tree
-     * The resulting tree's nodes' heights are also updated
-     * @returns {AVLNode}
-     */
-    public leftRotation(): AVLNode {
-        const q = this.right;
-        let b;
-        let ah;
-        let bh;
-        let ch;
-
-        // No Change
-        if (!q) {
-            return this;
-        }
-
-        b = q.left;
-
-        // Alter tree structure
-        if (this.parent) {
-            q.parent = this.parent;
-            if (this.parent.left === this) {
-                this.parent.left = q;
-            } else {
-                this.parent.right = q;
-            }
-        } else {
-            q.parent = null;
-        }
-        q.left = this;
-        this.parent = q;
-        this.right = b;
-        if (b) {
-            b.parent = this;
-        }
-
-        // Update heights
-        ah = this.left ? this.left.height : 0;
-        bh = b ? b.height : 0;
-        ch = q.right ? q.right.height : 0;
-        this.height = Math.max(ah, bh) + 1;
-        q.height = Math.max(ch, this.height) + 1;
-
-        return q;
-    }
-
-    /**
-     * Modify the tree if its right subtree is too small compared to the left.
-     * Return the new root if any.
-     * @returns {AVLNode}
-     */
-    public rightTooSmall(): AVLNode {
-        // Right is not too small, don't change
-        if (this.balanceFactor() <= 1) {
-            return this;
-        }
-        if (this.left) {
-            if (this.left.balanceFactor() < 0) {
-                this.left.leftRotation();
-            }
-        }
-
-        return this.rightRotation();
-    }
-
-    /**
-     * Modify the tree if its left subtree is too small compared to the right.
-     * Return the new root if any.
-     * @returns {AVLNode}
-     */
-    public leftTooSmall(): AVLNode {
-        // Left is not too small, don't change
-        if (this.balanceFactor() >= -1) {
-            return this;
-        }
-
-        if (this.right) {
-            if (this.right.balanceFactor() > 0) {
-                this.right.rightRotation();
-            }
-        }
-
-        return this.leftRotation();
-    }
-
-    /**
-     * Re-balance the tree along the given path. The path is given reversed (as he was calculated
-     * in the insert and delete functions).
-     * Returns the new root of the tree
-     * Of course, the first element of the path must be the root of the tree
-     * @param path
-     * @returns {AVLNode}
-     */
-    public rebalanceAlongPath(path: AVLNode[]): AVLNode {
-        let newRoot: AVLNode = this;
-        let rotated;
-
-        if (this.key === null) {
-            delete this.height;
-            return this;
-        }
-
-        // Re-balance the tree and update all heights
-        for (let i = path.length - 1; i >= 0; i -= 1) {
-            const selfOfLoop = path[i];
-            const arg1 = selfOfLoop.left ? selfOfLoop.left.height : 0;
-            const arg2 = selfOfLoop.right ? selfOfLoop.right.height : 0;
-            const hHeight = Math.max(arg1, arg2);
-            selfOfLoop.height = 1 + hHeight;
-
-            if (selfOfLoop.balanceFactor() > 1) {
-                rotated = selfOfLoop.rightTooSmall();
-                if (i === 0) {
-                    newRoot = rotated;
-                }
-            }
-
-            if (selfOfLoop.balanceFactor() < -1) {
-                rotated = selfOfLoop.leftTooSmall();
-                if (i === 0) {
-                    newRoot = rotated;
-                }
-            }
-        }
-
-        return newRoot;
     }
 
     /**
@@ -555,5 +307,263 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         if (replaceWith.left) { replaceWith.left.parent = replaceWith.parent; }
 
         return this.rebalanceAlongPath(deletePath);
+    }
+
+    public _updateKey(key: ASNDBS, value: ASNDBS): AVLNode {
+        const updatePath: AVLNode[] = [];
+        let replaceWith: AVLNode|null;
+        let currentNode: AVLNode = this;
+
+        // Empty tree
+        if (this.key === null) {
+            return this;
+        }
+
+        while (true) {
+            if (currentNode.compareKeys(currentNode.key, key) === 0) {
+                if ()
+            }
+        }
+    }
+
+    /**
+     * Re-balance the tree along the given path. The path is given reversed (as he was calculated
+     * in the insert and delete functions).
+     * Returns the new root of the tree
+     * Of course, the first element of the path must be the root of the tree
+     * @param path
+     * @returns {AVLNode}
+     */
+    protected rebalanceAlongPath(path: AVLNode[]): AVLNode {
+        let newRoot: AVLNode = this;
+        let rotated;
+
+        if (this.key === null) {
+            delete this.height;
+            return this;
+        }
+
+        // Re-balance the tree and update all heights
+        for (let i = path.length - 1; i >= 0; i -= 1) {
+            const selfOfLoop = path[i];
+            const arg1 = selfOfLoop.left ? selfOfLoop.left.height : 0;
+            const arg2 = selfOfLoop.right ? selfOfLoop.right.height : 0;
+            const hHeight = Math.max(arg1, arg2);
+            selfOfLoop.height = 1 + hHeight;
+
+            if (selfOfLoop.balanceFactor() > 1) {
+                rotated = selfOfLoop.rightTooSmall();
+                if (i === 0) {
+                    newRoot = rotated;
+                }
+            }
+
+            if (selfOfLoop.balanceFactor() < -1) {
+                rotated = selfOfLoop.leftTooSmall();
+                if (i === 0) {
+                    newRoot = rotated;
+                }
+            }
+        }
+
+        return newRoot;
+    }
+
+    /**
+     * Check the recorded height for this AVL Node and all children.
+     * Throws an error if one height does not match.
+     */
+    protected checkHeightCorrect(): void {
+        let leftH: number;
+        let rightH: number;
+
+        if (this.key === null) {
+            return;
+        }
+
+        if (this.left && this.left.height === undefined) {
+            throw new Error(`Undefined height for basic-node ${this.left.key}`);
+        }
+        if (this.right && this.right.height === undefined) {
+            throw new Error(`Undefined height for basic-node ${this.right.key}`);
+        }
+        if (this.height === undefined) {
+            throw new Error(`Undefined height for basic-node ${this.key}`);
+        }
+
+        leftH = this.left ? this.left.height : 0;
+        rightH = this.right ? this.right.height : 0;
+
+        if (this.height !== 1 + Math.max(leftH, rightH)) {
+            throw new Error(`Height constraint failed for basic-node ${this.key}`);
+        }
+        if (this.left) {
+            this.left.checkHeightCorrect();
+        }
+        if (this.right) {
+            this.right.checkHeightCorrect();
+        }
+    }
+
+    /**
+     * Returns the balance factor.
+     * @returns {number}
+     */
+    protected balanceFactor(): number {
+        const leftH: number = this.left ? this.left.height : 0;
+        const rightH: number = this.right ? this.right.height : 0;
+
+        return leftH - rightH;
+    }
+
+    /**
+     * Check that the balance factors are between -1 and 1. Otherwise throw an error.
+     */
+    protected checkBalanceFactors(): void {
+        if (Math.abs(this.balanceFactor()) > 1) {
+            throw new Error(`Tree is unbalanced at basic-node ${this.key}`);
+        }
+
+        if (this.left) {
+            this.left.checkBalanceFactors();
+        }
+        if (this.right) {
+            this.right.checkBalanceFactors();
+        }
+    }
+
+    /**
+     * Perform a right rotation of the tree if possible
+     * and return the root of the resulting tree
+     * The resulting tree's nodes' heights are also updated
+     * @returns {AVLNode}
+     */
+    protected rightRotation(): AVLNode {
+        const p = this.left;
+        let b;
+        let ah;
+        let bh;
+        let ch;
+
+        // No change
+        if (!p) {
+            return this;
+        }
+
+        b = p.right;
+
+        // Alter tree structure
+        if (this.parent) {
+            p.parent = this.parent;
+            if (this.parent.left === this) {
+                this.parent.left = p;
+            } else {
+                this.parent.right = p;
+            }
+        } else {
+            p.parent = null;
+        }
+        p.right = this;
+        this.parent = p;
+        this.left = b;
+        if (b) {
+            b.parent = this;
+        }
+
+        // Update heights
+        ah = p.left ? p.left.height : 0;
+        bh = b ? b.height : 0;
+        ch = this.right ? this.right.height : 0;
+        this.height = Math.max(bh, ch) + 1;
+        p.height = Math.max(ah, this.height) + 1;
+
+        return p;
+    }
+
+    /**
+     * Perform a left rotation of the tree if possible
+     * and return the root of the resulting tree
+     * The resulting tree's nodes' heights are also updated
+     * @returns {AVLNode}
+     */
+    protected leftRotation(): AVLNode {
+        const q = this.right;
+        let b;
+        let ah;
+        let bh;
+        let ch;
+
+        // No Change
+        if (!q) {
+            return this;
+        }
+
+        b = q.left;
+
+        // Alter tree structure
+        if (this.parent) {
+            q.parent = this.parent;
+            if (this.parent.left === this) {
+                this.parent.left = q;
+            } else {
+                this.parent.right = q;
+            }
+        } else {
+            q.parent = null;
+        }
+        q.left = this;
+        this.parent = q;
+        this.right = b;
+        if (b) {
+            b.parent = this;
+        }
+
+        // Update heights
+        ah = this.left ? this.left.height : 0;
+        bh = b ? b.height : 0;
+        ch = q.right ? q.right.height : 0;
+        this.height = Math.max(ah, bh) + 1;
+        q.height = Math.max(ch, this.height) + 1;
+
+        return q;
+    }
+
+    /**
+     * Modify the tree if its right subtree is too small compared to the left.
+     * Return the new root if any.
+     * @returns {AVLNode}
+     */
+    protected rightTooSmall(): AVLNode {
+        // Right is not too small, don't change
+        if (this.balanceFactor() <= 1) {
+            return this;
+        }
+        if (this.left) {
+            if (this.left.balanceFactor() < 0) {
+                this.left.leftRotation();
+            }
+        }
+
+        return this.rightRotation();
+    }
+
+    /**
+     * Modify the tree if its left subtree is too small compared to the right.
+     * Return the new root if any.
+     * @returns {AVLNode}
+     */
+    protected leftTooSmall(): AVLNode {
+        // Left is not too small, don't change
+        if (this.balanceFactor() >= -1) {
+            return this;
+        }
+
+        if (this.right) {
+            if (this.right.balanceFactor() > 0) {
+                this.right.rightRotation();
+            }
+        }
+
+        return this.leftRotation();
     }
 }
