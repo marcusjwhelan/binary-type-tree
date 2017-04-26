@@ -74,8 +74,8 @@
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_btreeutils_.html#defaultcheckkeyequality" class="tsd-kind-icon">default<wbr>Check<wbr>Key<wbr>Equality</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_btreeutils_.html#defaultcheckvalueequality" class="tsd-kind-icon">default<wbr>Check<wbr>Value<wbr>Equality</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_btreeutils_.html#defaultcomparekeysfunction" class="tsd-kind-icon">default<wbr>Compare<wbr>Keys<wbr>Function</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_btreeutils_.html#defaultcomparevalues" class="tsd-kind-icon">default<wbr>Compare<wbr>Values</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_btreeutils_.html#getrandomarray" class="tsd-kind-icon">get<wbr>Random<wbr>Array</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_btreeutils_.html#randomchararray" class="tsd-kind-icon">random<wbr>Char<wbr>Array</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_btreeutils_.html#shufflenumbersarray" class="tsd-kind-icon">shuffle<wbr>Numbers<wbr>Array</a></li>
 							</ul>
 						</section>
@@ -94,7 +94,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/6e0f822/src/bTreeUtils.ts#L62">bTreeUtils.ts:62</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/4bd16f0/src/bTreeUtils.ts#L92">bTreeUtils.ts:92</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -125,9 +125,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/6e0f822/src/bTreeUtils.ts#L66">bTreeUtils.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/4bd16f0/src/bTreeUtils.ts#L102">bTreeUtils.ts:102</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check whether to values are equal</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -151,7 +156,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/6e0f822/src/bTreeUtils.ts#L44">bTreeUtils.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/4bd16f0/src/bTreeUtils.ts#L44">bTreeUtils.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -177,6 +182,41 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="defaultcomparevalues" class="tsd-anchor"></a>
+					<h3>default<wbr>Compare<wbr>Values</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">default<wbr>Compare<wbr>Values<span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span>, b<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/4bd16f0/src/bTreeUtils.ts#L66">bTreeUtils.ts:66</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Default compareValues function</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>a: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>b: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>if a &lt; b then return -1
+								if a &gt; b then return 1
+								if a === b then return 0
+							else throw could not compare error.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
 					<a name="getrandomarray" class="tsd-anchor"></a>
 					<h3>get<wbr>Random<wbr>Array</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
@@ -186,7 +226,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/6e0f822/src/bTreeUtils.ts#L26">bTreeUtils.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/4bd16f0/src/bTreeUtils.ts#L26">bTreeUtils.ts:26</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -205,36 +245,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="randomchararray" class="tsd-anchor"></a>
-					<h3>random<wbr>Char<wbr>Array</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">random<wbr>Char<wbr>Array<span class="tsd-signature-symbol">(</span>str<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/6e0f822/src/bTreeUtils.ts#L77">bTreeUtils.ts:77</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Create an array with every combination of string letters.
-										max character string of 16. After 16 character string the
-									increase in size begins to degrees and then degrades.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>str: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
 					<a name="shufflenumbersarray" class="tsd-anchor"></a>
 					<h3>shuffle<wbr>Numbers<wbr>Array</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
@@ -244,7 +254,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/6e0f822/src/bTreeUtils.ts#L6">bTreeUtils.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/marcusjwhelan/binary-type-tree/blob/4bd16f0/src/bTreeUtils.ts#L6">bTreeUtils.ts:6</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -296,10 +306,10 @@
 						<a href="_btreeutils_.html#defaultcomparekeysfunction" class="tsd-kind-icon">default<wbr>Compare<wbr>Keys<wbr>Function</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_btreeutils_.html#getrandomarray" class="tsd-kind-icon">get<wbr>Random<wbr>Array</a>
+						<a href="_btreeutils_.html#defaultcomparevalues" class="tsd-kind-icon">default<wbr>Compare<wbr>Values</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_btreeutils_.html#randomchararray" class="tsd-kind-icon">random<wbr>Char<wbr>Array</a>
+						<a href="_btreeutils_.html#getrandomarray" class="tsd-kind-icon">get<wbr>Random<wbr>Array</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_btreeutils_.html#shufflenumbersarray" class="tsd-kind-icon">shuffle<wbr>Numbers<wbr>Array</a>

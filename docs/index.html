@@ -76,6 +76,12 @@
 					of AVLNodes. AVLNode is simply an extension of the base Node class which I hope to build on for more
 				self balancing trees. AVL is simply the first choice. </p>
 				<h2 id="table-of-contents">Table of Contents</h2>
+				<ul>
+					<li><a href="#creating-an-avl-tree">Creating an AVL Tree</a></li>
+					<li><a href="#inserting-and-deleting-into-the-avl-tree">Inserting and deleting into the AVL Tree</a></li>
+					<li><a href="#querying-the-avl-tree">Querying the AVL Tree</a></li>
+					<li><a href="#avl-tree-extra-functionality">AVL tree extra functionality </a></li>
+				</ul>
 				<h2 id="creating-an-avl-tree">Creating an AVL Tree</h2>
 				<p>Before you create a tree you will want to consider how your keys and values will be structured. All values
 					are stored as an array even only one element. The key can be many different types but cannot be an <code>object</code>.
@@ -101,18 +107,18 @@
 				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { AVLTree } <span class="hljs-keyword">from</span> <span class="hljs-string">"binary-type-tree"</span>;
 
 <span class="hljs-comment">// This will create a tree with unique false, key/value null and default fns</span>
-<span class="hljs-keyword">let</span> TestTree = <span class="hljs-keyword">new</span> AVLTree({}); 
+<span class="hljs-keyword">let</span> TestTree: AVLTree = <span class="hljs-keyword">new</span> AVLTree({}); 
 
 <span class="hljs-comment">// I think this would be the best use of the tree.</span>
-<span class="hljs-keyword">let</span> TestUTree = <span class="hljs-keyword">new</span> AVLTree({unique: <span class="hljs-literal">true</span>});
+<span class="hljs-keyword">let</span> TestUTree: AVLTree = <span class="hljs-keyword">new</span> AVLTree({unique: <span class="hljs-literal">true</span>});
 </code></pre>
 				<h2 id="inserting-and-deleting-into-the-avl-tree">Inserting and deleting into the AVL Tree</h2>
 				<p>Inserting and deleting is very easy and re-balances after during both and returns the re-balanced tree. </p>
-				<pre><code class="lang-typescript">TestUTree.insert(<span class="hljs-number">123</span>,<span class="hljs-string">"abc"</span>); <span class="hljs-comment">// this is a unique tree</span>
-TestUTree.insert(<span class="hljs-number">123</span>,<span class="hljs-string">"abc"</span>); <span class="hljs-comment">// Throws error</span>
-TestUTree.insert(<span class="hljs-number">456</span>,<span class="hljs-string">"efg"</span>); <span class="hljs-comment">// no error</span>
+				<pre><code class="lang-typescript">TestUTree.insert(<span class="hljs-number">123</span>, [<span class="hljs-string">"abc"</span>]); <span class="hljs-comment">// this is a unique tree</span>
+TestUTree.insert(<span class="hljs-number">123</span>, [<span class="hljs-string">"abc"</span>]); <span class="hljs-comment">// Throws error</span>
+TestUTree.insert(<span class="hljs-number">456</span>, [<span class="hljs-string">"efg"</span>]); <span class="hljs-comment">// no error</span>
 
-TestUTree.delete(<span class="hljs-number">456</span>,<span class="hljs-string">"efg"</span>); <span class="hljs-comment">// true.</span>
+TestUTree.delete(<span class="hljs-number">456</span>, [<span class="hljs-string">"efg"</span>]); <span class="hljs-comment">// true.</span>
 <span class="hljs-comment">// if there is not key that matches it will simply return the unchanged tree.</span>
 </code></pre>
 				<h2 id="querying-the-avl-tree">Querying the AVL Tree</h2>
@@ -133,12 +139,15 @@ TestUTree.delete(<span class="hljs-number">456</span>,<span class="hljs-string">
 <span class="hljs-comment">//</span>
 <span class="hljs-keyword">let</span> avlTree: BTT.AVLTree = <span class="hljs-keyword">new</span> BTT.AVLTree({unique: <span class="hljs-literal">true</span>}); 
 <span class="hljs-comment">// Lets avlTree tree has keys 0-100 with values 100-0</span>
-<span class="hljs-comment">// I want all the values greater than or equal 90</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// I want all the keys greater than or equal 90</span>
 <span class="hljs-keyword">let</span> nintyUp: BTT.SNDBSA = avlTree.tree.query({$gte: <span class="hljs-number">90</span>});
-<span class="hljs-comment">// nintyUp will have an array of values [10..0] </span>
-<span class="hljs-comment">// If I want to get values greather then 50 but less than 60 but not 55</span>
+<span class="hljs-comment">// nintyUp will have an array of values from [10..0] </span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// If I want to get values greater then 50 but less than 60 but not 55</span>
 <span class="hljs-keyword">let</span> fullQuery: BTT.SNDBSA = avlTree.tree.query({$gte: <span class="hljs-number">50</span>, $lte: <span class="hljs-number">60</span>, $ne: <span class="hljs-number">55</span>});
 <span class="hljs-comment">// fullQuery = [50,51,52,53,54,56,57,58,59,60]; </span>
+<span class="hljs-comment">//</span>
 <span class="hljs-comment">// You could supply a new checkKeyEquality to check for arrays</span>
 <span class="hljs-comment">// so you could possibly have </span>
 <span class="hljs-keyword">let</span> exampleQ: BTT.SNDBSA = avlTree.tree.query({$ne: [..<span class="hljs-number">.90</span>]});
@@ -156,17 +165,42 @@ TestUTree.delete(<span class="hljs-number">456</span>,<span class="hljs-string">
 <span class="hljs-comment">// If you would like to check the AVLTree for validity</span>
 avlTree.tree.checkisAVLT(); <span class="hljs-comment">// throw error if pointers fail, wrong ordering. and AVL height restrictions. or if not root node.</span>
 </code></pre>
+				<h2 id="key-update-on-avl-tree">Key update on AVL Tree</h2>
+				<p>If you would like to update a key you can with this new method. With unique trees the
+					method will throw an error if the attempt to update a key to an existing key is
+					made. Updates do not upsert, the method will simply return a non modified tree if
+					the key to be update is not found. For non unique trees if the values are simply
+					moved from one node to the node matching the <code>newKey</code> argument. If the <code>newKey</code> does
+					not match anykeys on the tree then a new one is created and the old node is removed.
+				For unique keys this also happens when there is no match for the <code>newKey</code>. </p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> AVL = <span class="hljs-keyword">new</span> AVLTree({});
+<span class="hljs-keyword">const</span> AVLU = <span class="hljs-keyword">new</span> AVLTree({unique: <span class="hljs-literal">true</span>});
+
+AVLU.insert(<span class="hljs-number">123</span>, [<span class="hljs-number">45</span>]);
+AVLU.insert(<span class="hljs-number">13</span>, [<span class="hljs-number">56</span>]);
+AVLU.updateKey(<span class="hljs-number">123</span>, <span class="hljs-number">133</span>); <span class="hljs-comment">// node 123 will be removed and 133 will be created</span>
+AVLU.updateKey(<span class="hljs-number">13</span>, <span class="hljs-number">133</span>); <span class="hljs-comment">// no change, newKey exists. Error is thrown. </span>
+
+AVL.insert(<span class="hljs-number">1</span>, [<span class="hljs-number">1</span>]);
+AVL.insert(<span class="hljs-number">1</span>, [<span class="hljs-number">2</span>]); <span class="hljs-comment">// node with key 1 now has value [1,2];</span>
+AVL.insert(<span class="hljs-number">2</span>, [<span class="hljs-number">3</span>]);
+AVL.updateKey(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">// node with key 2 now has value [1,2,3];</span>
+</code></pre>
 				<h1 id="avl-tree-extra-functionality">AVL tree extra functionality</h1>
 				<p>If you would like to write a custom function to execute on every AVLNode then you can use the <code>executeOnEveryNode</code> method, it takes a type of <code>any</code> but and returns. Best used by supplying a reference to a function.</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> keys = [];
-<span class="hljs-keyword">let</span> executed = <span class="hljs-number">0</span>;
+				<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> keys: BTT.ASNDBS = [];
+<span class="hljs-keyword">let</span> executed: <span class="hljs-built_in">number</span> = <span class="hljs-number">0</span>;
 avlTree.tree.executeOnEveryNode(<span class="hljs-function">(<span class="hljs-params">node</span>) =&gt;</span> {
     keys.push(node.key);
     executed += <span class="hljs-number">1</span>;
 });
 </code></pre>
-				<p>If you would like to create a new tree with similar options to another tree without key or value there is a method to do so.</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> similarTree = avlTree.tree.createSimilar({});
+				<p>If you would like to create a AVLNode with similar options to another tree without a key or value there is a method to do so.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> similarNode: BTT.AVLNode = avlTree.tree.createSimilar({});
+</code></pre>
+				<p>There is also a method available to retrieve the node holding a key. </p>
+				<pre><code class="lang-typescript"><span class="hljs-comment">// returns null if node is not found.</span>
+<span class="hljs-keyword">const</span> queryNode: BTT.AVLNode|<span class="hljs-literal">null</span> = avlTree.tree.getAVLNodeFromKey(<span class="hljs-number">123</span>);
 </code></pre>
 			</div>
 		</div>

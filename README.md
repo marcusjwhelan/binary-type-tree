@@ -64,11 +64,11 @@ let TestUTree: AVLTree = new AVLTree({unique: true});
 Inserting and deleting is very easy and re-balances after during both and returns the re-balanced tree. 
 
 ```typescript
-TestUTree.insert(123,"abc"); // this is a unique tree
-TestUTree.insert(123,"abc"); // Throws error
-TestUTree.insert(456,"efg"); // no error
+TestUTree.insert(123, ["abc"]); // this is a unique tree
+TestUTree.insert(123, ["abc"]); // Throws error
+TestUTree.insert(456, ["efg"]); // no error
 
-TestUTree.delete(456,"efg"); // true.
+TestUTree.delete(456, ["efg"]); // true.
 // if there is not key that matches it will simply return the unchanged tree.
 
 ```
@@ -121,6 +121,31 @@ let minAVLNode: BTT.AVLNode = avlTree.tree.getMinKeyDescendant();
 avlTree.tree.checkisAVLT(); // throw error if pointers fail, wrong ordering. and AVL height restrictions. or if not root node.
 ```
 
+## Key update on AVL Tree
+
+If you would like to update a key you can with this new method. With unique trees the
+method will throw an error if the attempt to update a key to an existing key is
+made. Updates do not upsert, the method will simply return a non modified tree if
+the key to be update is not found. For non unique trees if the values are simply 
+moved from one node to the node matching the `newKey` argument. If the `newKey` does 
+not match anykeys on the tree then a new one is created and the old node is removed.
+For unique keys this also happens when there is no match for the `newKey`. 
+
+```typescript
+const AVL = new AVLTree({});
+const AVLU = new AVLTree({unique: true});
+
+AVLU.insert(123, [45]);
+AVLU.insert(13, [56]);
+AVLU.updateKey(123, 133); // node 123 will be removed and 133 will be created
+AVLU.updateKey(13, 133); // no change, newKey exists. Error is thrown. 
+
+AVL.insert(1, [1]);
+AVL.insert(1, [2]); // node with key 1 now has value [1,2];
+AVL.insert(2, [3]);
+AVL.updateKey(1, 2); // node with key 2 now has value [1,2,3];
+```
+
 # AVL tree extra functionality 
  
 If you would like to write a custom function to execute on every AVLNode then you can use the `executeOnEveryNode` method, it takes a type of `any` but and returns. Best used by supplying a reference to a function.
@@ -138,4 +163,11 @@ If you would like to create a AVLNode with similar options to another tree witho
 
 ```typescript
 const similarNode: BTT.AVLNode = avlTree.tree.createSimilar({});
+```
+
+There is also a method available to retrieve the node holding a key. 
+
+```typescript
+// returns null if node is not found.
+const queryNode: BTT.AVLNode|null = avlTree.tree.getAVLNodeFromKey(123); 
 ```
