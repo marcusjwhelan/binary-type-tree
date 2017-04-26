@@ -12,9 +12,10 @@ export interface IAVLNode {
     createLeftChild(options: INodeConstructor<AVLNode>): AVLNode;
     createRightChild(options: INodeConstructor<AVLNode>): AVLNode;
     checkisAVLT(): void;
-    _insert(key: ASNDBS, value: ASNDBS): void;
-    _delete(key: ASNDBS, value: ASNDBS): AVLNode;
-    _updateKey(key: ASNDBS, value: ASNDBS): AVLNode;
+    getAVLNodeFromKey(key: ASNDBS): AVLNode|null;
+    _insert(key: ASNDBS, value: SNDBSA): void;
+    _delete(key: ASNDBS, value: SNDBSA): AVLNode;
+    _updateKey(key: ASNDBS, newKey: ASNDBS): AVLNode;
 }
 
 /**
@@ -105,6 +106,32 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
     }
 
     /**
+     * Retrieve a specific Node.
+     * @param key
+     * @returns {any}
+     */
+    public getAVLNodeFromKey(key: ASNDBS): AVLNode|null {
+        let currentNode: AVLNode = this;
+        while (true) {
+            if (currentNode.compareKeys(key, currentNode.key) === 0) {
+                return currentNode;
+            } else if (currentNode.compareKeys(key, currentNode.key) < 0) {
+                if (currentNode.left) {
+                    currentNode = currentNode.left;
+                } else {
+                    return null;
+                }
+            } else {
+                if (currentNode.right) {
+                    currentNode = currentNode.right;
+                } else {
+                    return null;
+                }
+            }
+        }
+    }
+
+    /**
      * Insert a key, value pair in the tree while maintaining the AVL tree height constraint
      * Return a pointer to the root node, which may have changed
      * @param key
@@ -112,14 +139,14 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
      * @returns {AVLNode}
      * @private
      */
-    public _insert(key: ASNDBS, value: ASNDBS): AVLNode {
+    public _insert(key: ASNDBS, value: SNDBSA): AVLNode {
         const insertPath: AVLNode[] = [];
         let currentNode: AVLNode = this;
 
         // Empty tree, insert as root
         if (this.key === null) {
              this.key = key;
-             this.value = [value];
+             this.value = value;
              this.height = 1;
              return this;
          }
@@ -131,7 +158,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
                 if (currentNode.unique) {
                     throw new Error(`Can't insert key ${key}, it violates the unique constraint: TYPE: uniqueViolated`);
                 } else {
-                    currentNode.value.push(value);
+                    currentNode.value = currentNode.value.concat(value);
                 }
                 return this;
             }
@@ -161,11 +188,11 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
     /**
      * Delete a key or just a value and return the new root of the tree
      * @param key
-     * @param value
+     * @param value - Need to send the value as an array for comparison.
      * @returns {any}
      * @private
      */
-    public _delete(key: ASNDBS, value: ASNDBS): AVLNode {
+    public _delete(key: ASNDBS, value: SNDBSA): AVLNode {
         const deletePath: AVLNode[] = [];
         const newData: SNDBSA = [];
         let replaceWith: AVLNode|null;
@@ -187,28 +214,32 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
 
             deletePath.push(currentNode);
 
+            // Is less go left
             if (currentNode.compareKeys(key, currentNode.key) < 0) {
                 if (currentNode.left) {
                     currentNode = currentNode.left;
                 } else {
-                    return this;   // Key not found, no modification
+                    return this;   // node not found, no modification
                 }
-            } else {
-                // currentNode.compareKeys(key, currentNode.key) is > 0
+            } else { // Is greater go right
                 if (currentNode.right) {
                     currentNode = currentNode.right;
                 } else {
-                    return this;   // Key not found, no modification
+                    return this;   // node not found, no modification
                 }
             }
         }
 
-        // Delete only a value (no tree modification)
-        if (currentNode.value.length > 1 && value !== undefined) {
-            currentNode.value.forEach((d: ASNDBS) => {
-                if (!currentNode.checkValueEquality(d, value)) {
-                    newData.push(d);
-                }
+        // Delete only values (no tree modification)
+        if (currentNode.value.length > 1 && value.length > 0) {
+            currentNode.value.forEach((cV) => {
+                value.forEach((v) => {
+                    if (!currentNode.checkValueEquality(cV, v)) {
+                        if (newData.indexOf(cV) === -1) {
+                            newData.push(cV);
+                        }
+                    }
+                });
             });
             currentNode.value = newData;
             return this;
@@ -309,9 +340,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         return this.rebalanceAlongPath(deletePath);
     }
 
-    public _updateKey(key: ASNDBS, value: ASNDBS): AVLNode {
-        const updatePath: AVLNode[] = [];
-        let replaceWith: AVLNode|null;
+    public _updateKey(key: ASNDBS, newKey: ASNDBS): AVLNode {
         let currentNode: AVLNode = this;
 
         // Empty tree
@@ -319,16 +348,69 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
             return this;
         }
 
-        while (true) {
-            if (currentNode.compareKeys(currentNode.key, key) === 0) {
-                if ()
+        // Cannot insert newKey that matches a another on a unique tree.
+        if (currentNode.compareKeys(currentNode.key, newKey) === 0) {
+            if (currentNode.unique) {
+                throw new Error(`Can't insert key ${newKey}, it violates the unique constraint: TYPE: uniqueViolated`);
             }
         }
+
+        // Either no match is found and the function will return from
+        // within the loop. Or a match is found and updatePath will
+        // contain the path from the root to the AVLNode to be updated
+        // after the loop
+        while (true) {
+            // keys match. this is the key to update
+            if (currentNode.compareKeys(key, currentNode.key) === 0) {
+                break;
+            }
+
+            // Is less go left. given key < this.key
+            if ( currentNode.compareKeys(key, currentNode.key) < 0) {
+                if (currentNode.left) {
+                    currentNode = currentNode.left;
+                } else {
+                    return this; // node not found, no modification
+                }
+            } else { // Is greater go right. given key > this.key
+                if (currentNode.right) {
+                    currentNode = currentNode.right;
+                } else {
+                    return this; // node not found, no modification
+                }
+            }
+        }
+
+        // update only the key
+        if (currentNode.checkKeyEquality(key, currentNode.key)) {
+            // If unique simply update the key
+            if (currentNode.unique) {
+                const matchedNode: AVLNode|null = this.getAVLNodeFromKey(newKey);
+                if (matchedNode) {
+                    throw new Error(`Cannot update key:${key} with newKey:${newKey}, it violates the unique constraint.`);
+                } else {
+                    const currentValue: SNDBSA = currentNode.value;
+                    this._delete(currentNode.key, currentNode.value);
+                    return this._insert(newKey, currentValue);
+                }
+            } else {
+                const matchedNode: AVLNode|null = this.getAVLNodeFromKey(newKey);
+                // node was found
+                if (matchedNode) {
+                    matchedNode.value = matchedNode.value.concat(currentNode.value);
+                    return this._delete(currentNode.key, currentNode.value);
+                } else { // no node matching new key was found.
+                    const currentValue: SNDBSA = currentNode.value;
+                    this._delete(currentNode.key, currentNode.value);
+                    return this._insert(newKey, currentValue);
+                }
+            }
+        }
+        return this; // node not found no modification
     }
 
     /**
-     * Re-balance the tree along the given path. The path is given reversed (as he was calculated
-     * in the insert and delete functions).
+     * Re-balance the tree along the given path. The path is given reversed
      * Returns the new root of the tree
      * Of course, the first element of the path must be the root of the tree
      * @param path
@@ -344,12 +426,11 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         }
 
         // Re-balance the tree and update all heights
-        for (let i = path.length - 1; i >= 0; i -= 1) {
+        for (let i = path.length - 1; i >= 0; i--) {
             const selfOfLoop = path[i];
             const arg1 = selfOfLoop.left ? selfOfLoop.left.height : 0;
             const arg2 = selfOfLoop.right ? selfOfLoop.right.height : 0;
-            const hHeight = Math.max(arg1, arg2);
-            selfOfLoop.height = 1 + hHeight;
+            selfOfLoop.height = 1 + Math.max(arg1, arg2);
 
             if (selfOfLoop.balanceFactor() > 1) {
                 rotated = selfOfLoop.rightTooSmall();
@@ -382,20 +463,20 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         }
 
         if (this.left && this.left.height === undefined) {
-            throw new Error(`Undefined height for basic-node ${this.left.key}`);
+            throw new Error(`Undefined height for AVLNode ${this.left.key}`);
         }
         if (this.right && this.right.height === undefined) {
-            throw new Error(`Undefined height for basic-node ${this.right.key}`);
+            throw new Error(`Undefined height for AVLNode ${this.right.key}`);
         }
         if (this.height === undefined) {
-            throw new Error(`Undefined height for basic-node ${this.key}`);
+            throw new Error(`Undefined height for AVLNode ${this.key}`);
         }
 
         leftH = this.left ? this.left.height : 0;
         rightH = this.right ? this.right.height : 0;
 
         if (this.height !== 1 + Math.max(leftH, rightH)) {
-            throw new Error(`Height constraint failed for basic-node ${this.key}`);
+            throw new Error(`Height constraint failed for AVLNode ${this.key}`);
         }
         if (this.left) {
             this.left.checkHeightCorrect();
@@ -421,7 +502,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
      */
     protected checkBalanceFactors(): void {
         if (Math.abs(this.balanceFactor()) > 1) {
-            throw new Error(`Tree is unbalanced at basic-node ${this.key}`);
+            throw new Error(`Tree is unbalanced at AVLNode ${this.key}`);
         }
 
         if (this.left) {
@@ -440,6 +521,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
      */
     protected rightRotation(): AVLNode {
         const p = this.left;
+        const q = this;
         let b;
         let ah;
         let bh;
@@ -453,29 +535,29 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         b = p.right;
 
         // Alter tree structure
-        if (this.parent) {
-            p.parent = this.parent;
-            if (this.parent.left === this) {
-                this.parent.left = p;
+        if (q.parent) {
+            p.parent = q.parent;
+            if (q.parent.left === q) {
+                q.parent.left = p;
             } else {
-                this.parent.right = p;
+                q.parent.right = p;
             }
         } else {
             p.parent = null;
         }
-        p.right = this;
-        this.parent = p;
-        this.left = b;
+        p.right = q;
+        q.parent = p;
+        q.left = b;
         if (b) {
-            b.parent = this;
+            b.parent = q;
         }
 
         // Update heights
         ah = p.left ? p.left.height : 0;
         bh = b ? b.height : 0;
-        ch = this.right ? this.right.height : 0;
-        this.height = Math.max(bh, ch) + 1;
-        p.height = Math.max(ah, this.height) + 1;
+        ch = q.right ? q.right.height : 0;
+        q.height = Math.max(bh, ch) + 1;
+        p.height = Math.max(ah, q.height) + 1;
 
         return p;
     }
@@ -488,6 +570,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
      */
     protected leftRotation(): AVLNode {
         const q = this.right;
+        const p = this;
         let b;
         let ah;
         let bh;
@@ -501,29 +584,29 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         b = q.left;
 
         // Alter tree structure
-        if (this.parent) {
-            q.parent = this.parent;
-            if (this.parent.left === this) {
-                this.parent.left = q;
+        if (p.parent) {
+            q.parent = p.parent;
+            if (p.parent.left === p) {
+                p.parent.left = q;
             } else {
-                this.parent.right = q;
+                p.parent.right = q;
             }
         } else {
             q.parent = null;
         }
-        q.left = this;
-        this.parent = q;
-        this.right = b;
+        q.left = p;
+        p.parent = q;
+        p.right = b;
         if (b) {
-            b.parent = this;
+            b.parent = p;
         }
 
         // Update heights
-        ah = this.left ? this.left.height : 0;
+        ah = p.left ? p.left.height : 0;
         bh = b ? b.height : 0;
         ch = q.right ? q.right.height : 0;
-        this.height = Math.max(ah, bh) + 1;
-        q.height = Math.max(ch, this.height) + 1;
+        p.height = Math.max(ah, bh) + 1;
+        q.height = Math.max(ch, p.height) + 1;
 
         return q;
     }

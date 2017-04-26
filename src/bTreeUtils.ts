@@ -49,7 +49,37 @@ export const defaultCompareKeysFunction = ( a: number | string , b: number | str
     } else if (a === b) {
         return 0;
     } else {
-        throw new Error(`Could not compare elements, please check types. ${a}:${typeof a}, ${b}:${typeof b}`);
+        throw new Error(`Could not compare keys, please check types. ${a}:${typeof a}, ${b}:${typeof b}`);
+    }
+};
+
+/**
+ * Default compareValues function
+ * @param a
+ * @param b
+ * @returns {number}
+ * if a < b then return -1
+ * if a > b then return 1
+ * if a === b then return 0
+ * else throw could not compare error.
+ */
+export const defaultCompareValues = ( a: Array<number|string>, b: Array<number|string>): number[] => {
+    if (a.length !== b.length) {
+        throw new Error(`Cannot compare values of different length. a:${a.length},b:${b.length}, a:${a},b:${b}`);
+    } else {
+        const returnNum: number[] = [];
+        for (let i = a.length - 1; i >= 0; i--) {
+            if ( a[i] < b[i]) {
+                returnNum.push(-1);
+            } else if (a[i] > b[i]) {
+                returnNum.push(1);
+            } else if (a[i] === b[i]) {
+                returnNum.push(0);
+            } else {
+                throw new Error(`Could not compare values, please check types. ${a[i]}:${typeof a[i]}, ${b[i]}:${typeof b[i]}`);
+            }
+        }
+        return returnNum;
     }
 };
 
@@ -63,29 +93,12 @@ export const defaultCheckKeyEquality = ( a: number | string | Date, b: number | 
     return a === b;
 };
 
+/**
+ * Check whether to values are equal
+ * @param a
+ * @param b
+ * @returns {boolean}
+ */
 export const defaultCheckValueEquality = ( a: number | string | Date, b: number | string | Date ): boolean => {
     return a === b;
-};
-
-/**
- * Create an array with every combination of string letters.
- * max character string of 16. After 16 character string the
- * increase in size begins to degrees and then degrades.
- * @param str
- * @returns {Array}
- */
-export const randomCharArray = (str: string): string[] => {
-    const set = [];
-    const strSize = str.length;
-    const combinationsCount = (1 << strSize);
-    for ( let i = 1; i < combinationsCount; i++) {
-        const combination = [];
-        for ( let j = 0; j < strSize; j++) {
-            if ((i & (1 << j))) {
-                combination.push(str[j]);
-            }
-        }
-        set.push(combination.join(""));
-    }
-    return set;
 };

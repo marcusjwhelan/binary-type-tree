@@ -1,4 +1,20 @@
-import { AVLTree, AVLNode, getRandomArray, randomCharArray, SNDBSA, ASNDBS} from "../src";
+import { AVLTree, AVLNode, getRandomArray, SNDBSA, ASNDBS} from "../src";
+
+const randomCharArray = (str: string): string[] => {
+    const set = [];
+    const strSize = str.length;
+    const combinationsCount = (1 << strSize);
+    for ( let i = 1; i < combinationsCount; i++) {
+        const combination = [];
+        for ( let j = 0; j < strSize; j++) {
+            if ((i & (1 << j))) {
+                combination.push(str[j]);
+            }
+        }
+        set.push(combination.join(""));
+    }
+    return set;
+};
 
 describe("Test all of AVL Tree", () => {
     describe("basic tree create + insert + delete", () => {
@@ -6,7 +22,7 @@ describe("Test all of AVL Tree", () => {
         expect(avlTree).toBeInstanceOf(AVLTree);
 
         test("creating tree by adding AVL Node with key and value", () => {
-            avlTree.insert("rocket", "123456789");
+            avlTree.insert("rocket", ["123456789"]);
 
             expect(avlTree.tree.key).toBe("rocket");
             expect(avlTree.tree.value).toEqual(expect.arrayContaining(["123456789"]));
@@ -17,8 +33,8 @@ describe("Test all of AVL Tree", () => {
         });
 
         test("insert children with valid references to parent", () => {
-            avlTree.insert("league", "123456788");
-            avlTree.insert("ghost", "123456787");
+            avlTree.insert("league", ["123456788"]);
+            avlTree.insert("ghost", ["123456787"]);
             const rocket: AVLNode|null = avlTree.tree.right;
             const league: AVLNode|null = avlTree.tree;
             const ghost: AVLNode|null = avlTree.tree.left;
@@ -56,7 +72,7 @@ describe("Test all of AVL Tree", () => {
         });
 
         test("delete one left child", () => {
-            avlTree.delete("rocket", "123456789");
+            avlTree.delete("rocket", ["123456789"]);
 
             expect(avlTree.tree.key).toBe("league");
             expect(avlTree.tree.value).toEqual(expect.arrayContaining(["123456788"]));
@@ -67,14 +83,14 @@ describe("Test all of AVL Tree", () => {
         });
     });
 
-    describe("large scale tree", () => {
+    describe("large scale unique tree", () => {
         const avlTree: AVLTree = new AVLTree({unique: true});
         const randomArray: number[] = getRandomArray(65535);
         const randomCArray: string[] = randomCharArray("abcdefghijklmnop");
         for (const num in randomArray) {
             if (randomArray.hasOwnProperty(num)) {
                 const v: string = randomCArray.pop() || " ";
-                avlTree.insert(+num, v);
+                avlTree.insert(+num, [v]);
             }
         }
 
@@ -84,18 +100,17 @@ describe("Test all of AVL Tree", () => {
             expect(numKeys).toBe(65536); // count 0
         });
 
-        test("if this AVL Tree and made of AVL Nodes", () => {
+        test("if AVL Tree, and made of AVL Nodes", () => {
             expect(avlTree).toBeInstanceOf(AVLTree);
             expect(avlTree.tree).toBeInstanceOf(AVLNode);
             expect(avlTree.tree.height).toBe(17);
             avlTree.tree.checkisAVLT();
         });
 
-        describe("Searching, Delete re-balance sanity check ", () => {
-            avlTree.insert(992929189981, "recon");
+        describe("searching, updating, delete and re-balance sanity check ", () => {
+            avlTree.insert(992929189981, ["recon"]);
             const searchedValue: SNDBSA = avlTree.tree.search(992929189981);
             const between: SNDBSA = avlTree.tree.query({$gte: 0, $lte: 100});
-
             const oddLTSearch: SNDBSA = avlTree.tree.query({$lte: 100, $lt: 20});
             const oddGTSearch: SNDBSA = avlTree.tree.query({$gte: 65400, $gt: 65401});
 
@@ -118,9 +133,20 @@ describe("Test all of AVL Tree", () => {
                 expect(between[0]).toBe("bcdefghijklmnop");
             });
 
+            test("updating key with new key", () => {
+                avlTree.updateKey(992929189981, -1);
+                const ghost: SNDBSA = avlTree.tree.search(992929189981);
+                const metal: SNDBSA = avlTree.tree.search(-1);
+                const gear = avlTree.tree.getMaxKey();
+
+                expect(ghost).toEqual(expect.arrayContaining([]));
+                expect(metal).toEqual(expect.arrayContaining(["recon"]));
+                expect(gear).toBe(65534);
+            });
+
             test("if deleting single node causes errors, should re-balance", () => {
-                avlTree.delete(992929189981, "recon");
-                expect(avlTree.tree.height).toBe(16);
+                avlTree.delete(65536, ["recon"]);
+                expect(avlTree.tree.height).toBe(17);
                 avlTree.tree.checkisAVLT();
             });
 
@@ -131,12 +157,12 @@ describe("Test all of AVL Tree", () => {
 
             test("searching min value and getting key", () => {
                 const key: ASNDBS = avlTree.tree.getMinKey();
-                expect(key).toBe(0);
+                expect(key).toBe(-1);
             });
 
             test("deleting all but 100 values, searching 5 but 1 $ne to get 4 values", () => {
                 const keys = getRandomArray(65530);
-                for (let i = 0; i < keys.length; i++) {
+                for (let i = -1; i < keys.length; i++) {
                     const value: SNDBSA = avlTree.tree.search(i);
                     avlTree.delete(i, [value]);
                 }
@@ -149,9 +175,73 @@ describe("Test all of AVL Tree", () => {
 
             test("only using $ne", () => {
                 const searchedNE = avlTree.tree.query({$ne: 65533});
-
                 expect(searchedNE.length).toBe(4);
                 expect(searchedNE).toEqual(expect.arrayContaining(["ac", "c", "ab", "a"]));
+            });
+        });
+    });
+
+    describe("large scale non unique tree", () => {
+        const avlTree: AVLTree = new AVLTree({});
+        const randomArray: number[] = getRandomArray(65535);
+        const randomCArray: string[] = randomCharArray("abcdefghijklmnop");
+        for (const num in randomArray) {
+            if (randomArray.hasOwnProperty(num)) {
+                const v: string = randomCArray.pop() || " ";
+                avlTree.insert(+num, [v]);
+            }
+        }
+
+        test("if AVL Tree, and made of AVL Nodes", () => {
+            expect(avlTree).toBeInstanceOf(AVLTree);
+            expect(avlTree.tree).toBeInstanceOf(AVLNode);
+            expect(avlTree.tree.height).toBe(16);
+            avlTree.tree.checkisAVLT();
+        });
+
+        describe("searching, updating, delete and re-balance sanity check", () => {
+            avlTree.insert(2, ["solid"]);
+            avlTree.insert(2, ["snake"]);
+            const searchedValue: SNDBSA = avlTree.tree.search(2);
+            const between: SNDBSA = avlTree.tree.query({$gte: 0, $lte: 100});
+            const oddLTSearch: SNDBSA = avlTree.tree.query({$lte: 100, $lt: 20});
+            const oddGTSearch: SNDBSA = avlTree.tree.query({$gte: 65400, $gt: 65401});
+
+            test("for odd $gt search", () => {
+                expect(oddGTSearch[0]).toBe("ach");
+                expect(oddGTSearch.length).toBe(133);
+            });
+
+            test("for odd $lt search", () => {
+                expect(oddLTSearch[0]).toBe("bcdefghijklmnop");
+                expect(oddLTSearch.length).toBe(21);
+            });
+
+            test("if searchedValue was found", () => {
+                expect(searchedValue).toEqual(expect.arrayContaining(["acdefghijklmnop", "solid", "snake"]));
+            });
+
+            test("if 102 values were found", () => {
+                expect(between.length).toBe(102);
+                expect(between[0]).toBe("bcdefghijklmnop");
+            });
+
+            test("updating key with new key that already exists", () => {
+                avlTree.updateKey(1225, 2);
+                const syphon: SNDBSA = avlTree.tree.search(1225);
+                const filter: SNDBSA = avlTree.tree.search(2);
+
+                expect(syphon).toEqual(expect.arrayContaining([]));
+                expect(filter).toEqual(expect.arrayContaining(["acdefghijklmnop", "solid", "snake", "bcefijlmnop"]));
+            });
+
+            test("updating key with new key that does not exist", () => {
+                avlTree.updateKey(1223, 65536);
+                const witcher: SNDBSA = avlTree.tree.search(1223);
+                const three: SNDBSA = avlTree.tree.search(65536);
+
+                expect(witcher).toEqual(expect.arrayContaining([]));
+                expect(three).toEqual(expect.arrayContaining(["defijlmnop"]));
             });
         });
     });

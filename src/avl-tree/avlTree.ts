@@ -1,11 +1,11 @@
 import { AVLNode } from "../avl-node";
-import { ASNDBS, INodeConstructor } from "../basic-node";
+import { ASNDBS, SNDBSA, INodeConstructor } from "../basic-node";
 
 export interface IAVLTree {
     tree: AVLNode;
 
-    insert(key: ASNDBS, value: ASNDBS): void;
-    delete(key: ASNDBS, value: ASNDBS): void;
+    insert(key: ASNDBS, value: SNDBSA): void;
+    delete(key: ASNDBS, value: SNDBSA): void;
     updateKey(key: ASNDBS, value: ASNDBS): void;
 }
 
@@ -32,7 +32,7 @@ export class AVLTree extends AVLNode implements IAVLTree {
      * @param key
      * @param value
      */
-    public insert(key: ASNDBS, value: ASNDBS): void {
+    public insert(key: ASNDBS, value: SNDBSA): void {
         const newTree: AVLNode = this.tree._insert(key, value);
 
         // If newTree is undefined, that means its structure was not modified
@@ -46,7 +46,7 @@ export class AVLTree extends AVLNode implements IAVLTree {
      * @param key
      * @param value
      */
-    public delete(key: ASNDBS, value: ASNDBS): void {
+    public delete(key: ASNDBS, value: SNDBSA): void {
         const newTree: AVLNode = this.tree._delete(key, value);
 
         // if newTree is undefined, that means its structure was not modified
@@ -55,8 +55,8 @@ export class AVLTree extends AVLNode implements IAVLTree {
         }
     }
 
-    public updateKey(key: ASNDBS, value: ASNDBS): void {
-        const newTree: AVLNode = this.tree._updateKey(key, value);
+    public updateKey(key: ASNDBS, newKey: ASNDBS): void {
+        const newTree: AVLNode = this.tree._updateKey(key, newKey);
 
         if (newTree) {
             this.tree = newTree;

@@ -20,10 +20,12 @@ export type getUpperBoundsFn = (query: ILessQueary) => boolean;
 export type getEqualityBoundsFn = (geuery: INEQuery) => boolean;
 /** Function type taking in(recommended keys) */
 export type compareKeys = (a: any, b: any ) => number;
+/** Function type taking in(recommended values) */
+export type compareValues = (a: any, b: any) => number;
 /** Function type taking in(recommended keys) */
 export type checkKeyEquality = (a: ASNDBS, b: ASNDBS ) => boolean;
 /** Function type taking in(recommended values) */
-export type checkValueEquality = (a: ASNDBS, b: ASNDBS ) => boolean;
+export type checkValueEquality = (a: any, b: any ) => boolean;
 
 /** Interface for $gt/$gte range */
 export interface IGreatQuery {
@@ -52,9 +54,10 @@ export interface IAllQueary {
 export interface INodeConstructor<T> {
     parent?: T|null;
     key?: ASNDBS;
-    value?: ASNDBS;
+    value?: SNDBSA;
     unique?: boolean;
     compareKeys?: any;
+    compareValues?: any;
     checkKeyEquality?: any;
     checkValueEquality?: any;
 }
@@ -67,6 +70,7 @@ export interface INode<T> {
     value: SNDBSA;
     unique: boolean;
     compareKeys: compareKeys;
+    compareValues: compareValues;
     checkKeyEquality: checkKeyEquality;
     checkValueEquality: checkValueEquality;
 
@@ -119,11 +123,17 @@ export abstract class Node<T> implements INode<T> {
      */
     public unique: boolean;
     /**
-     * Default function compares only number, string and Date other wise
+     * Default function compares only number and string other wise
      * the user will need to supply a custom key comparison function to
      * use this Node Tree model properly.
      */
     public compareKeys: compareKeys;
+    /**
+     * Default function compares only number and string otherwise
+     * the use will need to supply a custom value comparison function to
+     * use this Node Tree model properly.
+     */
+    public compareValues: compareValues;
     /**
      * Default function only checks key validity of number, string, and Date.
      * This function also only uses '===' for the comparison. Supply a
@@ -146,9 +156,10 @@ export abstract class Node<T> implements INode<T> {
     protected constructor( public options: INodeConstructor<Node<T>> ) {
         this.key = options.key || null;
         this.parent = options.parent || null;
-        this.value = options.value ? [options.value] : [null];
+        this.value = options.value ? options.value : [null];
         this.unique = options.unique || false;
         this.compareKeys = options.compareKeys || bTreeUtils.defaultCompareKeysFunction;
+        this.compareValues = options.compareValues || bTreeUtils.defaultCompareValues;
         this.checkKeyEquality = options.checkKeyEquality || bTreeUtils.defaultCheckKeyEquality;
         this.checkValueEquality = options.checkValueEquality || bTreeUtils.defaultCheckValueEquality;
     }
