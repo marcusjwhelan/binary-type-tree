@@ -158,7 +158,8 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
                 if (currentNode.unique) {
                     throw new Error(`Can't insert key ${key}, it violates the unique constraint: TYPE: uniqueViolated`);
                 } else {
-                    currentNode.value = currentNode.value.concat(value);
+                    // currentNode.value = currentNode.value.concat(value);
+                    currentNode.value = bTreeUtils.append(currentNode.value, value);
                 }
                 return this;
             }
@@ -194,7 +195,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
      */
     public _delete(key: ASNDBS, value: SNDBSA): AVLNode {
         const deletePath: AVLNode[] = [];
-        const newData: SNDBSA = [];
+        let newData: SNDBSA = [];
         let replaceWith: AVLNode|null;
         let currentNode: AVLNode = this;
 
@@ -232,7 +233,14 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
 
         // Delete only values (no tree modification)
         if (currentNode.value.length > 1 && value.length > 0) {
-            currentNode.value.forEach((cV) => {
+            for (const cv of currentNode.value) {
+                for (const v of value) {
+                    if (!currentNode.checkValueEquality(cv, v)) {
+                        newData = bTreeUtils.append(newData, [cv]);
+                    }
+                }
+            }
+            /*currentNode.value.forEach((cV) => {
                 value.forEach((v) => {
                     if (!currentNode.checkValueEquality(cV, v)) {
                         if (newData.indexOf(cV) === -1) {
@@ -240,7 +248,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
                         }
                     }
                 });
-            });
+            });*/
             currentNode.value = newData;
             return this;
         }
@@ -397,7 +405,8 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
                 const matchedNode: AVLNode|null = this.getAVLNodeFromKey(newKey);
                 // node was found
                 if (matchedNode) {
-                    matchedNode.value = matchedNode.value.concat(currentNode.value);
+                    // matchedNode.value = matchedNode.value.concat(currentNode.value);
+                    matchedNode.value = bTreeUtils.append(matchedNode.value, currentNode.value);
                     return this._delete(currentNode.key, currentNode.value);
                 } else { // no node matching new key was found.
                     const currentValue: SNDBSA = currentNode.value;

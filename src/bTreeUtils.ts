@@ -1,3 +1,5 @@
+import {SNDBSA} from "./basic-node";
+
 /**
  * Shuffle numbers in array
  * @param nums
@@ -101,4 +103,72 @@ export const defaultCheckKeyEquality = ( a: number | string | Date, b: number | 
  */
 export const defaultCheckValueEquality = ( a: number | string | Date, b: number | string | Date ): boolean => {
     return a === b;
+};
+
+/**
+ * Append any array even TypedArrays with each other. Any value can hold a
+ * typed array. Need to use this method to instead of concat if you wish to
+ * push values as well.
+ * @param array
+ * @param toAppend
+ * @returns {any}
+ */
+export const append = (array: SNDBSA, toAppend: SNDBSA): SNDBSA => {
+    const typedArrays = ["Int8Array", "Uint8Array", "Int16Array", "Uint16Array", "Int32Array", "Uint32Array", "Float32Array", "Float64Array"];
+    // the array types are "Array
+    if (array.constructor.name === "Array" && toAppend.constructor.name === "Array") {
+        return [...array, ...toAppend];
+    } else if (typedArrays.indexOf(array.constructor.name) === 0 && typedArrays.indexOf(toAppend.constructor.name) === 0) {
+        // Both arrays are Typed arrays, and match
+        if (array.constructor.name === toAppend.constructor.name) {
+            let TypedArray;
+            switch (array.constructor.name) {
+                case "Int8Array":
+                    TypedArray = new Int8Array(array.length + toAppend.length);
+                    TypedArray.set(array as ArrayLike<number>);
+                    TypedArray.set(toAppend as ArrayLike<number>, array.length);
+                    break;
+                case "Uint8Array":
+                    TypedArray = new Uint8Array(array.length + toAppend.length);
+                    TypedArray.set(array as ArrayLike<number>);
+                    TypedArray.set(toAppend as ArrayLike<number>, array.length);
+                    break;
+                case "Int16Array":
+                    TypedArray = new Int16Array(array.length + toAppend.length);
+                    TypedArray.set(array as ArrayLike<number>);
+                    TypedArray.set(toAppend as ArrayLike<number>, array.length);
+                    break;
+                case "Uint16Array":
+                    TypedArray = new Uint16Array(array.length + toAppend.length);
+                    TypedArray.set(array as ArrayLike<number>);
+                    TypedArray.set(toAppend as ArrayLike<number>, array.length);
+                    break;
+                case "Int32Array":
+                    TypedArray = new Int32Array(array.length + toAppend.length);
+                    TypedArray.set(array as ArrayLike<number>);
+                    TypedArray.set(toAppend as ArrayLike<number>, array.length);
+                    break;
+                case "Uint32Array":
+                    TypedArray = new Uint32Array(array.length + toAppend.length);
+                    TypedArray.set(array as ArrayLike<number>);
+                    TypedArray.set(toAppend as ArrayLike<number>, array.length);
+                    break;
+                case "Float32Array":
+                    TypedArray = new Float32Array(array.length + toAppend.length);
+                    TypedArray.set(array as ArrayLike<number>);
+                    TypedArray.set(toAppend as ArrayLike<number>, array.length);
+                    break;
+                case "Float64Array":
+                    TypedArray = new Float64Array(array.length + toAppend.length);
+                    TypedArray.set(array as ArrayLike<number>);
+                    TypedArray.set(toAppend as ArrayLike<number>, array.length);
+                    break;
+            }
+            return TypedArray as SNDBSA;
+        } else { // One of the typed arrays do not match
+            throw new Error(`Types of arrays being appended do not match, ${array}:${array.constructor.name} appended with ${toAppend}:${toAppend.constructor.name}`);
+        }
+    } else {
+        throw new Error(`Types of arrays being appended do not match, ${array}:${array.constructor.name} appended with ${toAppend}:${toAppend.constructor.name}`);
+    }
 };

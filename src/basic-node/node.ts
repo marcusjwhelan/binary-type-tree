@@ -3,8 +3,10 @@
  */
 import * as bTreeUtils from "../bTreeUtils";
 
+/** TypedArray Types -Uint8ArrayClamped */
+export type TypedArray = Int8Array|Uint8Array|Int16Array|Uint16Array|Int32Array|Uint32Array|Float32Array|Float64Array;
 /** Type used for Node value. */
-export type SNDBSA = Array<{}|any[]|string|number|Date|boolean|symbol|null>;
+export type SNDBSA = Array<{}|any[]|string|number|Date|boolean|symbol|null>|TypedArray;
 /** Type used for Node key. You cannot use objects as keys */
 export type ASNDBS = Array<any[]|string|number|Date|boolean|symbol|null>|string|number|Date|boolean|symbol|null;
 
