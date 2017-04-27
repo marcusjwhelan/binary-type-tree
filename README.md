@@ -26,12 +26,13 @@ self balancing trees. AVL is simply the first choice.
 * <a href="#creating-an-avl-tree">Creating an AVL Tree</a>
 * <a href="#inserting-and-deleting-into-the-avl-tree">Inserting and deleting into the AVL Tree</a>
 * <a href="#querying-the-avl-tree">Querying the AVL Tree</a>
+* <a href="#key-update-on-avl-tree">Key update on AVL Tree</a>
 * <a href="#avl-tree-extra-functionality">AVL tree extra functionality </a>
 
 ## Creating an AVL Tree
  
 Before you create a tree you will want to consider how your keys and values will be structured. All values
-are stored as an array even only one element. The key can be many different types but cannot be an `object`. 
+are stored as an array even when just one element. The key can be many different types but cannot be an `object`. 
 There are three functions provided by default in `lib/bTreeUtils.ts`, that compare equality and validity 
 that can be replaced by custom functions. These are very important when it comes to `$gt, $lt, $ne` comparisons
 made for the `query` method. The implementation of the `query` is on the root Node<T> at `lib/basic-node/node.ts`. During the constructor you can choose to initialize your AVL tree with several starters or none.
@@ -146,7 +147,7 @@ AVL.insert(2, [3]);
 AVL.updateKey(1, 2); // node with key 2 now has value [1,2,3];
 ```
 
-# AVL tree extra functionality 
+## AVL tree extra functionality 
  
 If you would like to write a custom function to execute on every AVLNode then you can use the `executeOnEveryNode` method, it takes a type of `any` but and returns. Best used by supplying a reference to a function.
 

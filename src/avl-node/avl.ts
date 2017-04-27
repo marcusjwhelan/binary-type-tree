@@ -520,46 +520,46 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
      * @returns {AVLNode}
      */
     protected rightRotation(): AVLNode {
-        const p = this.left;
-        const q = this;
-        let b;
-        let ah;
-        let bh;
-        let ch;
+        const thisLeft = this.left;
+        const currentNode = this;
+        let thisLeftsRight;
+        let thisLeftLeftH;
+        let thisLeftRightH;
+        let currentNodeRightH;
 
         // No change
-        if (!p) {
+        if (!thisLeft) {
             return this;
         }
 
-        b = p.right;
+        thisLeftsRight = thisLeft.right;
 
-        // Alter tree structure
-        if (q.parent) {
-            p.parent = q.parent;
-            if (q.parent.left === q) {
-                q.parent.left = p;
+        // Alter tree structure, actual right rotation
+        if (currentNode.parent) {
+            thisLeft.parent = currentNode.parent;
+            if (currentNode.parent.left === currentNode) {
+                currentNode.parent.left = thisLeft;
             } else {
-                q.parent.right = p;
+                currentNode.parent.right = thisLeft;
             }
         } else {
-            p.parent = null;
+            thisLeft.parent = null;
         }
-        p.right = q;
-        q.parent = p;
-        q.left = b;
-        if (b) {
-            b.parent = q;
+        thisLeft.right = currentNode;
+        currentNode.parent = thisLeft;
+        currentNode.left = thisLeftsRight;
+        if (thisLeftsRight) {
+            thisLeftsRight.parent = currentNode;
         }
 
         // Update heights
-        ah = p.left ? p.left.height : 0;
-        bh = b ? b.height : 0;
-        ch = q.right ? q.right.height : 0;
-        q.height = Math.max(bh, ch) + 1;
-        p.height = Math.max(ah, q.height) + 1;
+        thisLeftLeftH = thisLeft.left ? thisLeft.left.height : 0;
+        thisLeftRightH = thisLeftsRight ? thisLeftsRight.height : 0;
+        currentNodeRightH = currentNode.right ? currentNode.right.height : 0;
+        currentNode.height = Math.max(thisLeftRightH, currentNodeRightH) + 1;
+        thisLeft.height = Math.max(thisLeftLeftH, currentNode.height) + 1;
 
-        return p;
+        return thisLeft;
     }
 
     /**
@@ -569,46 +569,46 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
      * @returns {AVLNode}
      */
     protected leftRotation(): AVLNode {
-        const q = this.right;
-        const p = this;
-        let b;
-        let ah;
-        let bh;
-        let ch;
+        const thisRight = this.right;
+        const currentNode = this;
+        let thisRightsLeft;
+        let currentNodeLeftH;
+        let thisRightsLeftH;
+        let thisRightRightH;
 
         // No Change
-        if (!q) {
+        if (!thisRight) {
             return this;
         }
 
-        b = q.left;
+        thisRightsLeft = thisRight.left; // save this Rights left
 
-        // Alter tree structure
-        if (p.parent) {
-            q.parent = p.parent;
-            if (p.parent.left === p) {
-                p.parent.left = q;
+        // Alter tree structure, actual left rotation
+        if (currentNode.parent) {
+            thisRight.parent = currentNode.parent;
+            if (currentNode.parent.left === currentNode) {
+                currentNode.parent.left = thisRight;
             } else {
-                p.parent.right = q;
+                currentNode.parent.right = thisRight;
             }
         } else {
-            q.parent = null;
+            thisRight.parent = null;
         }
-        q.left = p;
-        p.parent = q;
-        p.right = b;
-        if (b) {
-            b.parent = p;
+        thisRight.left = currentNode;
+        currentNode.parent = thisRight;
+        currentNode.right = thisRightsLeft;
+        if (thisRightsLeft) {
+            thisRightsLeft.parent = currentNode;
         }
 
         // Update heights
-        ah = p.left ? p.left.height : 0;
-        bh = b ? b.height : 0;
-        ch = q.right ? q.right.height : 0;
-        p.height = Math.max(ah, bh) + 1;
-        q.height = Math.max(ch, p.height) + 1;
+        currentNodeLeftH = currentNode.left ? currentNode.left.height : 0;
+        thisRightsLeftH = thisRightsLeft ? thisRightsLeft.height : 0;
+        thisRightRightH = thisRight.right ? thisRight.right.height : 0;
+        currentNode.height = Math.max(currentNodeLeftH, thisRightsLeftH) + 1;
+        thisRight.height = Math.max(thisRightRightH, currentNode.height) + 1;
 
-        return q;
+        return thisRight;
     }
 
     /**
