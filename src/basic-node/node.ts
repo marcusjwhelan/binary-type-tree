@@ -89,6 +89,8 @@ export interface INode<T> {
     getEqualityBounds(query: INEQuery): boolean;
     query(query: IAllQueary): SNDBSA;
     search(key: ASNDBS): SNDBSA;
+    getTreeHeight<T>(tree: Node<T>): number;
+    getTreeAsArrayOfArrays<T>(): any;
     executeOnEveryNode(fn: any): any;
 }
 
@@ -477,6 +479,66 @@ export abstract class Node<T> implements INode<T> {
                 return [];
             }
         }
+    }
+
+    public getTreeHeight<T>(tree: Node<T>): number {
+        let leftHeight: number;
+        let rightHeight: number;
+        // if you send an empty tree
+        if ( tree === null ) {
+            return -1;
+        }
+        leftHeight = tree.left ? this.getTreeHeight<T>(tree.left) : -1;
+        rightHeight = tree.right ? this.getTreeHeight<T>(tree.right) : -1;
+
+        if ( leftHeight > rightHeight) {
+            return leftHeight + 1;
+        } else {
+            return rightHeight + 1;
+        }
+    }
+
+    public getTreeAsArrayOfArrays<T>(): any[] {
+        const tree: Node<T> = this;
+        const height: number = this.getTreeHeight(tree);
+        const rows: number[] = bTreeUtils.getRowsArrayFromHeight(height);
+        const all: any[] = bTreeUtils.createRefArrayFromTreeHeight(height);
+
+        const traverse = (node: Node<T>|null, h: number) => {
+            if (node) {
+                const thisHeight = h - 1;
+                // set root
+                if (height === h) {
+                    all[0].unshift({ key: node.key, value: node.value });
+                    rows[0] = rows[0] - 1;
+                }
+                // add at this height level
+                if (rows[height - h] > 0) {
+                    all[height - h].unshift({key: node.key, value: node.value});
+                    // subtract 1 from the index at rows.
+                    rows[height - h] = rows[height - h] - 1;
+                }
+                if (node.right) {
+                    traverse(node.right, thisHeight);
+                } else {
+                    traverse(null, h);
+                }
+                if (node.left) {
+                    traverse(node.left, thisHeight);
+                } else {
+                    traverse(null, h);
+                }
+            } else if (h) {
+                // If there is a next row
+                if (rows[height - h + 1] !== undefined) {
+                    all[height - h + 1].unshift(null);
+                    rows[height - h + 1] = rows[height - h + 1] - 1;
+                }
+            }
+        };
+
+        traverse(tree, height);
+        return all;
     }
 
     /**

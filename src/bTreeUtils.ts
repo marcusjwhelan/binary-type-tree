@@ -102,3 +102,19 @@ export const defaultCheckKeyEquality = ( a: number | string | Date, b: number | 
 export const defaultCheckValueEquality = ( a: number | string | Date, b: number | string | Date ): boolean => {
     return a === b;
 };
+
+export const getRowsArrayFromHeight = (height: number): number[] => {
+    const returnArr: number[] = [];
+    for (let i = 0; i <= height; i++) {
+        returnArr.push(Math.pow(2, i));
+    }
+    return returnArr;
+};
+
+export const createRefArrayFromTreeHeight = (height: number): any[] => {
+    const returnArr: any = [];
+    for (let i = 0; i <= height; i++) {
+        returnArr.push(new Array(0));
+    }
+    return returnArr;
+};
