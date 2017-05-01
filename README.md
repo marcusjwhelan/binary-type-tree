@@ -181,7 +181,8 @@ every node. The order of the nodes in the array are sorted in a way that a re-ba
 were to loop over the array and insert into any tree. 
 
 ```typescript
-const JSONTree = AVLTree.tree.toJSON(); // retrieve tree as JSON
+// for now there is only one tree type so AVLTree is used for the type.
+const JSONTree = AVLTree.tree.toJSON<AVLTree>(); // retrieve tree as JSON
 ```
 
 #### How it works
