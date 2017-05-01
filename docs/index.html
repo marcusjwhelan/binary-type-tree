@@ -80,11 +80,12 @@
 					<li><a href="#creating-an-avl-tree">Creating an AVL Tree</a></li>
 					<li><a href="#inserting-and-deleting-into-the-avl-tree">Inserting and deleting into the AVL Tree</a></li>
 					<li><a href="#querying-the-avl-tree">Querying the AVL Tree</a></li>
+					<li><a href="#key-update-on-avl-tree">Key update on AVL Tree</a></li>
 					<li><a href="#avl-tree-extra-functionality">AVL tree extra functionality </a></li>
 				</ul>
 				<h2 id="creating-an-avl-tree">Creating an AVL Tree</h2>
 				<p>Before you create a tree you will want to consider how your keys and values will be structured. All values
-					are stored as an array even only one element. The key can be many different types but cannot be an <code>object</code>.
+					are stored as an array even when just one element. The key can be many different types but cannot be an <code>object</code>.
 					There are three functions provided by default in <code>lib/bTreeUtils.ts</code>, that compare equality and validity
 					that can be replaced by custom functions. These are very important when it comes to <code>$gt, $lt, $ne</code> comparisons
 				made for the <code>query</code> method. The implementation of the <code>query</code> is on the root Node<T> at <code>lib/basic-node/node.ts</code>. During the constructor you can choose to initialize your AVL tree with several starters or none.</p>
@@ -186,7 +187,7 @@ AVL.insert(<span class="hljs-number">1</span>, [<span class="hljs-number">2</spa
 AVL.insert(<span class="hljs-number">2</span>, [<span class="hljs-number">3</span>]);
 AVL.updateKey(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">// node with key 2 now has value [1,2,3];</span>
 </code></pre>
-				<h1 id="avl-tree-extra-functionality">AVL tree extra functionality</h1>
+				<h2 id="avl-tree-extra-functionality">AVL tree extra functionality</h2>
 				<p>If you would like to write a custom function to execute on every AVLNode then you can use the <code>executeOnEveryNode</code> method, it takes a type of <code>any</code> but and returns. Best used by supplying a reference to a function.</p>
 				<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> keys: BTT.ASNDBS = [];
 <span class="hljs-keyword">let</span> executed: <span class="hljs-built_in">number</span> = <span class="hljs-number">0</span>;

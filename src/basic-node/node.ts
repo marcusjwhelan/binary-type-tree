@@ -91,6 +91,7 @@ export interface INode<T> {
     search(key: ASNDBS): SNDBSA;
     getTreeHeight<T>(tree: Node<T>): number;
     getTreeAsArrayOfArrays<T>(): any;
+    toJSON<T>(): any;
     executeOnEveryNode(fn: any): any;
 }
 
@@ -481,6 +482,11 @@ export abstract class Node<T> implements INode<T> {
         }
     }
 
+    /**
+     * Retrieve the height at this current Node location
+     * @param tree
+     * @returns {number}
+     */
     public getTreeHeight<T>(tree: Node<T>): number {
         let leftHeight: number;
         let rightHeight: number;
@@ -498,14 +504,35 @@ export abstract class Node<T> implements INode<T> {
         }
     }
 
+    /**
+     * Returns binary tree as an array of arrays.
+     * Example: Inserting 0 - 4 keys in AVL tree would return
+     * this example with this method. inserts them as they would
+     * be seen in the binary tree
+     *          __ 1 __
+     *         /       \
+     *        0         3
+     *      /   \     /   \
+     *    null  null 2     4
+     *
+     * [  [ { key: 1, value: [Object] }],
+     *    [{key: 0, value: [Object]},{key: 3, value: [Object]}],
+     *    [ null, null, {key: 2, value: [Object]},
+     *    {key: 4, value: [Object]}]
+     *  ]
+     * @returns {any[]}
+     */
     public getTreeAsArrayOfArrays<T>(): any[] {
         const tree: Node<T> = this;
         const height: number = this.getTreeHeight(tree);
+        // Used as a checker for number of elements that should be inserted per row
         const rows: number[] = bTreeUtils.getRowsArrayFromHeight(height);
+        // The array of arrays holding at the end all the binary elements
         const all: any[] = bTreeUtils.createRefArrayFromTreeHeight(height);
-
+        // recursive inner method needed to work on referenced constants.
         const traverse = (node: Node<T>|null, h: number) => {
             if (node) {
+                // subtract 1 from current height to check next row after this node insertion
                 const thisHeight = h - 1;
                 // set root
                 if (height === h) {
@@ -519,17 +546,21 @@ export abstract class Node<T> implements INode<T> {
                     rows[height - h] = rows[height - h] - 1;
                 }
                 if (node.right) {
+                    // insert node info in next row
                     traverse(node.right, thisHeight);
                 } else {
+                    // no node check if still another row
                     traverse(null, h);
                 }
                 if (node.left) {
+                    // insert node info in next row
                     traverse(node.left, thisHeight);
                 } else {
+                    // no node check if still another row
                     traverse(null, h);
                 }
             } else if (h) {
-                // If there is a next row
+                // If there is a next row just no left/right node info insert null in its place to keep structure of binary tree in arrays.
                 if (rows[height - h + 1] !== undefined) {
                     all[height - h + 1].unshift(null);
                     rows[height - h + 1] = rows[height - h + 1] - 1;
@@ -539,6 +570,25 @@ export abstract class Node<T> implements INode<T> {
 
         traverse(tree, height);
         return all;
+    }
+
+    /**
+     * Turn tree into a JSON with an array of objects holding the key and value
+     * Requires that key and value can be turned into JSON
+     * @returns {any}
+     */
+    public toJSON<T>(): any {
+        const allArray: any[] = this.getTreeAsArrayOfArrays<T>();
+        const indexArray: any[] = bTreeUtils.createRandomSortedIndex(allArray);
+        let finalJSON: any = [];
+        for (let x = 0; x < allArray.length; x++) {
+            for (let y = 0; y < allArray[x].length; y++) {
+                finalJSON.push(allArray[x][indexArray[x][y]]);
+            }
+        }
+        finalJSON = finalJSON.filter((val: any) => val !== null);
+        finalJSON = JSON.stringify(finalJSON);
+        return finalJSON;
     }
 
     /**
