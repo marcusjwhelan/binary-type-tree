@@ -27,7 +27,8 @@ self balancing trees. AVL is simply the first choice.
 * <a href="#inserting-and-deleting-into-the-avl-tree">Inserting and deleting into the AVL Tree</a>
 * <a href="#querying-the-avl-tree">Querying the AVL Tree</a>
 * <a href="#key-update-on-avl-tree">Key update on AVL Tree</a>
-* <a href="#avl-tree-extra-functionality">AVL tree extra functionality </a>
+* <a href="#avl-tree-extra-functionality">AVL tree extra functionality</a>
+* <a href="#tojson">toJSON</a>
 
 ## Creating an AVL Tree
  
@@ -172,3 +173,56 @@ There is also a method available to retrieve the node holding a key.
 // returns null if node is not found.
 const queryNode: BTT.AVLNode|null = avlTree.tree.getAVLNodeFromKey(123); 
 ```
+
+## toJSON
+
+toJSON has been added to convert a any tree into an array in JSON of objects holding the key and value of
+every node. The order of the nodes in the array are sorted in a way that a re-balance will not occur if you
+were to loop over the array and insert into any tree. 
+
+```typescript
+// for now there is only one tree type so AVLTree is used for the type.
+const JSONTree = AVLTree.tree.toJSON<AVLTree>(); // retrieve tree as JSON
+```
+
+#### How it works
+
+lets say given this btree
+```
+                    __________ 40 ___________
+                   /                         \
+             ____ 20 ____               ____ 60 ___
+            /            \             /           \
+           10           30           50           _70 _
+         /    \       /    \       /    \        /     \
+        5     15     25    35     45    55      65     75
+       / \   /  \   / \    / \   /  \   /  \   /  \   /  \
+      3  7  12  17 23  27 33 37 43  47 52  57 62  67 72  77
+```
+The master array would hold 
+```typescript
+const input = [ [40], [20,60], [10,30,50,70], [5,15,25,35,45,55,65,75],
+  [3,7,12,17,23,27,33,37,43,47,52,57,62,67,72,77]];
+//
+// This would then be formatted into this
+const result = [ [40], [60,20], [70,30,50,10], [75,35,55,15,65,25,45,5],
+  [77,37,67,17,57,27,47,7,72,33,62,23,52,12,43,3]];
+//
+// This is done by breaking up each array as it comes in by their indices
+// 
+// Previous: [0,1], Current: [0,1,2,3]
+// get evens/odds and sub Previous from Current, Current odds [3], Previous odds [1], Current evens [2], Prev Evens [0];
+// creates
+const row3 = [3,1,2,0]; // 70,30,50,10
+// Now for the next level
+//
+// Previous: [3,1,2,0], Current: [0,1,2,3,4,5,6,7]
+// same step
+// Current odds: [7,5], Previous odds: [3,1], Current evens: [6,4], Previous evens: [2,0]
+// creates
+const row4 = [7,3,5,1,6,2,4,0]; // 75,35,55,15,65,25,45,5
+```
+
+All of these arrays are then put together into one array to reference the master array of objects to then create
+a JSON array. Since this method only looks at the index of the arrays and not the contents of the keys or values
+no comparisons are needed.
