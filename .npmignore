@@ -1,6 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 .gitignore
-__test__
+__tests__
 node_modules
 tslint.json
 .npmignore

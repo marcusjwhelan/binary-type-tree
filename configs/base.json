@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "es6",
+        "target": "es6",
+        "moduleResolution": "node",
+        "declaration": true,
+        "importHelpers": true,
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "strictNullChecks": true,
+        "emitDecoratorMetadata": true,
+        "noEmitOnError": true,
+        "experimentalDecorators": true
+    }
+}

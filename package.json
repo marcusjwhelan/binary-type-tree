@@ -4,30 +4,29 @@
   "description": "Binary Trees written in TypeScript",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --no-cache",
     "build": "rm -rf ./lib/* && tsc",
     "docs": "typedoc --excludeExternals true --exclude '**/*+(spec|index).ts' --out docs"
   },
   "jest": {
     "globals": {
-      "__TS_CONFIG__": "jest-tsconfig.json"
+      "__TS_CONFIG__": "tsconfig.jest.json"
     },
     "coverageDirectory": "coverage",
     "collectCoverageFrom": [
       "src/**/*.ts"
     ],
     "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      ".(ts)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "moduleDirectories": [
       "node_modules",
       "node_modules/@types"
     ],
     "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$",
+    "testRegex": "(/__tests__/.*|\\.(spec))\\.(ts)$",
     "moduleFileExtensions": [
       "ts",
-      "tsx",
       "js"
     ]
   },
