@@ -1,56 +1,34 @@
 {
-  "name": "binary-type-tree",
-  "version": "1.0.3",
-  "description": "Binary Trees written in TypeScript",
-  "main": "lib/index",
-  "scripts": {
-    "test": "jest",
-    "build": "rm -rf ./lib/* && tsc",
-    "docs": "typedoc --excludeExternals true --exclude '**/*+(spec|index).ts' --out docs"
-  },
-  "jest": {
-    "globals": {
-      "__TS_CONFIG__": "tsconfig.json"
+    "name": "binary-type-tree",
+    "version": "1.0.4",
+    "description": "Binary Trees written in TypeScript",
+    "main": "lib/index",
+    "scripts": {
+        "test": "jest --config=__test__/jest-config.json",
+        "build": "rm -rf ./lib/* && tsc",
+        "docs": "typedoc --excludeExternals true --exclude '**/*+(spec|index).ts' --out docs"
     },
-    "collectCoverageFrom": [
-      "src/**/*.ts"
-    ],
-    "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/marcusjwhelan/binary-type-tree.git"
     },
-    "moduleDirectories": [
-      "node_modules",
-      "node_modules/@types"
+    "keywords": [
+        "Binary",
+        "Tree",
+        "TypeScript"
     ],
-    "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/marcusjwhelan/binary-type-tree.git"
-  },
-  "keywords": [
-    "Binary",
-    "Tree",
-    "TypeScript"
-  ],
-  "author": "Marcus J Whelan",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/marcusjwhelan/binary-type-tree/issues"
-  },
-  "homepage": "https://github.com/marcusjwhelan/binary-type-tree#readme",
-  "dependencies": {},
-  "devDependencies": {
-    "@types/jest": "^19.2.2",
-    "jest": "^19.0.2",
-    "ts-jest": "^19.0.10",
-    "typescript": "^2.2.2"
-  },
-  "types": "lib/index"
+    "author": "Marcus J Whelan",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/marcusjwhelan/binary-type-tree/issues"
+    },
+    "homepage": "https://github.com/marcusjwhelan/binary-type-tree#readme",
+    "dependencies": {},
+    "devDependencies": {
+        "@types/jest": "^19.2.2",
+        "jest": "^19.0.2",
+        "ts-jest": "^19.0.10",
+        "typescript": "^2.2.2"
+    },
+    "types": "lib/index"
 }
