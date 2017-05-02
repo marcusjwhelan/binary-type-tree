@@ -2,7 +2,7 @@
   "name": "binary-type-tree",
   "version": "1.0.4",
   "description": "Binary Trees written in TypeScript",
-  "main": "lib/index",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jest",
     "build": "rm -rf ./lib/* && tsc",
@@ -53,5 +53,5 @@
     "ts-jest": "^19.0.10",
     "typescript": "^2.2.2"
   },
-  "types": "lib/index"
+  "types": "lib/index.d.ts"
 }
