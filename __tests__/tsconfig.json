@@ -1,7 +1,8 @@
 {
-    "extends": "./configs/base.json",
+    "extends": "../configs/base.json",
     "compilerOptions": {
-        "baseUrl": ".",
+        "allowSyntheticDefaultImports": true,
+        "rootDir": "../",
         "typeRoots": [
             "node_modules/@types",
             "node_modules"
@@ -15,10 +16,9 @@
     },
     "include": [
         "__tests__",
-        "src/**/*"
+        "src"
     ],
     "exclude": [
-        "lib",
         "node_modules"
     ]
 }
