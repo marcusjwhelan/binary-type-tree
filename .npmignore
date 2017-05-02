@@ -10,3 +10,4 @@ tslint.json
 .idea
 src
 coverage
+.travis.yml
