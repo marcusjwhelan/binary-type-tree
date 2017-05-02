@@ -1,6 +1,6 @@
 {
   "name": "binary-type-tree",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Binary Trees written in TypeScript",
   "main": "lib/index",
   "scripts": {
@@ -10,8 +10,9 @@
   },
   "jest": {
     "globals": {
-      "__TS_CONFIG__": "tsconfig.json"
+      "__TS_CONFIG__": "jest-tsconfig.json"
     },
+    "coverageDirectory": "coverage",
     "collectCoverageFrom": [
       "src/**/*.ts"
     ],
