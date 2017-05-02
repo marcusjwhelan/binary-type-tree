@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/marcusjwhelan/binary-type-tree.svg?branch=master)](https://travis-ci.org/marcusjwhelan/binary-type-tree)
+
 # binary-type-tree
 A binary search tree with AVL balancing.
 
