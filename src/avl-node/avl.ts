@@ -301,7 +301,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         }
 
         // Node with two children
-        // Use the in-order predecessor (no need to randomize since we actively rebalance)
+        // Use the in-order predecessor (no need to randomize since we actively re-balance)
         deletePath.push(currentNode);
         replaceWith = currentNode.left;
 
@@ -340,6 +340,15 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         return this.rebalanceAlongPath(deletePath);
     }
 
+    /**
+     * Update the key of an index
+     * Use when you change a fieldNames value, you will need to
+     * update all they keys that are indexed.
+     * @param key
+     * @param newKey
+     * @returns {AVLNode}
+     * @private
+     */
     public _updateKey(key: ASNDBS, newKey: ASNDBS): AVLNode {
         let currentNode: AVLNode = this;
 

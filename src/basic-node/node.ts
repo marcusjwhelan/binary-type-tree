@@ -4,9 +4,9 @@
 import * as bTreeUtils from "../bTreeUtils";
 
 /** Type used for Node value. */
-export type SNDBSA = Array<{}|any[]|string|number|Date|boolean|symbol|null>;
-/** Type used for Node key. You cannot use objects as keys */
-export type ASNDBS = Array<any[]|string|number|Date|boolean|symbol|null>|string|number|Date|boolean|symbol|null;
+export type SNDBSA = Array<{}|any[]|string|number|Date|boolean|null>;
+/** Type used for Node key. You cannot use objects as keys or symbols */
+export type ASNDBS = Array<any[]|string|number|Date|boolean|null>|string|number|Date|boolean|null;
 
 /** Function type used for generic key and boolean return */
 export type getBoolFromKey = (key?: ASNDBS) => boolean;

@@ -62,6 +62,7 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
+				<p><a href="https://travis-ci.org/marcusjwhelan/binary-type-tree"><img src="https://travis-ci.org/marcusjwhelan/binary-type-tree.svg?branch=master" alt="Build Status"></a></p>
 				<h1 id="binary-type-tree">binary-type-tree</h1>
 				<p>A binary search tree with AVL balancing.</p>
 				<p>I will be working to add different balancing techniques such as red black trees, scapegoat, and splay. Uses ES6 module system and can be used on the front end and for Node. It&#39;s 2017 why not write the module system in ES6. Every utility function, type, interface, and class are able to be imported from the module or as one object.</p>
@@ -81,12 +82,13 @@
 					<li><a href="#inserting-and-deleting-into-the-avl-tree">Inserting and deleting into the AVL Tree</a></li>
 					<li><a href="#querying-the-avl-tree">Querying the AVL Tree</a></li>
 					<li><a href="#key-update-on-avl-tree">Key update on AVL Tree</a></li>
-					<li><a href="#avl-tree-extra-functionality">AVL tree extra functionality </a></li>
+					<li><a href="#avl-tree-extra-functionality">AVL tree extra functionality</a></li>
+					<li><a href="#tojson">toJSON</a></li>
 				</ul>
 				<h2 id="creating-an-avl-tree">Creating an AVL Tree</h2>
 				<p>Before you create a tree you will want to consider how your keys and values will be structured. All values
 					are stored as an array even when just one element. The key can be many different types but cannot be an <code>object</code>.
-					There are three functions provided by default in <code>lib/bTreeUtils.ts</code>, that compare equality and validity
+					There are three functions provided by default in <code>src/bTreeUtils.ts</code>, that compare equality and validity
 					that can be replaced by custom functions. These are very important when it comes to <code>$gt, $lt, $ne</code> comparisons
 				made for the <code>query</code> method. The implementation of the <code>query</code> is on the root Node<T> at <code>lib/basic-node/node.ts</code>. During the constructor you can choose to initialize your AVL tree with several starters or none.</p>
 				<ul>
@@ -94,7 +96,7 @@
 					<li>value - If you would like a value on the initial Node.</li>
 					<li>unique - Set your keys to be unique or not</li>
 					<li>compareKeys - A function to compare keys, mostly used in the comparison during <code>$gt, $lt, $gte, $lte</code>. Takes two arguments <code>{ a: this.key, b: $queryValue }</code>,
-						the query value is of $gt/$lt/$gte/$lte. The Default takes only a <code>number|string</code>. If you supply an fn you must adhere to these rules.<ul>
+						the query value is of $gt/$lt/$gte/$lte. The Default takes only a <code>number|string</code>. If you supply an fn you must adhere to these rules. <code>this.key</code> is supplied by the inner workings of this library as the the tree is traversed. <ul>
 							<li>a &lt; b - returns -1</li>
 							<li>a &gt; b - returns 1</li>
 							<li>a === b - returns 0</li>
@@ -203,6 +205,49 @@ avlTree.tree.executeOnEveryNode(<span class="hljs-function">(<span class="hljs-p
 				<pre><code class="lang-typescript"><span class="hljs-comment">// returns null if node is not found.</span>
 <span class="hljs-keyword">const</span> queryNode: BTT.AVLNode|<span class="hljs-literal">null</span> = avlTree.tree.getAVLNodeFromKey(<span class="hljs-number">123</span>);
 </code></pre>
+				<h2 id="tojson">toJSON</h2>
+				<p>toJSON has been added to convert a any tree into an array in JSON of objects holding the key and value of
+					every node. The order of the nodes in the array are sorted in a way that a re-balance will not occur if you
+				were to loop over the array and insert into any tree. </p>
+				<pre><code class="lang-typescript"><span class="hljs-comment">// for now there is only one tree type so AVLTree is used for the type.</span>
+<span class="hljs-keyword">const</span> JSONTree = AVLTree.tree.toJSON&lt;AVLTree&gt;(); <span class="hljs-comment">// retrieve tree as JSON</span>
+</code></pre>
+				<h4 id="how-it-works">How it works</h4>
+				<p>lets say given this btree</p>
+				<pre><code>                    __________ <span class="hljs-number">40</span> ___________
+                   /                         \
+             ____ <span class="hljs-number">20</span> ____               ____ <span class="hljs-number">60</span> ___
+            /            \             /           \
+           <span class="hljs-number">10</span>           <span class="hljs-number">30</span>           <span class="hljs-number">50</span>           _70 _
+         /    \       /    \       /    \        /     \
+        <span class="hljs-number">5</span>     <span class="hljs-number">15</span>     <span class="hljs-number">25</span>    <span class="hljs-number">35</span>     <span class="hljs-number">45</span>    <span class="hljs-number">55</span>      <span class="hljs-number">65</span>     <span class="hljs-number">75</span>
+       / \   /  \   / \    / \   /  \   /  \   /  \   /  \
+      <span class="hljs-number">3</span>  <span class="hljs-number">7</span>  <span class="hljs-number">12</span>  <span class="hljs-number">17</span> <span class="hljs-number">23</span>  <span class="hljs-number">27</span> <span class="hljs-number">33</span> <span class="hljs-number">37</span> <span class="hljs-number">43</span>  <span class="hljs-number">47</span> <span class="hljs-number">52</span>  <span class="hljs-number">57</span> <span class="hljs-number">62</span>  <span class="hljs-number">67</span> <span class="hljs-number">72</span>  <span class="hljs-number">77</span>
+</code></pre><p>The master array would hold </p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> input = [ [<span class="hljs-number">40</span>], [<span class="hljs-number">20</span>,<span class="hljs-number">60</span>], [<span class="hljs-number">10</span>,<span class="hljs-number">30</span>,<span class="hljs-number">50</span>,<span class="hljs-number">70</span>], [<span class="hljs-number">5</span>,<span class="hljs-number">15</span>,<span class="hljs-number">25</span>,<span class="hljs-number">35</span>,<span class="hljs-number">45</span>,<span class="hljs-number">55</span>,<span class="hljs-number">65</span>,<span class="hljs-number">75</span>],
+  [<span class="hljs-number">3</span>,<span class="hljs-number">7</span>,<span class="hljs-number">12</span>,<span class="hljs-number">17</span>,<span class="hljs-number">23</span>,<span class="hljs-number">27</span>,<span class="hljs-number">33</span>,<span class="hljs-number">37</span>,<span class="hljs-number">43</span>,<span class="hljs-number">47</span>,<span class="hljs-number">52</span>,<span class="hljs-number">57</span>,<span class="hljs-number">62</span>,<span class="hljs-number">67</span>,<span class="hljs-number">72</span>,<span class="hljs-number">77</span>]];
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// This would then be formatted into this</span>
+<span class="hljs-keyword">const</span> result = [ [<span class="hljs-number">40</span>], [<span class="hljs-number">60</span>,<span class="hljs-number">20</span>], [<span class="hljs-number">70</span>,<span class="hljs-number">30</span>,<span class="hljs-number">50</span>,<span class="hljs-number">10</span>], [<span class="hljs-number">75</span>,<span class="hljs-number">35</span>,<span class="hljs-number">55</span>,<span class="hljs-number">15</span>,<span class="hljs-number">65</span>,<span class="hljs-number">25</span>,<span class="hljs-number">45</span>,<span class="hljs-number">5</span>],
+  [<span class="hljs-number">77</span>,<span class="hljs-number">37</span>,<span class="hljs-number">67</span>,<span class="hljs-number">17</span>,<span class="hljs-number">57</span>,<span class="hljs-number">27</span>,<span class="hljs-number">47</span>,<span class="hljs-number">7</span>,<span class="hljs-number">72</span>,<span class="hljs-number">33</span>,<span class="hljs-number">62</span>,<span class="hljs-number">23</span>,<span class="hljs-number">52</span>,<span class="hljs-number">12</span>,<span class="hljs-number">43</span>,<span class="hljs-number">3</span>]];
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// This is done by breaking up each array as it comes in by their indices</span>
+<span class="hljs-comment">// </span>
+<span class="hljs-comment">// Previous: [0,1], Current: [0,1,2,3]</span>
+<span class="hljs-comment">// get evens/odds and sub Previous from Current, Current odds [3], Previous odds [1], Current evens [2], Prev Evens [0];</span>
+<span class="hljs-comment">// creates</span>
+<span class="hljs-keyword">const</span> row3 = [<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">0</span>]; <span class="hljs-comment">// 70,30,50,10</span>
+<span class="hljs-comment">// Now for the next level</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// Previous: [3,1,2,0], Current: [0,1,2,3,4,5,6,7]</span>
+<span class="hljs-comment">// same step</span>
+<span class="hljs-comment">// Current odds: [7,5], Previous odds: [3,1], Current evens: [6,4], Previous evens: [2,0]</span>
+<span class="hljs-comment">// creates</span>
+<span class="hljs-keyword">const</span> row4 = [<span class="hljs-number">7</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">6</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">0</span>]; <span class="hljs-comment">// 75,35,55,15,65,25,45,5</span>
+</code></pre>
+				<p>All of these arrays are then put together into one array to reference the master array of objects to then create
+					a JSON array. Since this method only looks at the index of the arrays and not the contents of the keys or values
+				no comparisons are needed.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">

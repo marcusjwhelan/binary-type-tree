@@ -36,7 +36,7 @@ self balancing trees. AVL is simply the first choice.
  
 Before you create a tree you will want to consider how your keys and values will be structured. All values
 are stored as an array even when just one element. The key can be many different types but cannot be an `object`. 
-There are three functions provided by default in `lib/bTreeUtils.ts`, that compare equality and validity 
+There are three functions provided by default in `src/bTreeUtils.ts`, that compare equality and validity 
 that can be replaced by custom functions. These are very important when it comes to `$gt, $lt, $ne` comparisons
 made for the `query` method. The implementation of the `query` is on the root Node<T> at `lib/basic-node/node.ts`. During the constructor you can choose to initialize your AVL tree with several starters or none.
 
@@ -44,7 +44,7 @@ made for the `query` method. The implementation of the `query` is on the root No
 * value - If you would like a value on the initial Node.
 * unique - Set your keys to be unique or not
 * compareKeys - A function to compare keys, mostly used in the comparison during `$gt, $lt, $gte, $lte`. Takes two arguments `{ a: this.key, b: $queryValue }`, 
-the query value is of $gt/$lt/$gte/$lte. The Default takes only a `number|string`. If you supply an fn you must adhere to these rules.
+the query value is of $gt/$lt/$gte/$lte. The Default takes only a `number|string`. If you supply an fn you must adhere to these rules. `this.key` is supplied by the inner workings of this library as the the tree is traversed. 
     * a < b - returns -1
     * a > b - returns 1
     * a === b - returns 0
