@@ -440,7 +440,6 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
             const arg1 = selfOfLoop.left ? selfOfLoop.left.height : 0;
             const arg2 = selfOfLoop.right ? selfOfLoop.right.height : 0;
             selfOfLoop.height = 1 + Math.max(arg1, arg2);
-
             if (selfOfLoop.balanceFactor() > 1) {
                 rotated = selfOfLoop.rightTooSmall();
                 if (i === 0) {

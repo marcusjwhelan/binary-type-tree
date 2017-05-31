@@ -157,9 +157,17 @@ export abstract class Node<T> implements INode<T> {
      * @param options
      */
     protected constructor( public options: INodeConstructor<Node<T>> ) {
-        this.key = options.key || null;
+        if (options.hasOwnProperty("key") && options.key !== undefined) {
+            this.key = options.key;
+        } else {
+            this.key = null;
+        }
+        if (options.hasOwnProperty("value") && options.value !== undefined) {
+            this.value = options.value;
+        } else {
+            this.value = [null];
+        }
         this.parent = options.parent || null;
-        this.value = options.value ? options.value : [null];
         this.unique = options.unique || false;
         this.compareKeys = options.compareKeys || bTreeUtils.defaultCompareKeysFunction;
         this.compareValues = options.compareValues || bTreeUtils.defaultCompareValues;
