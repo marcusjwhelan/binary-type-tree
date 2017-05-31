@@ -1,6 +1,19 @@
 import { AVLTree } from "../src";
 
 describe("creating JSON from Tree", () => {
+    test("Insert ordered array no rebalance", () => {
+        const avl: AVLTree = new AVLTree({ unique: true });
+        const parsedJSON = [{ key: 27, value: ["a"]}, { key: 35, value: ["b"]}, { key: 22, value: ["c"]}, { key: 39, value: ["d"]}, { key: 25, value: ["d"]}, { key: 28, value: ["e"]}, { key: 0, value: ["f"]}, { key: 26, value: ["g"]}, { key: 1, value: ["h"]}];
+
+        for (const item of parsedJSON) {
+            avl.insert(item.key, item.value);
+        }
+        const json = JSON.parse(avl.tree.toJSON<AVLTree>());
+        const zoneOfTheEnders = avl.tree.search(0);
+        expect(zoneOfTheEnders).toEqual(expect.arrayContaining(["f"]));
+        expect(json).toEqual(expect.arrayContaining([{ key: 27, value: ["a"]}, { key: 35, value: ["b"]}, { key: 22, value: ["c"]}, { key: 39, value: ["d"]}, { key: 25, value: ["d"]}, { key: 28, value: ["e"]}, { key: 0, value: ["f"]}, { key: 26, value: ["g"]}, { key: 1, value: ["h"]}]));
+    });
+
     describe("AVL to JSON", () => {
         const avlTree: AVLTree = new AVLTree({ unique: true});
         expect(avlTree).toBeInstanceOf(AVLTree);
