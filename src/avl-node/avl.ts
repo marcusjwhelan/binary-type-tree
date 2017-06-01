@@ -231,7 +231,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         }
 
         // Delete only values (no tree modification)
-        if (currentNode.value.length > 1 && value.length > 0) {
+        if (currentNode.value.length > 1 && value.length > 1) {
             currentNode.value.forEach((cV) => {
                 value.forEach((v) => {
                     if (!currentNode.checkValueEquality(cV, v)) {
