@@ -75,8 +75,8 @@ export interface INode<T> {
     checkValueEquality: checkValueEquality;
 
     returnThisNode(): this;
-    getMaxKeyDescendant<T>(): T;
-    getMinKeyDescendant<T>(): T;
+    getMaxKeyDescendant<T>(): Node<T>;
+    getMinKeyDescendant<T>(): Node<T>;
     getMaxKey<T>(): ASNDBS;
     getMinKey<T>(): ASNDBS;
     checkIsNode(): void;

@@ -1,6 +1,6 @@
 {
   "name": "binary-type-tree",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Binary Trees written in TypeScript",
   "main": "lib/index.js",
   "scripts": {
