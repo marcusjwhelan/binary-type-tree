@@ -3,7 +3,7 @@
 # binary-type-tree
 A binary search tree with AVL balancing.
 
-I will be working to add different balancing techniques such as red black trees, scapegoat, and splay. Uses ES6 module system and can be used on the front end and for Node. It's 2017 why not write the module system in ES6. Every utility function, type, interface, and class are able to be imported from the module or as one object.
+I will be working to add different balancing techniques such as red black trees, scapegoat, and splay. Uses Commonjs module system. Every utility function, type, interface, and class are able to be imported from the module or as one object.
 
 ## Previous Important Issues
 
