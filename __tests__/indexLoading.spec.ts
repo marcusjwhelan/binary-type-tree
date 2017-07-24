@@ -66,6 +66,14 @@ describe("testing a small index saving and loading", () => {
         ]));
     });
 
+    test("removing indices", () => {
+        avlTree.delete(1, ["1", "3"]);
+        avlTree.delete(0, ["0"]);
+        expect(JSON.parse(avlTree.tree.toJSON())).toEqual(expect.arrayContaining([
+            {key: 0, value: ["2"]},
+        ]));
+    });
+
     test("inserting loaded object into new tree unique", () => {
         uObj.forEach((obj) => {
             nUTree.insert(obj.key, obj.value);

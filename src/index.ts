@@ -4,4 +4,4 @@ export { ASNDBS, SNDBSA, getBoolFromKey, getLowerBoundsFn, getUpperBoundsFn,
     getEqualityBoundsFn, compareKeys, checkKeyEquality, IGreatQuery, ILessQueary,
     IAllQueary, INodeConstructor, INode, Node } from "./basic-node";
 export { shuffleNumbersArray, getRandomArray, defaultCompareKeysFunction, defaultCheckKeyEquality, getRowsArrayFromHeight, createRefArrayFromTreeHeight, createRandomSortedIndex,
-    defaultCheckValueEquality, defaultCompareValues } from "./bTreeUtils";
+    defaultCheckValueEquality, defaultCompareValues } from "./utils/bTreeUtils";

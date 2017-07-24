@@ -1,7 +1,7 @@
 /**
  * Basic utilities used for comparison and validity
  */
-import * as bTreeUtils from "../bTreeUtils";
+import * as bTreeUtils from "../utils/bTreeUtils";
 
 /** Type used for Node value. */
 export type SNDBSA = Array<{}|any[]|string|number|Date|boolean|null>;

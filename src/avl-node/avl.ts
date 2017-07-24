@@ -1,5 +1,6 @@
 import { ASNDBS, SNDBSA, INodeConstructor, Node  } from "../basic-node";
-import * as bTreeUtils from "../bTreeUtils";
+import * as bTreeUtils from "../utils/bTreeUtils";
+import {equalArray} from "../utils";
 
 export interface IAVLNode {
     height: number;
@@ -231,7 +232,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         }
 
         // Delete only values (no tree modification)
-        if (currentNode.value.length > 1 && value.length > 1) {
+        if (currentNode.value.length > 1 && value.length > 0 && (currentNode.value.length !== value.length)) {
             currentNode.value.forEach((cV) => {
                 value.forEach((v) => {
                     if (!currentNode.checkValueEquality(cV, v)) {
