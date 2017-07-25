@@ -72,7 +72,7 @@ describe("Test all of AVL Tree", () => {
         });
 
         test("delete one left child", () => {
-            avlTree.delete("rocket", ["123456789"]);
+            avlTree.Delete("rocket", ["123456789"]);
 
             expect(avlTree.tree.key).toBe("league");
             expect(avlTree.tree.value).toEqual(expect.arrayContaining(["123456788"]));
@@ -145,7 +145,7 @@ describe("Test all of AVL Tree", () => {
             });
 
             test("if deleting single node causes errors, should re-balance", () => {
-                avlTree.delete(65536, ["recon"]);
+                avlTree.Delete(65536, ["recon"]);
                 expect(avlTree.tree.height).toBe(17);
                 avlTree.tree.checkisAVLT();
             });
@@ -164,7 +164,7 @@ describe("Test all of AVL Tree", () => {
                 const keys = getRandomArray(65530);
                 for (let i = -1; i < keys.length; i++) {
                     const value: SNDBSA = avlTree.tree.search(i);
-                    avlTree.delete(i, [value]);
+                    avlTree.Delete(i, [value]);
                 }
                 const searchedValues = avlTree.tree.query({$lte: 65535, $gte: 65530, $ne: 65532});
 

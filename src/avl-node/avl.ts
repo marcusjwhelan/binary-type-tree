@@ -200,7 +200,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         let currentNode: AVLNode = this;
 
         // Empty tree
-        if (this.key === null) {
+        if (key === null) {
             return this;
         }
 
@@ -232,7 +232,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         }
 
         // Delete only values (no tree modification)
-        if (currentNode.value.length > 1 && value.length > 0 && (currentNode.value.length !== value.length)) {
+        if (currentNode.value.length > 1 && value.length > 0 && (currentNode.value.length !== value.length) && (value !== undefined)) {
             currentNode.value.forEach((cV) => {
                 value.forEach((v) => {
                     if (!currentNode.checkValueEquality(cV, v)) {
@@ -252,7 +252,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         if (!currentNode.left && !currentNode.right) {
             // This leaf is also the root
             if (currentNode === this) {
-                delete currentNode.key;
+                currentNode.key = null;
                 currentNode.value = [];
                 delete currentNode.height;
                 return this;

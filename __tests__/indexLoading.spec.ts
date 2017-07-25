@@ -1,5 +1,4 @@
 import { AVLTree, AVLNode, SNDBSA, ASNDBS } from "../src";
-import useFakeTimers = jest.useFakeTimers;
 
 describe("testing a small index saving and loading", () => {
     const UTree: AVLTree = new AVLTree({unique: true});
@@ -67,8 +66,8 @@ describe("testing a small index saving and loading", () => {
     });
 
     test("removing indices", () => {
-        avlTree.delete(1, ["1", "3"]);
-        avlTree.delete(0, ["0"]);
+        avlTree.Delete(1, ["1", "3"]);
+        avlTree.Delete(0, ["0"]);
         expect(JSON.parse(avlTree.tree.toJSON())).toEqual(expect.arrayContaining([
             {key: 0, value: ["2"]},
         ]));
@@ -99,6 +98,13 @@ describe("testing a small index saving and loading", () => {
             expect(ro.value).toEqual(expect.arrayContaining(["0", "2"]));
             expect(ri.value).toEqual(expect.arrayContaining(["1", "3"]));
         }
+    });
+
+    test("finding", () => {
+        const two = nUTree.tree.search(2);
+        const zero = nATree.tree.search(0);
+        expect(two).toEqual(expect.arrayContaining(["2"]));
+        expect(zero).toEqual(expect.arrayContaining(["0", "2"]));
     });
 
 });
