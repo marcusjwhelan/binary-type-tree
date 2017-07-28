@@ -180,7 +180,7 @@ There is also a method available to retrieve the node holding a key.
 const queryNode: BTT.AVLNode|null = avlTree.tree.getAVLNodeFromKey(123); 
 ```
 
-## toJSON
+## toJSON - THE ONLY PROMISE METHOD
 
 toJSON has been added to convert a any tree into an array in JSON of objects holding the key and value of
 every node. The order of the nodes in the array are sorted in a way that a re-balance will not occur if you
@@ -189,6 +189,14 @@ were to loop over the array and insert into any tree.
 ```typescript
 // for now there is only one tree type so AVLTree is used for the type.
 const JSONTree = AVLTree.tree.toJSON<AVLTree>(); // retrieve tree as JSON
+// above is pre 1.1.4 version
+// below is after 1.1.4 version
+let JSONTree: string;
+AVLTree.tree.toJSON()
+    .then((res) => {
+        JSONTree = res;
+    })
+    .catch(err);
 ```
 
 #### How it works

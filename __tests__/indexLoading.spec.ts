@@ -44,14 +44,20 @@ describe("testing a small index saving and loading", () => {
     });
 
     test("converting to json", () => {
-        uJSON = UTree.tree.toJSON();
-        aJSON = avlTree.tree.toJSON();
-        expect(uJSON).toEqual("[{\"key\":1,\"value\":[\"1\"]},{\"key\":2,\"value\":[\"2\"]},{\"key\":0,\"value\":[\"0\"]}]");
-        expect(aJSON).toEqual("[{\"key\":0,\"value\":[\"0\",\"2\"]},{\"key\":1,\"value\":[\"1\",\"3\"]}]");
+        expect.assertions(2);
+        return UTree.tree.toJSON()
+            .then((res) => {
+                uJSON = res;
+                return avlTree.tree.toJSON();
+            })
+            .then((res) => {
+                aJSON = res;
+                expect(uJSON).toEqual("[{\"key\":1,\"value\":[\"1\"]},{\"key\":0,\"value\":[\"0\"]},{\"key\":2,\"value\":[\"2\"]}]");
+                expect(aJSON).toEqual("[{\"key\":0,\"value\":[\"0\",\"2\"]},{\"key\":1,\"value\":[\"1\",\"3\"]}]");
+            });
     });
 
     test("converting JSON to Obj", () => {
-
         uObj = JSON.parse(uJSON);
         aObj = JSON.parse(aJSON);
         expect(uObj).toEqual(expect.arrayContaining([
@@ -66,11 +72,15 @@ describe("testing a small index saving and loading", () => {
     });
 
     test("removing indices", () => {
+        expect.assertions(1);
         avlTree.Delete(1, ["1", "3"]);
         avlTree.Delete(0, ["0"]);
-        expect(JSON.parse(avlTree.tree.toJSON())).toEqual(expect.arrayContaining([
-            {key: 0, value: ["2"]},
-        ]));
+        return avlTree.tree.toJSON()
+            .then((res) => {
+                expect(JSON.parse(res)).toEqual(expect.arrayContaining([
+                    {key: 0, value: ["2"]},
+                ]));
+            });
     });
 
     test("inserting loaded object into new tree unique", () => {

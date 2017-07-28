@@ -585,18 +585,28 @@ export abstract class Node<T> implements INode<T> {
      * Requires that key and value can be turned into JSON
      * @returns {any}
      */
-    public toJSON<T>(): any {
-        const allArray: any[] = this.getTreeAsArrayOfArrays<T>();
-        const indexArray: any[] = bTreeUtils.createRandomSortedIndex(allArray);
-        let finalJSON: any = [];
-        for (let x = 0; x < allArray.length; x++) {
-            for (let y = 0; y < allArray[x].length; y++) {
-                finalJSON.push(allArray[x][indexArray[x][y]]);
-            }
-        }
-        finalJSON = finalJSON.filter((val: any) => val !== null);
-        finalJSON = JSON.stringify(finalJSON);
-        return finalJSON;
+    public toJSON<T>(): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            const allArray: any[] = this.getTreeAsArrayOfArrays<T>();
+            let indexArray: any[];
+            // const indexArray: any[] = bTreeUtils.createRandomSortedIndex(allArray);
+            bTreeUtils.createRandomSortedIndex(allArray)
+                .then((res) => {
+                    indexArray = res;
+                    let finalJSON: any = [];
+                    allArray.forEach((value: any, x: number) => {
+                        allArray[x].forEach((v: any, y: number) => {
+                            finalJSON.push(allArray[x][indexArray[x][y]]);
+                        });
+                    });
+                    finalJSON = finalJSON.filter((val: any) => {
+                        return (Object.prototype.toString.call(val) === "[object Object]");
+                    });
+                    return JSON.stringify(finalJSON);
+                })
+                .then(resolve)
+                .catch(reject);
+        });
     }
 
     /**

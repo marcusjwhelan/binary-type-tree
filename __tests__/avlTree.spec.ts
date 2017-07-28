@@ -113,6 +113,7 @@ describe("Test all of AVL Tree", () => {
             const between: SNDBSA = avlTree.tree.query({$gte: 0, $lte: 100});
             const oddLTSearch: SNDBSA = avlTree.tree.query({$lte: 100, $lt: 20});
             const oddGTSearch: SNDBSA = avlTree.tree.query({$gte: 65400, $gt: 65401});
+            let newInsertableTree: string;
 
             test("for odd $gt search", () => {
                 expect(oddGTSearch[0]).toBe("ach");
@@ -178,6 +179,28 @@ describe("Test all of AVL Tree", () => {
                 expect(searchedNE.length).toBe(4);
                 expect(searchedNE).toEqual(expect.arrayContaining(["ac", "c", "ab", "a"]));
             });
+
+            test("fetching index", () => {
+                expect.assertions(1);
+                return avlTree.tree.toJSON()
+                    .then((res) => {
+                        newInsertableTree = res;
+                        expect(typeof newInsertableTree).toEqual("string");
+                    });
+            });
+
+            test("inserting json into new avltree - like reloading tree from storage", () => {
+                expect.assertions(1);
+                const newTree: AVLTree = new AVLTree({});
+                const index: any = JSON.parse(newInsertableTree);
+                for (const item of index) {
+                    newTree.insert(item.key, item.value);
+                }
+                return newTree.tree.toJSON()
+                    .then((res) => {
+                        expect(newInsertableTree).toEqual(res);
+                    });
+            });
         });
     });
 
@@ -185,6 +208,7 @@ describe("Test all of AVL Tree", () => {
         const avlTree: AVLTree = new AVLTree({});
         const randomArray: number[] = getRandomArray(65535);
         const randomCArray: string[] = randomCharArray("abcdefghijklmnop");
+        let newInsertableJSON: string;
         for (const num in randomArray) {
             if (randomArray.hasOwnProperty(num)) {
                 const v: string = randomCArray.pop() || " ";
@@ -242,6 +266,28 @@ describe("Test all of AVL Tree", () => {
 
                 expect(witcher).toEqual(expect.arrayContaining([]));
                 expect(three).toEqual(expect.arrayContaining(["defijlmnop"]));
+            });
+
+            test("fetching index", () => {
+                expect.assertions(1);
+                return avlTree.tree.toJSON()
+                    .then((res) => {
+                        newInsertableJSON = res;
+                        expect(typeof newInsertableJSON).toEqual("string");
+                    });
+            });
+
+            test("inserting json into new avltree - like reloading tree from storage", () => {
+                expect.assertions(1);
+                const newTree: AVLTree = new AVLTree({});
+                const index: any = JSON.parse(newInsertableJSON);
+                for (const item of index) {
+                    newTree.insert(item.key, item.value);
+                }
+                return newTree.tree.toJSON()
+                    .then((res) => {
+                        expect(newInsertableJSON).toEqual(res);
+                    });
             });
         });
     });

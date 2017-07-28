@@ -41,7 +41,7 @@ export const getRandomArray = ( n: number): number[] => {
  * if a === b then return 0
  * else throw could not compare error.
  */
-export const defaultCompareKeysFunction = ( a: number | string , b: number | string ): number => {
+export const defaultCompareKeysFunction = ( a: number | string | boolean , b: number | string | boolean ): number => {
     if (a < b) {
         return -1;
     } else if (a > b) {
@@ -131,6 +131,29 @@ export const createRefArrayFromTreeHeight = (height: number): any[] => {
     return returnArr;
 };
 
+const fillRefA = (prev: number[], current: number[]): number[] => {
+    const a: any[] = [];
+    try {
+        const prefAOdds = prev.filter((val: number) => (val % 2) !== 0);
+        const prefAEvens = prev.filter((val: number) => (val % 2) === 0);
+        const currentAOdds = current.filter((val: number) => (val % 2) !== 0);
+        const currentAEvens = current.filter((val: number) => (val % 2) === 0);
+        const newAOdds = currentAOdds.filter((val: number) => !prefAOdds.includes(val));
+        const newAEvens = currentAEvens.filter((val: number) => !prefAEvens.includes(val));
+        prefAOdds.forEach((v: any, i: number) => {
+            a.push(newAOdds[i]);
+            a.push(prefAOdds[i]);
+        });
+        prefAOdds.forEach((v: any, i: number) => {
+            a.push(newAEvens[i]);
+            a.push(prefAEvens[i]);
+        });
+    } catch (e) {
+        throw new Error(e);
+    }
+    return a;
+};
+
 /**
  * Create the reference index master array. This tells another method
  * where the nodes need to be inserted in the final array that is turned
@@ -138,38 +161,23 @@ export const createRefArrayFromTreeHeight = (height: number): any[] => {
  * @param refArray
  * @returns {any[]}
  */
-export const createRandomSortedIndex = (refArray: any[]): any[] => {
-    const returnArray: any[] = [];
+export const createRandomSortedIndex = (refArray: any[]): Promise<any[]> => {
+    return new Promise((resolve, reject) => {
+        const returnArray: any[] = [];
+        try {
+            refArray.forEach((val: any, ind: number) => {
+                returnArray.push([]);
+                refArray[ind].forEach((v: any, i: number) => {
+                    returnArray[ind].push(i);
+                });
+            });
 
-    for (let i = 0; i < refArray.length; i++) {
-        returnArray.push([]);
-        for (let j = refArray[i].length - 1; j >= 0; j--) {
-            returnArray[i].push(j);
+            for (let i = 2; i < returnArray.length; i++) {
+                returnArray[i] = fillRefA(returnArray[i - 1], returnArray[i]);
+            }
+        } catch (e) {
+            reject(e);
         }
-    }
-
-    const fillRefA = (prev: number[], current: number[]): number[] => {
-        const a = [];
-        const prefAOdds = prev.filter((val: number) => (val % 2) !== 0);
-        const prefAEvens = prev.filter((val: number) => (val % 2) === 0);
-        const currentAOdds = current.filter((val: number) => (val % 2) !== 0);
-        const currentAEvens = current.filter((val: number) => (val % 2) === 0);
-        const newAOdds = currentAOdds.filter((val: number) => !prefAOdds.includes(val));
-        const newAEvens = currentAEvens.filter((val: number) => !prefAEvens.includes(val));
-
-        for (let i = 0; i < prefAOdds.length; i++) {
-            a.push(newAOdds[i]);
-            a.push(prefAOdds[i]);
-        }
-        for (let i = 0; i < prefAOdds.length; i++) {
-            a.push(newAEvens[i]);
-            a.push(prefAEvens[i]);
-        }
-        return a;
-    };
-
-    for (let i = 2; i < returnArray.length; i++) {
-        returnArray[i] = fillRefA(returnArray[i - 1], returnArray[i]);
-    }
-    return returnArray;
+        resolve(returnArray);
+    });
 };
