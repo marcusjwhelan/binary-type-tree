@@ -91,7 +91,7 @@ export interface INode<T> {
     search(key: ASNDBS): SNDBSA;
     getTreeHeight<T>(tree: Node<T>): number;
     getTreeAsArrayOfArrays<T>(): any;
-    toJSON<T>(): any;
+    toJSON<T>(): Promise<any>;
     executeOnEveryNode(fn: any): any;
 }
 
