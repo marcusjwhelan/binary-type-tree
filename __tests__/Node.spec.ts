@@ -4,7 +4,7 @@ describe("creating JSON from Tree", () => {
     test("Insert ordered array no rebalance", () => {
         expect.assertions(3);
         const avl: AVLTree = new AVLTree({ unique: true });
-        const parsedJSON = [{ key: 27, value: ["a"]}, { key: 35, value: ["b"]}, { key: 22, value: ["c"]}, { key: 39, value: ["d"]}, { key: 25, value: ["d"]}, { key: 28, value: ["e"]}, { key: 0, value: ["f"]}, { key: 26, value: ["g"]}, { key: 1, value: ["h"]}];
+        const parsedJSON = [{ key: 27, value: ["a"]}, { key: 35, value: ["b"]}, { key: 22, value: ["c"]}, { key: 39, value: ["d"]}, { key: 25, value: ["d"]}, { key: 28, value: ["e"]}, { key: 0, value: ["f"]}, { key: 26, value: ["g"]}, { key: -1, value: ["h"]}];
 
         for (const item of parsedJSON) {
             avl.insert(item.key, item.value);
@@ -14,7 +14,7 @@ describe("creating JSON from Tree", () => {
                 const json = JSON.parse(res);
                 const zoneOfTheEnders = avl.tree.search(0);
                 expect(zoneOfTheEnders).toEqual(expect.arrayContaining(["f"]));
-                expect(json).toEqual(expect.arrayContaining([{ key: 27, value: ["a"]}, { key: 35, value: ["b"]}, { key: 22, value: ["c"]}, { key: 39, value: ["d"]}, { key: 25, value: ["d"]}, { key: 28, value: ["e"]}, { key: 0, value: ["f"]}, { key: 26, value: ["g"]}, { key: 1, value: ["h"]}]));
+                expect(json).toEqual(expect.arrayContaining([{ key: 27, value: ["a"]}, { key: 22, value: ["c"]}, { key: 35, value: ["b"]}, { key: 39, value: ["d"]}, { key: 25, value: ["d"]}, { key: 28, value: ["e"]}, { key: 0, value: ["f"]}, { key: 26, value: ["g"]}, { key: -1, value: ["h"]}]));
             });
     });
 

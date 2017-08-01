@@ -595,8 +595,10 @@ export abstract class Node<T> implements INode<T> {
                     indexArray = res;
                     let finalJSON: any = [];
                     allArray.forEach((value: any, x: number) => {
-                        allArray[x].forEach((v: any, y: number) => {
-                            finalJSON.push(allArray[x][indexArray[x][y]]);
+                        indexArray[x].forEach((v: any, y: number) => {
+                            if (indexArray[x][y] !== undefined) {
+                                finalJSON.push(allArray[x][indexArray[x][y]]);
+                            }
                         });
                     });
                     finalJSON = finalJSON.filter((val: any) => {
