@@ -354,7 +354,8 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
         let currentNode: AVLNode = this;
 
         // Empty tree
-        if (this.key === null) {
+        // prevent operation of update if key is exact match.
+        if (this.key === null || this.key === newKey) {
             return this;
         }
 
