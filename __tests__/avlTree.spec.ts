@@ -259,6 +259,12 @@ describe("Test all of AVL Tree", () => {
                 expect(filter).toEqual(expect.arrayContaining(["acdefghijklmnop", "solid", "snake", "bcefijlmnop"]));
             });
 
+            test("updating key with same key", () => {
+                avlTree.updateKey(2, 2);
+                const link: SNDBSA = avlTree.tree.search(2);
+                expect(link).toEqual(expect.arrayContaining( [ "acdefghijklmnop", "solid", "snake", "bcefijlmnop" ]));
+            });
+
             test("updating key with new key that does not exist", () => {
                 avlTree.updateKey(1223, 65536);
                 const witcher: SNDBSA = avlTree.tree.search(1223);
