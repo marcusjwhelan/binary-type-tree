@@ -1,6 +1,6 @@
 import { ASNDBS, SNDBSA, INodeConstructor, Node  } from "../basic-node";
 import * as bTreeUtils from "../utils/bTreeUtils";
-import {equalArray} from "../utils";
+import {rmArrDups} from "tedb-utils";
 
 export interface IAVLNode {
     height: number;
@@ -159,7 +159,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
                 if (currentNode.unique) {
                     throw new Error(`Can't insert key ${key}, it violates the unique constraint: TYPE: uniqueViolated`);
                 } else {
-                    currentNode.value = currentNode.value.concat(value);
+                    currentNode.value = rmArrDups(currentNode.value.concat(value));
                 }
                 return this;
             }
@@ -408,7 +408,7 @@ export class AVLNode extends Node<AVLNode> implements IAVLNode {
                 const matchedNode: AVLNode|null = this.getAVLNodeFromKey(newKey);
                 // node was found
                 if (matchedNode) {
-                    matchedNode.value = matchedNode.value.concat(currentNode.value);
+                    matchedNode.value = rmArrDups(matchedNode.value.concat(currentNode.value));
                     return this._delete(currentNode.key, currentNode.value);
                 } else { // no node matching new key was found.
                     const currentValue: SNDBSA = currentNode.value;
